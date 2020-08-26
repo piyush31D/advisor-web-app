@@ -6,7 +6,7 @@ import {
 } from './type'
 
 const initialState: IUserState = {
-  authenticated: false,
+  authenticated: true,
   firstName: '',
   lastName: '',
   email: '',

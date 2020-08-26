@@ -2,16 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect, RouteProps } from "react-router-dom";
 import { IState } from 'src/store';
+import Sidebar from '../components/sidebar/sidebar'
 
-const UserRoute: React.ComponentType<RouteProps> = ({ component: Component, ...rest }) => {
+const UserRoute: React.ComponentType<RouteProps> = ({ children }) => {
   const authenticated = useSelector((state: IState) => state.userReducer.authenticated);
-  if (!Component) return null;
   return (
-    <Route
-      {...rest}
-      render={props =>
-        authenticated ? <Component {...props} /> : <Redirect to="/dashboard" />}
-    />
+    <>
+      {authenticated ? children : <Redirect to="/" />}
+    </>
   )
 };
 
