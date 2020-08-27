@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'protofolioicon';
   src:
-    url('fonts/protofolioicon.ttf?t74233') format('truetype'),
-    url('fonts/protofolioicon.woff?t74233') format('woff'),
-    url('fonts/protofolioicon.svg?t74233#protofolioicon') format('svg');
+    url('fonts/protofolioicon.ttf?63w2cb') format('truetype'),
+    url('fonts/protofolioicon.woff?63w2cb') format('woff'),
+    url('fonts/protofolioicon.svg?63w2cb#protofolioicon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -87,6 +87,9 @@
 .pficon-bucket:before {
   content: "\e916";
 }
+.pficon-dashboard:before {
+  content: "\e91e";
+}
 .pficon-save:before {
   content: "\e918";
 }
@@ -122,7 +125,4 @@
 }
 .pficon-chevron-down:before {
   content: "\e908";
-}
-.pficon-dashboard:before {
-  content: "\e91e";
 }
