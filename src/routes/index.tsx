@@ -8,7 +8,8 @@ import SectionTop from '../components/section/section.top';
 import Signin from 'src/components/auth/signin';
 import Signup from 'src/components/auth/signup';
 import Dashboard from 'src/components/dashboard/dashboard';
-import UsersPage from 'src/pages/users/users.page'
+import UsersPage from 'src/pages/users/users.page';
+import FoliosPage from 'src/pages/folios/folios.page';
 
 const IndexRoute: React.FC = (props: any) => (
   <div className="app-root">
@@ -21,11 +22,11 @@ const IndexRoute: React.FC = (props: any) => (
           <Sidebar />
           <div className="flex fill col-flex cross-stretch">
             <SectionTop />
-            <div className="flex fill row-flex cross-stretch">
+            <div className="flex fill row-flex cross-stretch" style={{overflow:'hidden'}}>
               <Switch>
                 <Route path="/dashboard" component={Dashboard} exact />
                 <Route path="/trades" component={Signin} exact />
-                <Route path="/folios" component={Dashboard} exact />
+                <Route path="/folios" component={FoliosPage} exact />
                 <Route path="/users" component={UsersPage} exact />
                 <Route path="/plans" component={Dashboard} exact />
                 <Route path="/chats" component={Dashboard} exact />
