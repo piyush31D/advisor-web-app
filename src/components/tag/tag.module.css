@@ -1,0 +1,46 @@
+.tag {
+  border-radius: 5px;
+  padding: 2px 6px;
+  margin-right: 6px;
+}
+
+.tag:last-child {
+  margin-right: 0;
+}
+
+.spacer {
+  margin: 0 2px;
+}
+
+.grey {
+  color: (--text-primary);
+  background-color: var(--secondary-background);
+}
+
+.red {
+  color: #DC513E;
+  background-color: #F8DCD8;
+}
+
+.blue {
+  color: var(--text-accent);
+  background-color: #D4E4FC;
+}
+
+.yellow {
+  color: #B58500;
+  background-color: #F8F3D7;
+}
+
+.green {
+  color: #19AF55;
+  background-color: #E0F2EB;
+}
+
+.medium {
+  font-size: var(--font-medium);
+}
+
+.regular {
+  font-size: var(--font-regular);
+}
