@@ -1,9 +1,9 @@
 import React from 'react';
-import './section.right.style.css'
+import styles from './sectionright.module.css'
 
 const SectionRight: React.FC = () => {
   return (
-    <div className="section--right">     
+    <div className={styles.sectionRight}>     
     </div>
   );
 };

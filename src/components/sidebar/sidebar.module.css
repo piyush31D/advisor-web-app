@@ -7,7 +7,7 @@
   align-items: stretch;
 }
 .navbarAvatar{
-  height:60px;
+  height:50px;
 }
 .navlinksContainer{
   display: flex;
@@ -20,8 +20,8 @@
   align-items: center;
   cursor: pointer;
   color:#848484;
-  line-height: 20px;
-  margin:4px 0;
+  line-height:18px;
+  margin-bottom: 8px;
   font-size:20px;
 }
 .navlink:hover{

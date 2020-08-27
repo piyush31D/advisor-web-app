@@ -1,218 +1,84 @@
 :root {
-  --font-regular: .95rem;
-  --font-medium:.85rem;
-  --font-semilarge:1.15rem;
+  --font-regular: 14px;
+  --font-medium: 12px;
+  --font-semilarge: 16px;
   --text-primary: #000;
-  --text-secondary:#848484;
-  --text-accent:#2978EF;
+  --text-secondary: #848484;
+  --text-accent: #2978EF;
+  --secondary-background: #EEF1F3;
+  --border:#e2e2e2;
+  --border-light:#f2f2f2;
 }
-  
-  .flex{
-    display: flex;
-  }
-  .fill{
-    flex:1
-  }
-  .row-flex{
-    flex-direction: row;
-  }
-  .col-flex{
-    flex-direction: column;
-  }
-  .main-center{
-    justify-content: center;
-  }
-  .cross-center{
-    align-items: center;
-  }
-  .cross-stretch{
-    align-items: stretch;
-  }
-  .cross-start{
-    align-items: flex-start;
-  }
-  .space-between{
-    justify-content: space-between;
-  }
-  .font-primary{
-    color:#000
-  }
-  .font-accent{
-    color:#2978EF;
-  }
-  .font-secondary{
-    color:#848484
-  }
-  .bold{
-    font-weight: bold;
-  }
-  .font-regular{
-    font-size: 1rem;
-  }
-  .font-medium{
-    font-size: .85rem;
-  }
-  .font-semilarge{
-    font-size: 1rem;
-  }
-  
-  /*
-  .center {
-    align-items: center;
-    justify-content: center
-  }
-  .col-center{
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .col-cross{
-    align-items: center;
-    flex-direction: column;
-  }
-  .col-main{
-    flex-direction: column;
-    justify-content: center;
-  }
-  .column{
-    flex-direction: column;
-  }
-  .column-reverse{
-    flex-direction: column-reverse;
-  }
-  .cross-center{
-    align-items: center;
-  }
-  .cross-end{
-    align-items: flex-end;
-  }
-  .cross-start{
-    align-items: flex-start;
-  }
-  .cross-stretch{
-    align-items: stretch;
-  }
-  .fill{
-    flex:1
-  }
-  .fill-center{
-    align-items: center;
-    flex:1;
-    justify-content: center;
-  }
-  .fill-col{
-    flex:1;
-    flex-direction: column;
-  }
-  .fill-col-center{
-    align-items: center;
-    flex:1;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .fill-col-cross{
-    align-items: center;
-    flex:1;
-    flex-direction: column;
-  }
-  .fill-col-main{
-    flex:1;
-    flex-direction: 'column';
-    justify-content: center;
-  }
-  .fill-col-reverse{
-    flex:1;
-    flex-direction: column-reverse;
-  }
-  .fill-row{
-    flex:1;
-    flex-direction: row;
-  }
-  .fill-row-center{
-    align-items: center;
-    flex:1;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .fill-row-cross{
-    align-items: center;
-    flex:1;
-    flex-direction: row;
-  }
-  .fill-row-main{
-    flex:1;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .fill-row-reverse{
-    flex:1;
-    flex-direction: row-reverse;
-  }
-  .full-size{
-    height:100%;
-    width:100%;
-  }
-  .full-width{
-    width:100%;
-  }
-  .main-center{
-    justify-content: center;
-  }
-  .main-end{
-    justify-content:end;
-  }
-  .main-space-around{
-    justify-content: space-around;
-  }
-  .main-space-between{
-    justify-content: space-between;
-  }
-  .main-start{
-    justify-content: flex-start;
-  }
-  .row{
-    flex-direction: row;
-  }
-  .row-center{
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .row-cross{
-    align-items: center;
-    flex-direction: row;
-  }
-  .row-main{
-    flex-direction: row;
-    justify-content: center;
-  }/*
-  rowMain: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  rowReverse: {
-    flexDirection: 'row-reverse',
-  },
-  scrollSpaceAround: {
-    flexGrow: 1,
-    justifyContent: 'space-around',
-  },
-  scrollSpaceBetween: {
-    flexGrow: 1,
-    justifyContent: 'space-between',
-  },
-  selfStretch: {
-    alignSelf: 'stretch',
-  },
-  textCenter: {
-    textAlign: 'center',
-  },
-  textJustify: {
-    textAlign: 'justify',
-  },
-  textLeft: {
-    textAlign: 'left',
-  },
-  textRight: {
-    textAlign: 'right',
-  }*/
+
+.text-primary {
+  color: #000
+}
+
+.text-accent {
+  color: #2978EF;
+}
+
+.text-secondary {
+  color: #848484
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.font-regular {
+  font-size: 14px;
+}
+
+.font-medium {
+  font-size: 12px;
+}
+
+.font-semilarge {
+  font-size: 16px;
+}
+
+.font-large {
+  font-size: 18px;
+}
+.margin-right{
+  margin-right:10px;
+}
+.margin-bottom{
+  margin-bottom: 10px;
+}
+.flex {
+  display: flex;
+}
+
+.fill {
+  flex: 1
+}
+
+.row-flex {
+  flex-direction: row;
+}
+
+.col-flex {
+  flex-direction: column;
+}
+
+.main-center {
+  justify-content: center;
+}
+
+.cross-center {
+  align-items: center;
+}
+
+.cross-stretch {
+  align-items: stretch;
+}
+
+.cross-start {
+  align-items: flex-start;
+}
+
+.space-between {
+  justify-content: space-between;
+}

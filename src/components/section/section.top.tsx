@@ -1,9 +1,9 @@
 import React from 'react';
-import './section.top.style.css'
+import styles from './sectiontop.module.css'
 
 const SectionTop: React.FC = ({children}) => {
   return (
-    <div className="section--top"> 
+    <div className={styles.sectionTop}> 
       {children} 
     </div>
   );
