@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import './App.css';
+import './theme/common.css'
 import { getUser, getToken } from 'src/utils/storage';
 import store from 'src/store';
 import { userSignInAction } from 'src/store/user/action';

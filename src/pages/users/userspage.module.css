@@ -1,0 +1,109 @@
+.container {
+  padding: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* -------- */
+
+.navbar {
+  width: 190px;
+  padding: 10px 5px;
+  border-right: 1px solid #e2e2e2;
+  overflow-y: scroll;
+}
+
+.navbar::-webkit-scrollbar {
+  width: 5px;
+  background-color: #fff;
+}
+
+.navbar::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: #e2e2e2;
+}
+
+.navlink {
+  font-size: var(--font-regular);
+  font-weight: bold;
+  color: #000;
+  padding: 3px 5px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.navlink:hover {
+  background-color: #EEF1F3;
+  text-decoration: none;
+  opacity: 1;
+  color: #000000;
+}
+
+.activeNavlink {
+  color: #2978EF;
+  text-decoration: none;
+}
+
+.activeNavlink:hover {
+  background: none;
+  color: #2978EF;
+}
+
+.navlinkBadge {
+  font-weight: initial;
+  font-size: var(--font-medium);
+  color: #848484
+}
+
+.groupsWrap {
+  margin-top: 15px;
+  padding: 15px 5px;
+  border-top: 1px solid #f2f2f2;
+}
+
+.groupCard {
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.activeGroupCard {
+  border: 3px solid var(--text-accent);
+}
+
+.groupCard:hover {
+  border-color: #848484;
+}
+
+.activeGroupCard:hover {
+  border-color: var(--text-accent);
+}
+
+.groupCardMenu {
+  display: none;
+}
+
+.groupCard:hover .groupCardMenu {
+  display: block;
+}
+
+.groupCard p {
+  margin-bottom: 5px;
+  font-size: var(--font-medium);
+  font-weight: bold;
+  color: var(--test-primary);
+}
+.groupCard p:last-child{
+  margin-bottom: 0;
+}
+.iconMargin {
+  margin-right: 5px;
+}
+
+.groupCard span {
+  font-weight: initial;
+  line-height: 2em;
+}
