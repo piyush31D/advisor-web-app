@@ -1,11 +1,18 @@
 :root {
+  --accent: #2978EF;
+  --background-primary: #fff;
+  --background-secondary: #F5F6F8;
+  --accent-shade:#D4E4FC;
+  --accent-shade-alpha:#2978EF;
+  --red-shade:#F8DCD8;
+  --green-shade:#19AF55;
   --font-regular: 14px;
-  --font-medium: 12px;
+  --font-medium: 13px;
   --font-semilarge: 16px;
   --text-primary: #000;
   --text-secondary: #848484;
-  --text-accent: #2978EF;
-  --secondary-background: #EEF1F3;
+  --text-green:#19AF55;
+  --text-red:#DC513E;
   --border:#e2e2e2;
   --border-light:#f2f2f2;
 }
@@ -13,7 +20,9 @@
 .text-primary {
   color: #000
 }
-
+.text-white {
+  color: #fff
+}
 .text-accent {
   color: #2978EF;
 }
@@ -21,7 +30,12 @@
 .text-secondary {
   color: #848484
 }
-
+.text-green{
+  color:#19AF55;
+}
+.text-red{
+  color:#DC513E;
+}
 .bold {
   font-weight: bold;
 }
@@ -31,7 +45,7 @@
 }
 
 .font-medium {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .font-semilarge {
@@ -44,8 +58,23 @@
 .margin-right{
   margin-right:10px;
 }
+.margin-left{
+  margin-left:10px;
+}
 .margin-bottom{
   margin-bottom: 10px;
+}
+.margin-bottom--small{
+  margin-bottom: 5px;
+}
+.margin-right--small{
+  margin-right: 5px;
+}
+.margin-left--small{
+  margin-left: 5px;
+}
+.spacer{
+  padding:0 5px
 }
 .flex {
   display: flex;
