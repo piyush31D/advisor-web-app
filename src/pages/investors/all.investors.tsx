@@ -101,6 +101,9 @@ const useStyles = makeStyles({
   checkboxCell: {
     padding: '0 4px',
     width: '1%'
+  },
+  semiBold:{
+    fontWeight:600
   }
 });
 
@@ -115,7 +118,7 @@ const AllInvestors: React.FC = () => {
         </div>
         <div className="flex row-flex cross-center">
           {false &&<span className="font-regular text-primary margin-right"><i className={cx('pficon-users', styles.iconMargin)} />70</span>}
-          {true && <span className="bold text-primary">14 Selected</span>}
+          {true && <span className="semi-bold text-primary">14 Selected</span>}
         </div>
       </div>
       <TableContainer className={styles.tableWrap}>
@@ -148,7 +151,7 @@ const AllInvestors: React.FC = () => {
                 <StyledTableCell className={classes.avatarCell}>
                   <InvestorAvatar style={{ backgroundColor:false? "#" + ((1 << 24) * Math.random() | 0).toString(16) :'#e2e2e2'}} alt={row.name} />
                 </StyledTableCell>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell className={classes.semiBold} scope="row">
                   {row.name}
                 </StyledTableCell>
                 <StyledTableCell>{row.plans}</StyledTableCell>

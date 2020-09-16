@@ -27,7 +27,7 @@
 
 .navlink {
   font-size: var(--font-regular);
-  font-weight: bold;
+  font-weight:600;
   color:#fff;
   padding: 3px 5px;
   text-decoration: none;
@@ -46,7 +46,7 @@
   text-decoration: none;
   background-color: #256CD7;
   /* border:3px solid #498CF2; */
-  font-weight: bold;
+  font-weight:700;
 }
 
 .activeNavlink:hover {
@@ -129,6 +129,8 @@
   margin-bottom: 5px;
   font-size: var(--font-medium);
   color:inherit;
+  font-weight:600;
+  font-size:var(--font-regular);
 }
 .groupCard p:last-child{
   margin-bottom: 0;

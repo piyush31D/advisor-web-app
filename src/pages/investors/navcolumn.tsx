@@ -33,7 +33,7 @@ const NavColumn: React.FC = () => {
         <span className={styles.navlinkBadge}>46</span>
       </NavLink>
       <div className={styles.groupsWrap}>
-        <div className="flex row-flex cross-center space-between text-white bold font-medium">
+        <div className="flex row-flex cross-center space-between text-white semi-bold font-medium">
           <span style={{ paddingLeft: 5 }}>Groups</span>
           <Button className={classes.compactButton} endIcon={<span className={cx(classes.buttonIconSmall, 'pficon-plus')} />}>
             New
