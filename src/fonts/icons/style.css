@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'protofolioicon';
   src:
-    url('fonts/protofolioicon.ttf?63w2cb') format('truetype'),
-    url('fonts/protofolioicon.woff?63w2cb') format('woff'),
-    url('fonts/protofolioicon.svg?63w2cb#protofolioicon') format('svg');
+    url('fonts/protofolioicon.ttf?2s3kej') format('truetype'),
+    url('fonts/protofolioicon.woff?2s3kej') format('woff'),
+    url('fonts/protofolioicon.svg?2s3kej#protofolioicon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,6 +24,39 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.pficon-shaded:before {
+  content: "\e92d";
+}
+.pficon-lock:before {
+  content: "\e929";
+}
+.pficon-id:before {
+  content: "\e92a";
+}
+.pficon-email:before {
+  content: "\e92b";
+}
+.pficon-mobile:before {
+  content: "\e92c";
+}
+.pficon-logo:before {
+  content: "\e928";
+}
+.pficon-range:before {
+  content: "\e923";
+}
+.pficon-checked-circle:before {
+  content: "\e924";
+}
+.pficon-unchecked-circle:before {
+  content: "\e925";
+}
+.pficon-unchecked-round:before {
+  content: "\e926";
+}
+.pficon-checked-round:before {
+  content: "\e927";
+}
 .pficon-chat:before {
   content: "\e91f";
 }
@@ -32,6 +65,12 @@
 }
 .pficon-rupee:before {
   content: "\f156";
+}
+.pficon-tick-circle:before {
+  content: "\e915";
+}
+.pficon-delete:before {
+  content: "\e922";
 }
 .pficon-settings:before {
   content: "\e900";
@@ -54,14 +93,14 @@
 .pficon-folio:before {
   content: "\e909";
 }
+.pficon-advisor:before {
+  content: "\e90e";
+}
 .pficon-home:before {
   content: "\e90c";
 }
 .pficon-bell:before {
   content: "\e90d";
-}
-.pficon-advisor:before {
-  content: "\e90e";
 }
 .pficon-users:before {
   content: "\e90f";
@@ -80,9 +119,6 @@
 }
 .pficon-reports:before {
   content: "\e914";
-}
-.pficon-reload:before {
-  content: "\e915";
 }
 .pficon-bucket:before {
   content: "\e916";
@@ -125,4 +161,10 @@
 }
 .pficon-chevron-down:before {
   content: "\e908";
+}
+.pficon-reset:before {
+  content: "\e920";
+}
+.pficon-reload:before {
+  content: "\e921";
 }
