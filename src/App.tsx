@@ -7,7 +7,7 @@ import store from 'src/store';
 import { userSignInAction } from 'src/store/user/action';
 import { setAuthorizationHeader } from 'src/utils/axios';
 import { BrowserRouter } from 'react-router-dom';
-import IndexRoute from 'src/routes';
+import AppWithTheme from './theme/app-theme';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -32,7 +32,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <IndexRoute />
+        <AppWithTheme />
       </Provider>
     </BrowserRouter>
   );
