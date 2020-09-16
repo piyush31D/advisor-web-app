@@ -10,7 +10,7 @@ interface Props {
 }
 const Tag: React.FC<Props> = (props) => {
   return (
-    <div className={cx(styles.tag,styles[props.color])}>
+    <div className={cx(styles.tag,styles[props.color], styles[props.size])}>
       {props.icon && <i className={cx(`pficon-${props.icon}`, styles[props.size])} />}
       {props.icon && props.title && <span className={styles.spacer} />}
       {props.title && props.title}

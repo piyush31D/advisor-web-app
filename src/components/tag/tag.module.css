@@ -1,7 +1,9 @@
 .tag {
   border-radius: 5px;
-  padding: 2px 6px;
+  padding:0 6px;
   margin-right: 6px;
+  display: flex;
+  align-items: center;
 }
 
 .tag:last-child {
@@ -23,7 +25,7 @@
 }
 
 .blue {
-  color: var(--text-accent);
+  color: var(--accent);
   background-color: #D4E4FC;
 }
 
