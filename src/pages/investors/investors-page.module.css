@@ -1,0 +1,154 @@
+.container {
+  padding-top: 15px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* -------- */
+
+.navbar {
+  width: 200px;
+  padding: 10px;
+  padding-top: 25px;
+  background-color: var(--accent);
+  overflow-y:auto;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  background-color: #0001;
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 6px;
+  background-color: #0003;
+}
+
+.navlink {
+  font-size: var(--font-regular);
+  font-weight: bold;
+  color:#fff;
+  padding: 3px 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.navlink:hover {
+  background-color: #2772E3;
+  text-decoration: none;
+  opacity: 1;
+  color:#fff
+}
+
+.activeNavlink {
+  text-decoration: none;
+  background-color: #256CD7;
+  /* border:3px solid #498CF2; */
+  font-weight: bold;
+}
+
+.activeNavlink:hover {
+  background-color: #256CD7;
+  /* border:3px solid #498CF2; */
+}
+
+.navlinkBadge {
+  font-weight: initial;
+  font-size: var(--font-medium);
+  color: inherit;
+}
+
+.navTabBar{
+  border-bottom: 1px solid #5493F2;
+  padding:5px 10px 0 10px;
+  display: flex;
+  margin-top: 10px;
+}
+.navTab{
+  display: flex;
+  padding-bottom: 5px;
+  flex:1;
+  justify-content: center;
+  margin-right: 5px;
+  font-size: var(--font-regular);
+  font-weight: bold;
+  color:#fff;
+  cursor: pointer;
+}
+.navTab:last-child{
+  margin-right: 0;
+}
+.activeNavTab{
+  border-bottom: 3px solid #fff;
+  color:#fff;
+}
+.groupsWrap{
+  margin-top: 20px;
+}
+.groupCard {
+  background-color: #498CF2;
+  border:1px solid #498CF2;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  color:#fff;
+  transition: .2s;
+  display: block;
+}
+
+.activeGroupCard {
+  background-color: #256CD7;
+  font-weight: bold;
+  border:1px solid #498CF2;
+  /* color: var(--accent); */
+}
+
+.groupCard:hover {
+  background-color: #2772E3;
+  border:1px solid #2772E3;
+  color:#fff;
+}
+
+.activeGroupCard:hover {
+  background-color: #256CD7;
+  border:1px solid #498CF2;
+}
+
+.groupCardMenu {
+  display: none;
+}
+
+.groupCard:hover .groupCardMenu {
+  display: block;
+}
+
+.groupCard p {
+  margin-bottom: 5px;
+  font-size: var(--font-medium);
+  color:inherit;
+}
+.groupCard p:last-child{
+  margin-bottom: 0;
+}
+.iconMargin {
+  margin-right: 5px;
+}
+
+.groupCard span {
+  font-weight: initial;
+  line-height: 2em;
+  color:inherit
+}
+
+.folio{
+  border-radius: 10px;
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.folioHeader{
+  background-color: var(--secondary-background);
+  padding:10px;
+}
