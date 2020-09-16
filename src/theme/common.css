@@ -2,13 +2,14 @@
   --accent: #2978EF;
   --background-primary: #fff;
   --background-secondary: #F5F6F8;
-  --accent-shade:#D4E4FC;
+  --accent-shade:#E7F0FE;
   --accent-shade-alpha:#2978EF;
   --red-shade:#F8DCD8;
   --green-shade:#19AF55;
   --font-regular: 14px;
   --font-medium: 13px;
   --font-semilarge: 16px;
+  --font-large:20px;
   --text-primary: #000;
   --text-secondary: #848484;
   --text-green:#19AF55;
@@ -37,7 +38,11 @@
   color:#DC513E;
 }
 .bold {
-  font-weight: bold;
+  font-weight: 700;
+}
+
+.semi-bold {
+  font-weight: 600;
 }
 
 .font-regular {
@@ -53,7 +58,7 @@
 }
 
 .font-large {
-  font-size: 18px;
+  font-size: 20px;
 }
 .margin-right{
   margin-right:10px;

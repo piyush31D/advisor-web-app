@@ -4,6 +4,9 @@ import IndexRoute from 'src/routes';
 
 const AppWithTheme: React.FC = () => {
   const theme = createMuiTheme({
+    typography:{
+      fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"'
+    },
     palette: {
       primary: {
         main: '#2978EF'
@@ -68,6 +71,11 @@ const AppWithTheme: React.FC = () => {
           border:'2px solid red'
         }
       },
+      MuiChip:{
+        root:{
+          fontSize:'1rem'
+        }
+      }
     },
     props: {
       MuiButton: {
