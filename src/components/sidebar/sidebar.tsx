@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
         <NavLink className={cx(styles.navlink)} activeClassName={cx(styles.activeNavlink)} to="/folios">
             <i className={cx(styles.navicon, 'pficon-folio')}></i>
         </NavLink>
-        <NavLink className={cx(styles.navlink)} activeClassName={cx(styles.activeNavlink)} to="/users">
+        <NavLink className={cx(styles.navlink)} activeClassName={cx(styles.activeNavlink)} to="/investors">
             <i className={cx(styles.navicon, 'pficon-users')}></i>
         </NavLink>
         <NavLink className={cx(styles.navlink)} activeClassName={cx(styles.activeNavlink)} to="/plans">
