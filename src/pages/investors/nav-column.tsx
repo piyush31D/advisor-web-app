@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import cx from 'classnames';
 import TextButton from 'src/components/button/text.button';
-import styles from './investors-page.module.css';
+import styles from './index.module.css';
 
 const useStyles = makeStyles(() =>
   createStyles({

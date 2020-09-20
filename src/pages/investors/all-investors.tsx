@@ -15,21 +15,21 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       border: 0,
-      padding: '16px 10px',
+      padding: '14px 10px',
       '&:first-child': {
-        borderTopLeftRadius: 8,
-        borderBottomLeftRadius: 8
+        borderTopLeftRadius: 5,
+        borderBottomLeftRadius: 5
       },
       '&:last-child': {
-        borderTopRightRadius: 8,
-        borderBottomRightRadius: 8
+        borderTopRightRadius: 5,
+        borderBottomRightRadius: 5
       }
     },
     head: {
       backgroundColor: '#E8EEF2',
       color: 'var(--text-primary)',
       padding: '10px',
-      fontSize: 'var(--font-medium)'
+      fontSize: 'var(--font-regular)'
     },
     body: {
       fontSize: 14,

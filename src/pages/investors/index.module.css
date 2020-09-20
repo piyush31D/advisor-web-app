@@ -15,16 +15,6 @@
   overflow-y:auto;
 }
 
-*::-webkit-scrollbar {
-  width: 6px;
-  background-color: #0001;
-}
-
-*::-webkit-scrollbar-thumb {
-  width: 6px;
-  background-color: #0003;
-}
-
 .navlink {
   font-size: var(--font-regular);
   font-weight:600;
@@ -36,7 +26,7 @@
 }
 
 .navlink:hover {
-  background-color: #2772E3;
+  background-color: #005ADF;
   text-decoration: none;
   opacity: 1;
   color:#fff
@@ -44,14 +34,12 @@
 
 .activeNavlink {
   text-decoration: none;
-  background-color: #256CD7;
-  /* border:3px solid #498CF2; */
+  background-color: #0055D3;
   font-weight:700;
 }
 
 .activeNavlink:hover {
   background-color: #256CD7;
-  /* border:3px solid #498CF2; */
 }
 
 .navlinkBadge {
@@ -88,8 +76,8 @@
   margin-top: 20px;
 }
 .groupCard {
-  background-color: #498CF2;
-  border:1px solid #498CF2;
+  background-color: #2677EE;
+  border:1px solid #2677EE;
   border-radius: 10px;
   padding: 8px 10px;
   margin-top: 10px;
@@ -100,21 +88,19 @@
 }
 
 .activeGroupCard {
-  background-color: #256CD7;
-  font-weight: bold;
-  border:1px solid #498CF2;
-  /* color: var(--accent); */
+  background-color: #0055D3;
+  border:1px solid #2677EE;
 }
 
 .groupCard:hover {
-  background-color: #2772E3;
-  border:1px solid #2772E3;
+  background-color: #005ADF;
+  border:1px solid #005ADF;
   color:#fff;
 }
 
 .activeGroupCard:hover {
-  background-color: #256CD7;
-  border:1px solid #498CF2;
+  background-color: #0055D3;
+  border:1px solid #2677EE;
 }
 
 .groupCardMenu {
@@ -130,7 +116,6 @@
   font-size: var(--font-medium);
   color:inherit;
   font-weight:600;
-  font-size:var(--font-regular);
 }
 .groupCard p:last-child{
   margin-bottom: 0;

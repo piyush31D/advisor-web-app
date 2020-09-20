@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Avatar from '@material-ui/core/Avatar';
 import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
 import TextButton from 'src/components/button/text.button';
 import Tag from 'src/components/tag/tag';
 import styles from './all-investors.module.css';
@@ -19,7 +19,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       border: 0,
-      padding: '16px 10px',
+      padding: '14px 10px',
       '&:first-child': {
         borderTopLeftRadius: 8,
         borderBottomLeftRadius: 8
@@ -101,9 +101,13 @@ const Group: React.FC = () => {
   return (
     <>
       <div className={styles.header}>
-        <div className="flex row-flex cross-center margin-bottom">
+        <div className="flex row-flex margin-bottom">
           <span className="font-large flex fill text-primary bold">Intraday low risk, mid budget</span>
-          <TextButton size="regular" type="text-accent" icon="plus" title="Add user"></TextButton>
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<span style={{fontSize:13}} className="pficon-plus"/>}
+          >Add</Button>
         </div>
         <div className="flex row-flex cross-center margin-bottom">
           <div className="flex fill row-flex cross-center">
@@ -111,7 +115,7 @@ const Group: React.FC = () => {
             <Tag color="green" icon="rupee" size="regular" title="0 - 1L" />
             <TextButton size="regular" type="text-accent" icon="settings"></TextButton>
           </div>
-          <TextButton size="regular" type="text-primary" icon="folio" title="5 folios"></TextButton>
+          <TextButton size="regular" type="text-accent" icon="folio" title="5 folios"></TextButton>
         </div>
         {true && <span className="semi-bold text-primary">4 Selected</span>}
       </div>
