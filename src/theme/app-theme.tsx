@@ -9,15 +9,31 @@ const AppWithTheme: React.FC = () => {
     },
     palette: {
       primary: {
-        main: '#2978EF'
+        main: '#005FEB'
       },
 
     },
     overrides: {
-
+      MuiRadio:{
+        root:{
+          padding:5
+        }
+      },
+      MuiSvgIcon:{
+        root:{
+          width:'1.2rem',
+          height:'1.2rem'
+        },
+      },
+      MuiFormControlLabel:{
+        root:{
+          marginLeft:-5
+        }
+      },
       MuiButton: {
         root: {
-          borderRadius: 8
+          borderRadius: 8,
+          fontSize:'var(--font-regular)'
         },
         label: {
           textTransform: 'none',
@@ -40,7 +56,7 @@ const AppWithTheme: React.FC = () => {
         endIcon: {
           marginLeft: 5,
           marginRight: 0
-        }
+        },
       },
       MuiCheckbox: {
         root: {
@@ -74,6 +90,11 @@ const AppWithTheme: React.FC = () => {
       MuiChip:{
         root:{
           fontSize:'1rem'
+        }
+      },
+      MuiTypography:{
+        body2:{
+          fontSize:13
         }
       }
     },

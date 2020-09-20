@@ -1,15 +1,15 @@
 :root {
-  --accent: #2978EF;
+  --accent: #005FEB;
   --background-primary: #fff;
   --background-secondary: #F5F6F8;
-  --accent-shade:#E7F0FE;
-  --accent-shade-alpha:#2978EF;
+  --accent-shade:#E5EFFD;
+  --accent-shade-alpha:#005FEB;
   --red-shade:#F8DCD8;
   --green-shade:#19AF55;
   --font-regular: 14px;
   --font-medium: 13px;
   --font-semilarge: 16px;
-  --font-large:20px;
+  --font-large:18px;
   --text-primary: #000;
   --text-secondary: #848484;
   --text-green:#19AF55;
@@ -25,7 +25,7 @@
   color: #fff
 }
 .text-accent {
-  color: #2978EF;
+  color: #005FEB;
 }
 
 .text-secondary {
@@ -52,13 +52,16 @@
 .font-medium {
   font-size: 13px;
 }
+.font-small {
+  font-size: 12px;
+}
 
 .font-semilarge {
   font-size: 16px;
 }
 
 .font-large {
-  font-size: 20px;
+  font-size: 18px;
 }
 .margin-right{
   margin-right:10px;
@@ -68,6 +71,9 @@
 }
 .margin-bottom{
   margin-bottom: 10px;
+}
+.margin-top{
+  margin-top:10px;
 }
 .margin-bottom--small{
   margin-bottom: 5px;
@@ -96,7 +102,9 @@
 .col-flex {
   flex-direction: column;
 }
-
+.main-end{
+  justify-content: flex-end;
+}
 .main-center {
   justify-content: center;
 }
@@ -115,4 +123,14 @@
 
 .space-between {
   justify-content: space-between;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  background-color: rgb(0,0,0,0.1);
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 6px;
+  background-color: rgb(0,0,0,0.1);
 }
