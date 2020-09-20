@@ -1,13 +1,25 @@
 .button {
   background-color: transparent;
   border: none;
-  text-align: center;
   text-decoration: none;
-  display: inline-block;
   cursor: pointer;
   font-weight:600;
-  padding: 0;
   outline: none;
+  border-radius: 5px;
+  padding: 0 6px;
+  height:1.8em;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 1em;
+  justify-content: center;
+  text-align: center;
+}
+.round{
+  height:2.6em;
+  width:2.6em;
+  padding:0;
+  border-radius: 50%;
 }
 .button:active{
   opacity:.7
@@ -16,16 +28,12 @@
   margin: 0 2px;
 }
 
-.text-primary, .text-accent, .text-red,.text-white {
-  border-radius: 5px;
-  padding: 2px 6px;
-  color: var(--text-primary);
-}
-
 .text-primary {
   color: var(--text-primary)
 }
-
+.text-grey {
+  color: var(--border);
+}
 .text-accent {
   color: var(--accent)
 }
@@ -39,8 +47,17 @@
 .solid {
   border-radius: 10px;
 }
-
-.text-primary:hover {
+.fill-accent{
+  background-color: var(--accent);
+  color:#fff;
+}
+.fill-accent:hover{
+  opacity:.9;
+}
+.fill-accent:active{
+  opacity:.7
+}
+.text-primary:hover,.text-grey:hover {
   background-color: var(--background-secondary);
 }
 
@@ -51,7 +68,7 @@
   background-color: var(--red-shade)
 }
 .text-white:hover{
-  background-color: #0002;
+  background-color: rgba(0,0,0,0.08);
 }
 .medium {
   font-size: var(--font-medium);

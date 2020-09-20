@@ -4,7 +4,8 @@ import styles from './text-button.module.css';
 
 interface Props {
   title?: string,
-  type: 'solid' | 'text-accent' | 'text-primary'|'text-red'|'text-white',
+  type: 'solid' | 'text-accent' | 'text-primary'| 'text-grey'|'text-red'|'text-white'|'fill-accent',
+  round?:boolean,
   size: 'regular' | 'medium' | 'large',
   icon?: string,
   iconRight?: boolean | true,
@@ -12,7 +13,7 @@ interface Props {
 }
 const Button: React.FC<Props> = (props) => {
   return (
-    <button onClick={props.onClick} className={cx(styles.button, styles[props.type], styles[props.size])}>
+    <button onClick={props.onClick} className={cx(styles.button, styles[props.type], styles[props.size],props.round&&styles.round)}>
       {props.title && props.title}
       {props.icon && props.title && <span className={styles.spacer} />}
       {props.icon && <i className={cx(`pficon-${props.icon}`, styles[props.size])} />}
