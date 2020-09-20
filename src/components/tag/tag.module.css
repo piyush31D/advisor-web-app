@@ -1,9 +1,16 @@
 .tag {
   border-radius: 5px;
-  padding:2px 6px;
+  padding:0 6px;
+  height:1.8em;
   margin-right: 6px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1em;
 }
-
+.tag span{
+  vertical-align: middle;
+}
 .tag:last-child {
   margin-right: 0;
 }
@@ -14,7 +21,7 @@
 
 .grey {
   color: (--text-primary);
-  background-color: var(--secondary-background);
+  background-color: var(--background-secondary);
 }
 
 .red {
@@ -24,7 +31,7 @@
 
 .blue {
   color: var(--accent);
-  background-color: #D4E4FC;
+  background-color: var(--accent-shade);
 }
 
 .yellow {
