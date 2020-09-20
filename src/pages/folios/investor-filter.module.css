@@ -1,0 +1,126 @@
+.rangeSliderWrap {
+  padding: 12px 0 16px 0;
+  background-color: var(--background-secondary);
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  position: relative;
+}
+
+.rangeInputWrap {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  padding: 0 10px
+}
+
+.rangeInputWrap input {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  color: var(--accent);
+  padding: 2px 5px;
+  line-height: 1;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.rangeInputWrap input:hover, .rangeInputWrap input:focus {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.rangeIcon {
+  font-size: var(--font-regular);
+  padding: 0 5px;
+  vertical-align: middle;
+  color: var(--text-primary);
+  opacity: .8;
+  font-weight: normal;
+}
+
+.noStepper::-webkit-outer-spin-button, .noStepper::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.noStepper[type=number] {
+  -moz-appearance: textfield;
+}
+
+.paddingT5 {
+  padding-top: 5px
+}
+
+.rangeSlider {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.investorTableWrap {
+  overflow-y: auto;
+  padding: 10px;
+  padding-top: 10px
+}
+
+.filterHeader {
+  padding: 0 20px
+}
+
+.rangeFrom, .rangeTo {
+  padding-top: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+}
+
+.rangeFrom::before, .rangeTo::before {
+  content: '';
+  width: 2px;
+  height: 7px;
+  background-color: var(--text-primary);
+  position: absolute;
+  top: -5px;
+}
+
+.rangeTo::before {
+  right: 0;
+}
+
+.orderCount {
+  display: flex;
+  flex: 1;
+  padding: 0 10px 0 15px;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--background-primary);
+  position: relative;
+  margin-right: 10px
+}
+
+.indicator, .riskIndicator {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  height: 13px;
+  width: 7px;
+  background-color: var(--accent);
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.riskIndicator {
+  height: 14px;
+  width: 4px;
+  border-radius: 0;
+  left: 0;
+  top: 50%;
+  margin-top: -7px
+}
