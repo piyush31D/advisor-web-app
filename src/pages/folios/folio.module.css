@@ -1,0 +1,43 @@
+.header {
+  padding: 0 20px
+}
+
+.scripsWrap {
+  margin: 10px;
+  margin-bottom: 0;
+  padding: 10px;
+  background-color: var(--background-secondary);
+  border-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  flex: 1;
+}
+
+.tableCell {
+  padding: 0 10px;
+  border-right: 1px solid #e2e2e2;
+  position: relative;
+}
+
+.noBorder {
+  border: 0
+}
+
+.rangeIcon {
+  font-size: var(--font-regular);
+  padding: 0 5px;
+  vertical-align: middle;
+  color: #848484
+}
+
+.indicator {
+  position: absolute;
+  top: 6px;
+  left: -5px;
+  height: 12px;
+  width: 7px;
+  background-color: var(--accent);
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
