@@ -1,0 +1,239 @@
+.modalContainer, .modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.modalBackground {
+  display: block;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.modal {
+  width: 1250px;
+  background-color: var(--background-primary);
+  border-radius: 16px;
+  z-index: 1;
+  margin: 20px auto;
+  padding: 10px;
+  display: flex;
+}
+
+.columnLeft, .columnRight {
+  width: 260px;
+  background-color: var(--background-secondary);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.columnMiddle {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.columnRight {
+  width: 400px;
+}
+
+.columnHeader {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px
+}
+
+.scripWrap {
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.scrip {
+  padding: 15px 10px;
+  background-color: transparent;
+  padding-bottom: 0;
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+}
+
+.scrip:hover {
+  background-color: #FBFBFC;
+}
+
+.scrip * {
+  font-size: var(--font-medium);
+}
+
+.activeScrip, .activeScrip:hover {
+  background-color: var(--accent);
+}
+
+.divider {
+  border-bottom: 1px solid #e9e9e9;
+  padding-top: 15px;
+  display: flex;
+}
+
+.activeScrip * {
+  color: #fff !important;
+}
+
+.activeScrip .divider {
+  border: 0
+}
+
+.rangeIcon {
+  font-size: var(--font-regular);
+  padding: 0 5px;
+  vertical-align: middle;
+  color: var(--text-primary);
+  opacity: .8;
+  font-weight: normal;
+}
+
+.orderWrap {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius:5px ;
+  padding: 10px 15px;
+  overflow-y: auto;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+}
+.buyOrder{
+  background-color: var(--accent);
+}
+.sellOrder{
+  background-color: var(--text-red);
+}
+.orderWrap * {
+  color: #fff;
+  line-height: 1em;
+}
+
+.orderAction {
+  display: flex;
+  align-items: center;
+}
+
+.orderActionButtons {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.orderSummary {
+  margin: 10px -15px;
+  padding: 20px 15px;
+  background: rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.transactionSwitch {
+  height: 30px;
+  width: 52px;
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+}
+
+.transactionSwitch div {
+  height: 22px;
+  width: 22px;
+  border-radius: 11px;
+  position: absolute;
+  transition: .2s ease-in;
+  -webkit-transition: .2s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.transactionSwitch p {
+  font-size: var(--font-regular);
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  z-index: 2;
+  margin: 0;
+  transition: .2s;
+  -webkit-transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.buyActive {
+  color: var(--text-red);
+  font-weight: bold;
+}
+
+.sellActive {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.radioWrap {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputsWrap {
+  margin-top: 25px;
+}
+.imputCol{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+.disabledInput {
+  border-radius: 8px;
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  font-size: var(--font-regular);
+  padding:16px 15px;
+  color:inherit;
+  overflow:hidden;
+  max-width: 400px;
+}
+.shadedBck{
+  font-size: 60px;
+  color:#fff;
+  opacity: .3;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 0;
+}
+
+.orderCount{
+  display: flex;
+  flex:1;
+  padding:0 10px 0 15px;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--background-primary);
+  position: relative;
+  margin-right:10px
+}
