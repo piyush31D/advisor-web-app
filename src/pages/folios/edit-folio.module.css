@@ -1,0 +1,94 @@
+
+.qtyInputWrap {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  padding-right:120px;
+  position: relative;
+}
+
+.qtyInputLeft,.qtyInputRight {
+  width:90px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  color: var(--accent);
+  padding: 2px 8px;
+  line-height: 1;
+  border-radius: 3px;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.qtyInputLeft:hover,.qtyInputRight:hover,.qtyInputLeft:focus,.qtyInputRight:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.qtyInputLeft{
+  text-align: right;
+  padding-right: 0;
+}
+.qtyInputRight{
+  padding-right: 22px;
+}
+.rangeIcon {
+  font-size: var(--font-regular);
+  padding: 0 5px;
+  vertical-align: middle;
+  color: var(--text-primary);
+  opacity: .8;
+  font-weight: normal;
+}
+.actionButtonWrap{
+  position: absolute;
+  right:10px;
+  top:0;
+  height: 100%;
+}
+.scripSearchInput{
+  background-color: var(--background-secondary);
+  border: none;
+  text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 6px;
+  height:1.8em;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 1em;
+  margin-right: 10px;
+  color:var(--text-primary);
+  padding-left: 26px;
+}
+.scripSearchInput:hover,.scripSearchInput:active{
+  background-color: #E8EEF2;
+}
+
+.scriptState {
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  margin:0 5px 0 15px;
+}
+.stateIndicator {
+  position: absolute;
+  top: 6px;
+  left: -5px;
+  height: 12px;
+  width: 7px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.stateNew{
+  background-color: var(--accent);
+}
+
+.stateModified {
+  background-color: #FE6F01;
+}
+.scripSearchPopover{
+  width:300px;
+  padding: 10px;
+  border-radius: 10px;
+}
