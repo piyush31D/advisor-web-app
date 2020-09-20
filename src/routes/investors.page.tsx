@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, BrowserRouter, Router, Redirect } from "react-router-dom";
 import Group from '../pages/investors/group';
-import AllInvestors from "src/pages/investors/all.investors";
+import AllInvestors from "src/pages/investors/all-investors";
 
 
 const InvestorsPageRoute: React.FC = (props: any) => (

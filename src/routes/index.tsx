@@ -5,8 +5,8 @@ import UserRoute from 'src/routes/user';
 import Sidebar from '../components/sidebar/sidebar';
 import SectionRight from '../components/section/section.right';
 import Dashboard from 'src/components/dashboard/dashboard';
-import UsersPage from 'src/pages/investors/investors.page';
-import FoliosPage from 'src/pages/folios/folios.page';
+import UsersPage from 'src/pages/investors';
+import FoliosPage from 'src/pages/folios';
 import PlansPage from 'src/pages/plans/plans.page'
 import AuthPage from "src/pages/auth/auth.page";
 
@@ -22,7 +22,7 @@ const IndexRoute: React.FC = (props: any) => (
               <Switch>
                 <Route path="/dashboard" component={Dashboard} exact />
                 <Route path="/trades" component={Dashboard} exact />
-                <Route path="/folios" component={FoliosPage} exact />
+                <Route path="/folios" component={FoliosPage} />
                 <Route path="/investors" component={UsersPage}/>
                 <Route path="/plans" component={PlansPage} exact />
               </Switch>
