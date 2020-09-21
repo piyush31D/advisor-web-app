@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import cx from 'classnames'
-import styles from './plans-page.module.css';
+import styles from './index.module.css';
 import Button from 'src/components/button/text.button';
 
 const NavColumn: React.FC = () => {

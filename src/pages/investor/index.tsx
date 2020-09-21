@@ -1,17 +1,17 @@
 import React from 'react';
 import NavColumn from './nav-column'
 import styles from './index.module.css';
-import FoliosPageRoute from 'src/routes/folios.page';
+import InvestorRoute from 'src/routes/investor';
 
-const FoliosPage: React.FC = () => {
+const InvestorsPage: React.FC = () => {
   return (
     <div className="flex fill row-flex cross-stretch">
       <NavColumn />
       <div className={styles.container}>
-        <FoliosPageRoute/>
+        <InvestorRoute />
       </div>
     </div>
   );
 };
 
-export default FoliosPage;
+export default InvestorsPage;

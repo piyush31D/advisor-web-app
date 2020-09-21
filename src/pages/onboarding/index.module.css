@@ -1,0 +1,120 @@
+.columnLeft {
+  display: flex;
+  flex: 4;
+  justify-content: center;
+  padding: 20px 0;
+  overflow-y: scroll;
+}
+
+.authContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 36px;
+  color: var(--accent);
+  margin: 30px 0 20px 0;
+}
+
+.inputWithIcon,
+.shadedContainer {
+  width: 360px;
+  background-color: #f5f6f8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  margin-bottom: 15px;
+}
+.shadedContainer {
+  justify-content: center;
+  background: none;
+  position: relative;
+  overflow: hidden;
+  padding: 16px 0;
+  border-radius: 10px;
+}
+.shadedContainer span {
+  z-index: 1;
+  padding: 0 3px;
+}
+.shadedBck {
+  font-size: 60px;
+  color: #edeff4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.otpInputWrap {
+  width: 360px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.otpInputBoxes {
+  display: flex;
+  height: 54px;
+  justify-content: space-between;
+}
+
+.otpInputBox {
+  width: 50px;
+  background-color: #f5f6f8;
+  border-radius: 10px;
+}
+
+.otpInputBox:first-of-type {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.otpInputBox:last-of-type {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.optInputFieldWrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+.otpInputField {
+  border: 0;
+  width: 100%;
+  background: none;
+  letter-spacing: 54px;
+  padding-left: 20px;
+}
+.otpInputField:focus {
+  text-decoration: none;
+  outline: none;
+}
+.inputWithIcon:first-of-type {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.inputWithIcon:last-of-type {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.inputWithIcon span {
+  font-size: 18px;
+}
+
+.authForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 80px;
+  margin-bottom: 50px;
+}

@@ -4,7 +4,7 @@ import { Route, Redirect, RouteProps } from "react-router-dom";
 import { IState } from 'src/store';
 
 const AuthRoute: React.FC<RouteProps> = ({ component: Component, ...rest }) => {
-  const authenticated = useSelector((state: IState) => state.userReducer.authenticated);
+  const authenticated = useSelector((state: IState) => state.authReducer.authenticated);
   if (!Component) return null;
   return (
     <Route

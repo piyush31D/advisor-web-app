@@ -24,11 +24,11 @@ const NavColumn: React.FC = () => {
 
   return (
     <div className={cx(styles.navbar, 'flex col-flex cross-stretch')}>
-      <NavLink to="/investors/all" className={cx(styles.navlink, 'flex row-flex space-between cross-center')} activeClassName={cx(styles.activeNavlink)}>
+      <NavLink to="/investor/all" className={cx(styles.navlink, 'flex row-flex space-between cross-center')} activeClassName={cx(styles.activeNavlink)}>
         <span>All Investors</span>
         <span className={styles.navlinkBadge}>1973</span>
       </NavLink>
-      <NavLink to="/investors/unattended" className={cx(styles.navlink, 'flex row-flex space-between cross-center')} activeClassName={cx(styles.activeNavlink)} >
+      <NavLink to="/investor/unattended" className={cx(styles.navlink, 'flex row-flex space-between cross-center')} activeClassName={cx(styles.activeNavlink)} >
         <span>Unattended</span>
         <span className={styles.navlinkBadge}>46</span>
       </NavLink>
@@ -42,32 +42,32 @@ const NavColumn: React.FC = () => {
         <div className={cx(styles.groupCard)}>
           <p>Show all groups</p>
         </div>
-        <NavLink to="/investors/group/1" className={styles.groupCard} activeClassName={styles.activeGroupCard}>
+        <NavLink to="/investor/group/1" className={styles.groupCard} activeClassName={styles.activeGroupCard}>
           <div>
             <p>Intraday low risk, mid budget</p>
             <div className="flex row-flex space-between cross-center">
               <span><i className={cx(styles.iconMargin, 'pficon-users')} />70 users</span>
               <div className={styles.groupCardMenu}>
-                <TextButton onClick={(e)=>e.preventDefault()} type="text-white" size="regular" icon="menu-overflow" />
+                <TextButton onClick={(e) => e.preventDefault()} type="text-white" size="regular" icon="menu-overflow" />
               </div>
             </div>
           </div>
         </NavLink>
-        <NavLink to="/investors/group/2" className={styles.groupCard} activeClassName={styles.activeGroupCard}>
+        <NavLink to="/investor/group/2" className={styles.groupCard} activeClassName={styles.activeGroupCard}>
           <p>group name</p>
           <div className="flex row-flex space-between cross-center">
             <span><i className={cx(styles.iconMargin, 'pficon-users')} />70 users</span>
             <div className={styles.groupCardMenu}>
-              <TextButton onClick={(e)=>e.preventDefault()} type="text-white" size="regular" icon="menu-overflow" />
+              <TextButton onClick={(e) => e.preventDefault()} type="text-white" size="regular" icon="menu-overflow" />
             </div>
           </div>
         </NavLink>
-        <NavLink to="/investors/group/3" className={styles.groupCard} activeClassName={styles.activeGroupCard}>
+        <NavLink to="/investor/group/3" className={styles.groupCard} activeClassName={styles.activeGroupCard}>
           <p>long term home planning</p>
           <div className="flex row-flex space-between cross-center">
             <span><i className={cx(styles.iconMargin, 'pficon-users')} />70 users</span>
             <div className={styles.groupCardMenu}>
-              <TextButton onClick={(e)=>e.preventDefault()} type="text-white" size="regular" icon="menu-overflow" />
+              <TextButton onClick={(e) => e.preventDefault()} type="text-white" size="regular" icon="menu-overflow" />
             </div>
           </div>
         </NavLink>

@@ -1,12 +1,12 @@
-import { IUser } from 'src/store/user/type';
+import { IUser } from 'src/store/auth/type';
 
-export const setUser = async (data: { user: IUser, token: string }) => {
+export const setUser = (data: { user: IUser, token: string }) => {
   const { user, token } = data;
   localStorage.setItem('token', token);
   localStorage.setItem('user', JSON.stringify(user));
 }
 
-export const unsetUser = async () => {
+export const unsetUser = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
 }

@@ -5,7 +5,7 @@ import { IState } from 'src/store';
 import Sidebar from '../components/sidebar/sidebar'
 
 const UserRoute: React.ComponentType<RouteProps> = ({ children }) => {
-  const authenticated = useSelector((state: IState) => state.userReducer.authenticated);
+  const authenticated = useSelector((state: IState) => state.authReducer.authenticated);
   return (
     <>
       {authenticated ? children : <Redirect to="/" />}

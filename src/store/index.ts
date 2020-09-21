@@ -1,17 +1,17 @@
 import { combineReducers, createStore, compose, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
-import * as userReducer from './user/reducer';
-import { IUserState } from './user/type';
+import * as authReducer from './auth/reducer';
+import { IAuthState } from './auth/type';
 
 /*
  * combines all the existing reducers
  */
 export interface IState {
-  userReducer: IUserState;
+  authReducer: IAuthState;
 }
 
 const rootReducers = combineReducers<IState>(
-  userReducer
+  authReducer
 );
 
 const middleware = [thunk];
@@ -19,7 +19,7 @@ const middleware = [thunk];
 const enhancers = [applyMiddleware(...middleware)];
 
 const configureStore = (): Store<IState> => {
-  return createStore(rootReducers, compose(...enhancers));
+  return createStore(rootReducers, applyMiddleware(thunk));
 };
 
 export default configureStore();
