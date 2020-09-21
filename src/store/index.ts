@@ -19,7 +19,7 @@ const middleware = [thunk];
 const enhancers = [applyMiddleware(...middleware)];
 
 const configureStore = (): Store<IState> => {
-  return createStore(rootReducers, applyMiddleware(thunk));
+  return createStore(rootReducers, compose(...enhancers));
 };
 
 export default configureStore();
