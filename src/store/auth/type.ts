@@ -13,18 +13,22 @@ export interface IUser {
 export interface IAuthState {
   authenticated: boolean;
   otpSent: boolean;
-  otpValidated: boolean;
   pinExists: boolean;
-  user: IUser
+  mobile?: string;
+  pinToken?: string;
+  user?: IUser;
+  token?: string;
 }
 
 export const AUTH_OTP_GENERATE = 'OTP_GENERATE';
 export const AUTH_OTP_VALIDATE = 'OTP_VALIDATE';
 export const AUTH_SIGNIN = 'AUTH_SIGNIN';
 export const AUTH_SIGNOUT = 'AUTH_SIGNOUT';
+export const AUTH_FREEZE = 'AUTH_FREEZE';
 
 interface AuthOtpGenerateAction {
-  type: typeof AUTH_OTP_GENERATE
+  type: typeof AUTH_OTP_GENERATE,
+  payload: { mobile: string }
 }
 
 interface AuthOtpValidateAction {
@@ -34,14 +38,15 @@ interface AuthOtpValidateAction {
 
 interface AuthSignInAction {
   type: typeof AUTH_SIGNIN,
-  payload: IUser
+  payload: IAuthState
+}
+
+interface AuthFreezeAction {
+  type: typeof AUTH_FREEZE
 }
 
 interface AuthSignOutAction {
   type: typeof AUTH_SIGNOUT
 }
 
-
-
-
-export type AuthActionTypes = AuthOtpGenerateAction | AuthOtpValidateAction | AuthSignInAction | AuthSignOutAction
+export type AuthActionTypes = AuthOtpGenerateAction | AuthOtpValidateAction | AuthSignInAction | AuthFreezeAction | AuthSignOutAction

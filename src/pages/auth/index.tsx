@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import OtpValidate from './otp-validate';
 import OtpGenerate from './otp-generate';
 import { useSelector } from 'react-redux';
-import { IState } from 'src/store';
+import { IState } from 'src/store/config';
 import PinSetup from './pin-setup';
 import PinValidation from './pin-valdiate';
 
@@ -11,16 +11,16 @@ const AuthPage: React.FC = () => {
   const auth = useSelector((state: IState) => state.authReducer);
 
   const renderContent = () => {
-    if (!auth.otpSent) {
+    if (!auth.mobile) {
       return <OtpGenerate />
     }
-    if (auth.otpSent) {
+    if (auth.mobile && auth.otpSent) {
       return <OtpValidate />
     }
-    if (auth.otpValidated && !auth.pinExists) {
+    if (auth.pinToken && !auth.pinExists) {
       return <PinSetup />
     }
-    if (auth.otpValidated && auth.pinExists) {
+    if (auth.pinToken && auth.pinExists) {
       return <PinValidation />
     }
   }

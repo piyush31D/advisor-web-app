@@ -5,11 +5,10 @@ import {
   authSignInAction,
   authSignOutAction
 } from 'src/store/auth/action';
-import { IState } from 'src/store';
+import { IState } from 'src/store/config';
 import { ThunkAction } from 'redux-thunk';
 
 import authApi from 'src/apis/auth';
-import { setUser, unsetUser } from 'src/utils/storage';
 import { setAuthorizationHeader } from 'src/utils/axios';
 
 export const authOtpGenerateThunk = (data: {
@@ -17,7 +16,7 @@ export const authOtpGenerateThunk = (data: {
 }): ThunkAction<void, IState, unknown, Action<string>> => async dispatch => {
   try {
     await authApi.generateOtp(data);
-    dispatch(authOtpGenerateAction());
+    dispatch(authOtpGenerateAction({ mobile: data.mobile }));
   } catch (error) {
     console.error(error);
   }
@@ -43,8 +42,8 @@ export const authPinSetupThunk = (data: {
   ThunkAction<void, IState, unknown, Action<string>> => async dispatch => {
     try {
       const { data: axiosData } = await authApi.generatePin(data);
-      setUser(axiosData.data)
-      dispatch(authSignInAction(axiosData.data.user));
+      setAuthorizationHeader(axiosData.data.token);
+      dispatch(authSignInAction(axiosData.data));
     } catch (error) {
       console.error(error);
     }
@@ -57,8 +56,8 @@ export const authPinValidateThunk = (data: {
   ThunkAction<void, IState, unknown, Action<string>> => async dispatch => {
     try {
       const { data: axiosData } = await authApi.validatePin(data);
-      setUser(axiosData.data)
-      dispatch(authSignInAction(axiosData.data.user));
+      setAuthorizationHeader(axiosData.data.token);
+      dispatch(authSignInAction(axiosData.data));
     } catch (error) {
       console.error(error);
     }
@@ -67,9 +66,8 @@ export const authPinValidateThunk = (data: {
 export const authSignOutThunk = ():
   ThunkAction<void, IState, unknown, Action<string>> => dispatch => {
     try {
-      unsetUser();
       setAuthorizationHeader();
-      dispatch(authSignOutAction())
+      dispatch(authSignOutAction());
     } catch (error) {
       console.error(error);
     }

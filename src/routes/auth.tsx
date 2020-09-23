@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect, RouteProps } from "react-router-dom";
-import { IState } from 'src/store';
+import { IState } from 'src/store/config';
 
 const AuthRoute: React.FC<RouteProps> = ({ component: Component, ...rest }) => {
   const authenticated = useSelector((state: IState) => state.authReducer.authenticated);

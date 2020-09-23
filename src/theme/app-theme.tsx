@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import IndexRoute from 'src/routes';
+import { setAuthorizationHeader } from 'src/utils/axios';
+import { useSelector } from 'react-redux';
+import { IState } from 'src/store/config';
 
 const AppWithTheme: React.FC = () => {
+  const authReducer = useSelector((state: IState) => state.authReducer);
   const theme = createMuiTheme({
-    typography:{
-      fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"'
+    typography: {
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"'
     },
     palette: {
       primary: {
@@ -14,26 +18,26 @@ const AppWithTheme: React.FC = () => {
 
     },
     overrides: {
-      MuiRadio:{
-        root:{
-          padding:5
+      MuiRadio: {
+        root: {
+          padding: 5
         }
       },
-      MuiSvgIcon:{
-        root:{
-          width:'1.2rem',
-          height:'1.2rem'
+      MuiSvgIcon: {
+        root: {
+          width: '1.2rem',
+          height: '1.2rem'
         },
       },
-      MuiFormControlLabel:{
-        root:{
-          marginLeft:-5
+      MuiFormControlLabel: {
+        root: {
+          marginLeft: -5
         }
       },
       MuiButton: {
         root: {
           borderRadius: 8,
-          fontSize:'var(--font-regular)'
+          fontSize: 'var(--font-regular)'
         },
         label: {
           textTransform: 'none',
@@ -61,10 +65,10 @@ const AppWithTheme: React.FC = () => {
       MuiCheckbox: {
         root: {
           color: '#bbb',
-          fontSize: 18
-        },
-        checked: {
-          color: 'var(--accent)'
+          fontSize: 18,
+          '&:checked': {
+            color: 'var(--accent)'
+          }
         }
       },
       MuiFilledInput: {
@@ -72,6 +76,10 @@ const AppWithTheme: React.FC = () => {
           backgroundColor: 'transparent',
           '&:hover': {
             backgroundColor: 'transparent'
+          },
+          '&:focused': {
+            backgroundColor: 'transparent',
+            border: '2px solid red'
           }
         },
         underline: {
@@ -81,20 +89,16 @@ const AppWithTheme: React.FC = () => {
           '&:after': {
             display: 'none'
           }
-        },
-        focused:{
-          backgroundColor:'transparent',
-          border:'2px solid red'
         }
       },
-      MuiChip:{
-        root:{
-          fontSize:'1rem'
+      MuiChip: {
+        root: {
+          fontSize: '1rem'
         }
       },
-      MuiTypography:{
-        body2:{
-          fontSize:13
+      MuiTypography: {
+        body2: {
+          fontSize: 13
         }
       }
     },
@@ -110,6 +114,12 @@ const AppWithTheme: React.FC = () => {
       },
     }
   });
+
+  useEffect(() => {
+    if (authReducer && authReducer.token) {
+      setAuthorizationHeader(authReducer.token);
+    }
+  }, [authReducer]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -3,25 +3,13 @@ import {
   IAuthState,
   AUTH_OTP_GENERATE,
   AUTH_OTP_VALIDATE,
-  AUTH_SIGNOUT
+  AUTH_SIGNOUT, AUTH_SIGNIN, AUTH_FREEZE
 } from './type'
 
 const initialState: IAuthState = {
   authenticated: false,
   otpSent: false,
-  pinExists: false,
-  otpValidated: false,
-  user: {
-    firstName: '',
-    lastName: '',
-    email: '',
-    mobile: '',
-    gender: '',
-    picture: '',
-    providor: '',
-    userType: '',
-    roles: []
-  }
+  pinExists: false
 }
 
 export const authReducer = (
@@ -32,14 +20,27 @@ export const authReducer = (
     case AUTH_OTP_GENERATE:
       return {
         ...state,
-        otpSent: true
+        otpSent: true,
+        mobile: action.payload.mobile
       }
     case AUTH_OTP_VALIDATE:
       return {
         ...state,
         otpSent: false,
-        otpValidated: true,
         ...action.payload
+      }
+    case AUTH_SIGNIN:
+      return {
+        ...state,
+        ...action.payload,
+        authenticated: true
+      }
+    case AUTH_FREEZE:
+      return {
+        ...initialState,
+        pinExists: state.pinExists,
+        mobile: state.mobile,
+        pinToken: state.pinToken
       }
     case AUTH_SIGNOUT:
       return {
