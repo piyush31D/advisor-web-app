@@ -5,7 +5,7 @@ import styles from './sidebar.module.css'
 
 const Sidebar: React.FC = () => {
   // console.log('sidebar');
-  const [isDarkThemeActive, setDarkThemeActive] = useState<boolean>(true);
+  const [isDarkThemeActive, setDarkThemeActive] = useState<boolean>(false);
   const handleThemeSwitch = () => {
     if (isDarkThemeActive) { document.documentElement.className = 'light-theme'; }
     else { document.documentElement.className = 'dark-theme'; }

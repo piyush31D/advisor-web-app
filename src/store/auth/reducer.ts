@@ -7,7 +7,7 @@ import {
 } from './type'
 
 const initialState: IAuthState = {
-  authenticated: true,
+  authenticated: false,
   otpSent: false,
   pinExists: false
 }

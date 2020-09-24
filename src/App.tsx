@@ -15,7 +15,7 @@ import { IAuthState } from './store/auth/type';
 const { store, persistor } = config;
 
 const App: React.FC = () => {
-  document.documentElement.className='dark-theme';
+  document.documentElement.className='light-theme';
   return (
     <BrowserRouter>
       <Provider store={store}>
