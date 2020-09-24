@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'protofolioicon';
   src:
-    url('fonts/protofolioicon.ttf?7jat4u') format('truetype'),
-    url('fonts/protofolioicon.woff?7jat4u') format('woff'),
-    url('fonts/protofolioicon.svg?7jat4u#protofolioicon') format('svg');
+    url('fonts/protofolioicon.ttf?9qjgtx') format('truetype'),
+    url('fonts/protofolioicon.woff?9qjgtx') format('woff'),
+    url('fonts/protofolioicon.svg?9qjgtx#protofolioicon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,6 +24,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.pficon-circle:before {
+  content: "\f111";
+}
+.pficon-logo-2:before {
+  content: "\e932";
+}
+.pficon-logo:before {
+  content: "\e928";
+}
 .pficon-locked:before {
   content: "\f023";
 }
@@ -57,9 +66,6 @@
 .pficon-mobile:before {
   content: "\e92c";
 }
-.pficon-logo:before {
-  content: "\e928";
-}
 .pficon-checked-circle:before {
   content: "\e924";
 }
@@ -80,6 +86,12 @@
 }
 .pficon-rupee:before {
   content: "\f156";
+}
+.pficon-plus-circle:before {
+  content: "\e9a7";
+}
+.pficon-send:before {
+  content: "\e931";
 }
 .pficon-shaded:before {
   content: "\e92d";
