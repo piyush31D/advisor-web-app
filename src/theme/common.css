@@ -1,48 +1,128 @@
-:root {
-  --accent: #005FEB;
+.dark-theme {
+  --accent: rgb(0, 95, 235);
+  --accent-background: rgb(19, 34, 64);
+  --background-primary: rgb(39, 39, 41);
+  --background-secondary: rgba(0, 0, 0, 0.2);
+  --accent-shade: rgba(0, 95, 235, 0.2);
+  --slider-color:rgb(80, 150, 255);
+  --font-regular: 14px;
+  --font-medium: 13px;
+  --font-semilarge: 16px;
+  --font-large: 18px;
+  --text-primary: rgb(219, 219, 219);
+  --primary-shade:rgba(255,255,255,0.1);
+  --text-white:var(--text-primary);
+  --text-secondary: #848484;
+  --text-green: rgb(51, 218, 118);
+  --green-shade: rgba(25, 174, 85, 0.1);
+  --text-red: rgb(255, 112, 93);
+  --red-shade: rgba(255, 95, 74, 0.2);
+  --border: rgba(255, 255, 255, 0.1);
+  --input-background:rgba(255,255,255,0.1);
+  --input-focused-background:rgba(255,255,255,0.15);
+  --background-paper:rgba(255, 255, 255, 0.05);
+  --table-head-background:rgba(0, 0, 0, 0.2);
+  --table-cell-background:rgba(0,0,0,0.15);
+  --nav-column-card:rgba(255, 255, 255, 0.07);
+  --nav-column-card-active:rgba(0, 0 , 0, 0.05);
+  --yellow: rgb(197, 161, 0);
+  --yellow-shade:rgba(255, 208, 0, 0.15);
+  --orange: rgb(242, 142, 28);
+  --orange-shade: rgba(242, 142, 28, 0.15);
+  --olive: rgb(159, 180, 21);
+  --olive-shade: rgba(159, 180, 21, 0.15);
+  --teal: rgb(0, 173, 165);
+  --teal-shade: rgba(0, 173, 165, 0.15);
+  --pink: rgb(206, 52, 139);
+  --pink-shade: rgba(206, 52, 139, 0.15);
+  --purple: rgb(147, 48, 180);
+  --purple-shade: rgba(147, 48, 180, 0.15);
+  --brown: rgb(196, 146, 113);
+  --brown-shade: rgba(177, 121, 84, 0.2);
+  --checkbox-unchecked:#747474;
+}
+
+
+.light-theme {
+  --accent: rgb(0, 95, 235);
+  --accent-background: rgb(0, 95, 235);
   --background-primary: #fff;
-  --background-secondary: #F5F6F8;
-  --accent-shade:#E5EFFD;
-  --accent-shade-alpha:#005FEB;
-  --red-shade:#F8DCD8;
-  --green-shade:#19AF55;
+  --background-secondary: rgba(0,0,0,0.05);
+  --accent-shade:rgba(0, 95, 235,0.05);
+  --slider-color: rgb(0, 95, 235);
   --font-regular: 14px;
   --font-medium: 13px;
   --font-semilarge: 16px;
   --font-large:18px;
   --text-primary: #000;
+  --primary-shade:rgba(0,0,0,0.1);
+  --text-white:rgb(255, 255, 255);
   --text-secondary: #848484;
   --text-green:#19AF55;
-  --text-red:#DC513E;
+  --green-shade:#19AF55;
+  --text-red:rgb(219, 80, 61);
+  --red-shade:rgba(219, 80, 61,0.05);
   --border:#e2e2e2;
-  --border-light:#f2f2f2;
+  --input-background:rgba(0,0,0,0.05);
+  --input-focused-background:rgba(0,0,0,0.08);
+  --background-paper:rgba(255, 255, 255, 0.1);
+  --table-head-background: rgb(245, 246, 248);
+  --table-cell-background:rgba(245, 246, 248,0.7);
+  --nav-column-card:rgba(255, 255, 255, 0.2);
+  --nav-column-card-active:rgba(0, 0 , 0, 0.05);
+  --yellow: rgb(197, 161, 0);
+  --yellow-shade:rgba(255, 208, 0, 0.15);
+  --orange: rgb(242, 142, 28);
+  --orange-shade: rgba(242, 142, 28, 0.15);
+  --olive: rgb(159, 180, 21);
+  --olive-shade: rgba(159, 180, 21, 0.15);
+  --teal: rgb(0, 173, 165);
+  --teal-shade: rgba(0, 173, 165, 0.15);
+  --pink: rgb(206, 52, 139);
+  --pink-shade: rgba(206, 52, 139, 0.15);
+  --purple: rgb(147, 48, 180);
+  --purple-shade: rgba(147, 48, 180, 0.15);
+  --brown: rgb(148, 93, 56);
+  --brown-shade: rgba(148, 93, 56, 0.15);
+  --brown: rgb(148, 93, 56);
+  --brown-shade: rgba(148, 93, 56, 0.15);
+  --checkbox-unchecked:#bbb;
 }
 
 .text-primary {
-  color: #000
+  color: var(--text-primary)
 }
+
 .text-white {
-  color: #fff
+  color: var(--text-white);
 }
+
+.text-black {
+  color: #000;
+}
+
 .text-accent {
-  color: #005FEB;
+  color: var(--accent);
 }
 
 .text-secondary {
-  color: #848484
+  color: var(--text-secondary)
 }
-.text-green{
-  color:#19AF55;
+
+.text-green {
+  color: var(--text-green);
 }
-.text-red{
-  color:#DC513E;
+
+.text-red {
+  color: var(--text-red);
 }
+
 .bold {
   font-weight: 700;
 }
 
 .semi-bold {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .font-regular {
@@ -52,6 +132,7 @@
 .font-medium {
   font-size: 13px;
 }
+
 .font-small {
   font-size: 12px;
 }
@@ -63,30 +144,51 @@
 .font-large {
   font-size: 18px;
 }
-.margin-right{
-  margin-right:10px;
+
+.font-largest {
+  font-size: 20px;
 }
-.margin-left{
-  margin-left:10px;
+
+.margin-right {
+  margin-right: 10px;
 }
-.margin-bottom{
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.margin-bottom {
   margin-bottom: 10px;
 }
-.margin-top{
-  margin-top:10px;
+
+.margin-top {
+  margin-top: 10px;
 }
-.margin-bottom--small{
+
+.margin-bottom--small {
   margin-bottom: 5px;
 }
-.margin-right--small{
+
+.margin-right--small {
   margin-right: 5px;
 }
-.margin-left--small{
+
+.margin-left--small {
   margin-left: 5px;
 }
-.spacer{
-  padding:0 5px
+
+.padding-bottom {
+  padding-bottom: 10px;
 }
+
+.padding-top {
+  padding-top: 10px;
+}
+
+.spacer {
+  padding: 0 5px
+}
+
 .flex {
   display: flex;
 }
@@ -102,15 +204,21 @@
 .col-flex {
   flex-direction: column;
 }
-.main-end{
+
+.main-end {
   justify-content: flex-end;
 }
+
 .main-center {
   justify-content: center;
 }
 
 .cross-center {
   align-items: center;
+}
+
+.cross-baseline {
+  align-items: baseline;
 }
 
 .cross-stretch {
@@ -121,16 +229,34 @@
   align-items: flex-start;
 }
 
+.cross-end {
+  align-items: flex-end;
+}
+
 .space-between {
   justify-content: space-between;
 }
 
+.no-number-stepper::-webkit-outer-spin-button, .no-number-stepper::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-number-stepper[type=number] {
+  -moz-appearance: textfield;
+}
+
 *::-webkit-scrollbar {
   width: 6px;
-  background-color: rgb(0,0,0,0.1);
+  background-color: rgb(0, 0, 0, 0.1);
 }
 
 *::-webkit-scrollbar-thumb {
   width: 6px;
-  background-color: rgb(0,0,0,0.1);
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  width: 6px;
+  background-color: rgb(0, 0, 0, 0.15);
 }

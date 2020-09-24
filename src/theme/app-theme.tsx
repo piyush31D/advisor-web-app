@@ -9,7 +9,7 @@ const AppWithTheme: React.FC = () => {
   const authReducer = useSelector((state: IState) => state.authReducer);
   const theme = createMuiTheme({
     typography: {
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"'
+      fontFamily: '-apple-system, BlinkMacSystemFont, "roboto", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"',
     },
     palette: {
       primary: {
@@ -18,6 +18,16 @@ const AppWithTheme: React.FC = () => {
 
     },
     overrides: {
+      MuiAvatar:{
+        colorDefault:{
+          color:'#747474'
+        }
+      },
+      MuiSlider:{
+        root:{
+          color:'var(--slider-color)'
+        }
+      },
       MuiRadio: {
         root: {
           padding: 5
@@ -64,7 +74,7 @@ const AppWithTheme: React.FC = () => {
       },
       MuiCheckbox: {
         root: {
-          color: '#bbb',
+          color: 'var(--checkbox-unchecked)',
           fontSize: 18,
           '&:checked': {
             color: 'var(--accent)'
@@ -97,8 +107,22 @@ const AppWithTheme: React.FC = () => {
         }
       },
       MuiTypography: {
+        root:{
+          color:'var(--text-primary)'
+        },
         body2: {
           fontSize: 13
+        }
+      },
+      MuiPaper:{
+        root:{
+          backgroundColor:'var(--background-primary)'
+        },
+        rounded:{
+          borderRadius:5,
+        },
+        elevation8:{
+          boxShadow:'0px 5px 5px -3px rgba(0,0,0,0.1), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)'
         }
       }
     },

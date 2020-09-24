@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  position: relative;
 }
 .navbarAvatar{
   height:13px;
@@ -30,13 +31,67 @@
 .activeNavlink{
   border-left:3px solid #fff;
   transition: .2s ease-in-out;
-  font-size: 24px;
 }
 .navicon{
-  color:#fff;
+  color:var(--text-white);
   font-size:inherit;
 }
 .activeNavlink .navicon{
-  margin-left: -3px;
-  transition: .2 ease-in-out;
+  transform: scale(1.2) translateX(-2px);
+  transition: transform .2s ease-in;
+}
+.bottomActions{
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+.themeSwitcher{
+  padding:5px;
+  border-radius: 5px;
+  height:30px;
+  width:30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color:rgba(255,255,255,0.1);
+}
+.themeSwitcher:hover{
+  background-color:rgba(255,255,255,0.15);
+}
+.themeSwitcherIcon{
+  position: relative;
+  width:22px;
+  height:14px;
+  transition: 0.2s ease-in;
+  -webkit-transition: 0.2s ease-in;
+}
+.themeSwitcherIcon .front{
+  position: absolute;
+  top:0;
+  left:0;
+  font-size: 14px;
+  color:rgb(143 147 158);
+  z-index: 2;
+}
+.themeSwitcherIcon .back{
+  position: absolute;
+  top:0;
+  left:8px;
+  font-size: 14px;
+  color:rgb(75, 81, 100);
+  z-index: 1;
+}
+.darkThemeActive{
+  transform: rotateZ(180deg);
+  -webkit-transform: rotateZ(180deg);
+}
+.darkThemeActive .back{
+  z-index: 3;
 }

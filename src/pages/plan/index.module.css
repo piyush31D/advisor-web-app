@@ -29,7 +29,7 @@
 .navlink {
   font-size: var(--font-regular);
   font-weight: bold;
-  color:#fff;
+  color:var(--text-white);
   padding: 3px 5px;
   text-decoration: none;
   border-radius: 5px;
@@ -40,7 +40,7 @@
   background-color: #2772E3;
   text-decoration: none;
   opacity: 1;
-  color:#fff
+  color:var(--text-white)
 }
 
 .activeNavlink {
@@ -75,7 +75,7 @@
   margin-right: 5px;
   font-size: var(--font-regular);
   font-weight: bold;
-  color:#fff;
+  color:var(--text-white);
   cursor: pointer;
 }
 .navTab:last-child{
@@ -83,7 +83,7 @@
 }
 .activeNavTab{
   border-bottom: 3px solid #fff;
-  color:#fff;
+  color:var(--text-white);
 }
 .groupsWrap{
   margin-top: 20px;
@@ -94,7 +94,7 @@
   padding: 8px 10px;
   margin-top: 10px;
   cursor: pointer;
-  color:#fff;
+  color:var(--text-white);
   transition: .2s;
 }
 
