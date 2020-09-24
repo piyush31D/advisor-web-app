@@ -1,76 +1,54 @@
 import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
+import cx from 'classnames';
 import styles from './index.module.css'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import StyledInput, { useStyles } from './styled-input';
+import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { authPinValidateThunk } from 'src/store/auth/thunk';
 
-const useInputStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      backgroundColor: 'transparent',
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
-      '&$focused': {
-        backgroundColor: 'transparent',
-      }
-    },
-    focused: {},
-  }),
-);
-
-function StyledInput(props: TextFieldProps) {
-  const classes = useInputStyles();
-
-  return (
-    <TextField
-      InputProps={{ classes, disableUnderline: true } as Partial<OutlinedInputProps>}
-      {...props}
-    />
-  );
+interface Props {
+  mobile: string
+  pinToken:string
 }
 
-const useStyles = makeStyles({
-  bold: {
-    fontWeight: 'bold',
-  },
-  subHeadline: {
-    fontSize: 16,
-    paddingTop: 10
-  },
-  sandwitchText: {
-    margin: '0 0 15px 0'
-  },
-  button: {
-    borderRadius: 15,
-    fontSize: 16,
-    padding: '12px 0',
-    margin: '5px 0 20px 0'
-  },
-  smallgutter: {
-    marginTop: 30
-  }
-});
-
-const PinValidation: React.FC = () => {
+const PinValidation: React.FC<Props> = (props) => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      mobile: props.mobile,
+      pin: '',
+    },
+    validationSchema: Yup.object({
+      mobile: Yup.string()
+        .max(10, 'Must be 10 characters')
+        .required('Required'),
+      pin: Yup.string()
+        .max(6, 'Must be 6 characters')
+        .required('Required')
+    }),
+    onSubmit: values => {
+      dispatch(authPinValidateThunk({ mobile: values.mobile, pin: values.pin,pinToken:props.pinToken }));
+    },
+  });
   return (
     <>
       <Typography className={classes.bold} variant="h4">Welcome to Protofolio</Typography>
       <Typography className={classes.subHeadline} variant="subtitle1">Sign in as an advisor</Typography>
-      <form className={styles.authForm}>
-        <div className={styles.inputWithIcon}>
+      <form className={styles.authForm} onSubmit={formik.handleSubmit}>
+        <div className={styles.shadedContainer}>
+          <span className={cx(styles.shadedBck, 'pficon-shaded')} />
           <span className="pficon-mobile" />
-          <StyledInput type="number" id="mobile" label="Mobile No." variant="filled" fullWidth />
+          <span className="bold">{props.mobile}</span>
         </div>
         <div className={styles.inputWithIcon}>
           <span className="pficon-lock" />
-          <StyledInput type="password" id="pin" label="Enter PIN" variant="filled" fullWidth />
+          <StyledInput id="pin" name="pin" onChange={formik.handleChange} type="password" label="Enter PIN" variant="filled" fullWidth />
         </div>
-        <Button className={classes.button} variant="contained" color="primary" size="large" fullWidth>Sign in</Button>
+        <Button type="submit" className={classes.button} variant="contained" color="primary" size="large" fullWidth>Sign in</Button>
         <Typography className={classes.bold} color="primary" variant="subtitle1">Forgot PIN?</Typography>
       </form>
     </>

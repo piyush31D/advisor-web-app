@@ -22,7 +22,7 @@ const IndexRoute: React.FC = () => (
               <Switch>
                 <Route path="/dashboard" component={Dashboard} exact />
                 <Route path="/trades" component={Dashboard} exact />
-                <Route path="/folios" component={FoliosPage} />
+                <Route path="/folio" component={FoliosPage} />
                 <Route path="/investor" component={InvestorPage} />
                 <Route path="/plans" component={PlanPage} exact />
               </Switch>

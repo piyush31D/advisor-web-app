@@ -1,7 +1,4 @@
 import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
 import styles from './index.module.css'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -10,53 +7,7 @@ import * as Yup from 'yup';
 import { mobile } from 'src/utils/regex';
 import { authOtpGenerateThunk } from 'src/store/auth/thunk';
 import { useDispatch } from 'react-redux';
-
-const useInputStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      backgroundColor: 'transparent',
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
-      '&$focused': {
-        backgroundColor: 'transparent',
-      }
-    },
-    focused: {},
-  }),
-);
-
-const StyledInput: React.FC<TextFieldProps> = (props) => {
-  const classes = useInputStyles();
-  return (
-    <TextField
-      InputProps={{ classes, disableUnderline: true } as Partial<OutlinedInputProps>}
-      {...props}
-    />
-  );
-}
-
-const useStyles = makeStyles({
-  bold: {
-    fontWeight: 'bold',
-  },
-  subHeadline: {
-    fontSize: 16,
-    paddingTop: 10
-  },
-  sandwitchText: {
-    margin: '0 0 15px 0'
-  },
-  button: {
-    borderRadius: 15,
-    fontSize: 16,
-    padding: '12px 0',
-    margin: '5px 0 20px 0'
-  },
-  smallgutter: {
-    marginTop: 30
-  }
-});
+import StyledInput,{useStyles} from './styled-input';
 
 const OtpGenerate: React.FC = () => {
   const classes = useStyles();

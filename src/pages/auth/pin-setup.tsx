@@ -1,83 +1,83 @@
 import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
 import cx from 'classnames';
 import styles from './index.module.css'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import { authPinSetupThunk } from 'src/store/auth/thunk';
+import * as Yup from 'yup';
+import StyledInput, { useStyles } from './styled-input';
 
-const useInputStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      backgroundColor: 'transparent',
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
-      '&$focused': {
-        backgroundColor: 'transparent',
-      }
-    },
-    focused: {},
-  }),
-);
-
-function StyledInput(props: TextFieldProps) {
-  const classes = useInputStyles();
-
-  return (
-    <TextField
-      InputProps={{ classes, disableUnderline: true } as Partial<OutlinedInputProps>}
-      {...props}
-    />
-  );
+interface Props {
+  mobile: string;
+  pinToken:string
 }
 
-const useStyles = makeStyles({
-  bold: {
-    fontWeight: 'bold',
-  },
-  subHeadline: {
-    fontSize: 16,
-    paddingTop: 10
-  },
-  sandwitchText: {
-    margin: '0 0 15px 0'
-  },
-  button: {
-    borderRadius: 15,
-    fontSize: 16,
-    padding: '12px 0',
-    margin: '5px 0 20px 0'
-  },
-  smallgutter: {
-    marginTop: 30
-  }
-});
-
-
-const PinSetup: React.FC = () => {
+const PinSetup: React.FC<Props> = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      mobile: props.mobile,
+      pin: '',
+      pinReEntered: '',
+    },
+    validationSchema: Yup.object({
+      mobile: Yup.string()
+        .max(10, 'Must be 10 characters')
+        .required('Required'),
+      pin: Yup.string()
+        .max(6, 'Must be 6 characters')
+        .required('Required')
+    }),
+    onSubmit: values => {
+      console.log(values);
+      
+      if (values.pin === values.pinReEntered)
+        dispatch(authPinSetupThunk({ mobile: values.mobile, pin: values.pin ,pinToken:props.pinToken}));
+      else
+        console.log('pin did not matched');
+    },
+  });
   return (
     <>
       <Typography className={classes.bold} variant="h4">Welcome to Protofolio</Typography>
       <Typography className={classes.subHeadline} variant="subtitle1">Sign up</Typography>
-      <form className={cx(styles.authForm, classes.smallgutter)}>
+      <form className={cx(styles.authForm, classes.smallgutter)} onSubmit={formik.handleSubmit}>
         <div className={styles.shadedContainer}>
           <span className={cx(styles.shadedBck, 'pficon-shaded')} />
           <span className="pficon-mobile" />
-          <span className="bold">7295084005</span>
+          <span className="bold">{props.mobile}</span>
         </div>
         <Typography className={classes.sandwitchText} variant="subtitle1">Setup PIN</Typography>
         <div className={styles.inputWithIcon}>
           <span className="pficon-lock" />
-          <StyledInput type="password" id="mobile" label="Enter PIN" variant="filled" fullWidth />
+          <StyledInput
+            type="password"
+            id="pin"
+            name="pin"
+            label="Confirm PIN"
+            variant="filled"
+            fullWidth
+            inputProps={{maxLength:6}}
+            onChange={formik.handleChange}
+          />
         </div>
         <div className={styles.inputWithIcon}>
           <span className="pficon-lock" />
-          <StyledInput type="password" id="pin" label="Confirm PIN" variant="filled" fullWidth />
+          <StyledInput
+            type="password"
+            id="pinReEntered"
+            name="pinReEntered"
+            label="Confirm PIN"
+            variant="filled"
+            fullWidth
+            inputProps={{maxLength:6}}
+            onChange={formik.handleChange}
+          />
         </div>
-        <Button className={classes.button} variant="contained" color="primary" size="large" fullWidth>Next</Button>
+        <Button type="submit" className={classes.button} variant="contained" color="primary" size="large" fullWidth>Next</Button>
       </form>
     </>
   )

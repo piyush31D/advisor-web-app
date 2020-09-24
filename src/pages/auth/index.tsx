@@ -15,13 +15,13 @@ const AuthPage: React.FC = () => {
       return <OtpGenerate />
     }
     if (auth.mobile && auth.otpSent) {
-      return <OtpValidate />
+      return <OtpValidate mobile={auth.mobile} />
     }
-    if (auth.pinToken && !auth.pinExists) {
-      return <PinSetup />
+    if (auth.mobile && auth.pinToken && !auth.pinExists) {
+      return <PinSetup mobile={auth.mobile} pinToken={auth.pinToken}/>
     }
-    if (auth.pinToken && auth.pinExists) {
-      return <PinValidation />
+    if (auth.mobile && auth.pinToken && auth.pinExists) {
+      return <PinValidation mobile={auth.mobile} pinToken={auth.pinToken}/>
     }
   }
 
@@ -30,7 +30,7 @@ const AuthPage: React.FC = () => {
       <div className={styles.columnLeft}>
         <div className={styles.authContainer}>
           <div className={styles.logo}>
-            <span className='pficon-logo'></span>
+            <span className='pficon-logo-2'></span>
           </div>
           {renderContent()}
         </div>

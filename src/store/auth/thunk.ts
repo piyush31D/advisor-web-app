@@ -37,7 +37,8 @@ export const authOtpValidateThunk = (data: {
 
 export const authPinSetupThunk = (data: {
   mobile: string,
-  pin: string
+  pin: string,
+  pinToken:string
 }):
   ThunkAction<void, IState, unknown, Action<string>> => async dispatch => {
     try {
@@ -51,7 +52,8 @@ export const authPinSetupThunk = (data: {
 
 export const authPinValidateThunk = (data: {
   mobile: string,
-  otp: string
+  pin: string,
+  pinToken:string
 }):
   ThunkAction<void, IState, unknown, Action<string>> => async dispatch => {
     try {

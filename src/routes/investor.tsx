@@ -9,7 +9,7 @@ const InvestorRoute: React.FC = () => (
     <Switch>
       <Route path="/investor/all" component={AllInvestors} exact />
       <Route path="/investor/group/:id" component={Group} exact />
-      <Redirect to="/investors/all" />
+      <Redirect to="/investor/all" />
     </Switch>
   </>
 );

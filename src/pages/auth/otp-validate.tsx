@@ -1,65 +1,24 @@
 import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
+import cx from 'classnames';
 import styles from './index.module.css'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import TextButton from 'src/components/button/text.button';
 import { useFormik } from 'formik';
+import { authOtpValidateThunk } from 'src/store/auth/thunk';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import StyledInput,{useStyles} from './styled-input';
 
-const useInputStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      backgroundColor: 'transparent',
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
-      '&$focused': {
-        backgroundColor: 'transparent',
-      }
-    },
-    focused: {},
-  }),
-);
-
-const StyledInput: React.FC<TextFieldProps> = (props) => {
-  const classes = useInputStyles();
-  return (
-    <TextField
-      InputProps={{ classes, disableUnderline: true } as Partial<OutlinedInputProps>}
-      {...props}
-    />
-  );
+interface Props {
+  mobile: string
 }
-
-const useStyles = makeStyles({
-  bold: {
-    fontWeight: 'bold',
-  },
-  subHeadline: {
-    fontSize: 16,
-    paddingTop: 10
-  },
-  sandwitchText: {
-    margin: '0 0 15px 0'
-  },
-  button: {
-    borderRadius: 15,
-    fontSize: 16,
-    padding: '12px 0',
-    margin: '5px 0 20px 0'
-  },
-  smallgutter: {
-    marginTop: 30
-  }
-});
-
-const OtpValidation: React.FC = () => {
+const OtpValidation: React.FC<Props> = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      mobile: '',
+      mobile: props.mobile,
       otp: '',
     },
     validationSchema: Yup.object({
@@ -67,43 +26,40 @@ const OtpValidation: React.FC = () => {
         .max(15, 'Must be 15 characters or less')
         .required('Required'),
       otp: Yup.string()
-        .max(20, 'Must be 20 characters or less')
+        .max(6, 'Must be 20 characters or less')
         .required('Required')
     }),
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(authOtpValidateThunk(values));
     },
   });
   return (
     <>
       <Typography className={classes.bold} variant="h4">Welcome to Protofolio</Typography>
       <Typography className={classes.subHeadline} variant="subtitle1">Enter OTP to continue</Typography>
-      <form className={styles.authForm}>
-        <div className={styles.inputWithIcon}>
+      <form className={styles.authForm} onSubmit={formik.handleSubmit}>
+        <div className={styles.shadedContainer}>
+          <span className={cx(styles.shadedBck, 'pficon-shaded')} />
           <span className="pficon-mobile" />
-          <StyledInput
-            id="mobile"
-            name="mobile"
-            label="Mobile No."
-            variant="filled"
-            fullWidth
-            onChange={formik.handleChange} />
+          <span className="bold">{props.mobile}</span>
         </div>
         <Typography className={classes.sandwitchText} variant="subtitle1">Enter OTP<span className='spacer' /> 4:20</Typography>
-        <div className={styles.otpInputWrap}>
-          <div className={styles.otpInputBoxes}>
-            <div className={styles.otpInputBox}></div>
-            <div className={styles.otpInputBox}></div>
-            <div className={styles.otpInputBox}></div>
-            <div className={styles.otpInputBox}></div>
-            <div className={styles.otpInputBox}></div>
-            <div className={styles.otpInputBox}></div>
-          </div>
-          <div className={styles.optInputFieldWrap}>
-            <input className={styles.otpInputField} />
-          </div>
+        <div className={styles.inputWithIcon}>
+          <span className="pficon-lock" />
+          <StyledInput
+            id="otp"
+            name="otp"
+            label="OTP"
+            variant="filled"
+            fullWidth
+            type="text"
+            inputProps={{ maxLength: 6, className: "no-number-stepper", style: { textTransform: 'uppercase', letterSpacing: 10, fontWeight: 500 } }}
+            onChange={formik.handleChange} />
         </div>
-        <Button className={classes.button} variant="contained" color="primary" size="large" fullWidth>Send OTP</Button>
+        <Button type="submit" className={classes.button} variant="contained" color="primary" size="large" fullWidth>Verify OTP</Button>
+        <span style={{ alignSelf: 'center' }}>
+          <TextButton type="text-accent" size="regular" title="Resend OTP" />
+        </span>
       </form>
     </>
   )
