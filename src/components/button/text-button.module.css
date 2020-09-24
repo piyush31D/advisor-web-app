@@ -3,36 +3,49 @@
   border: none;
   text-decoration: none;
   cursor: pointer;
-  font-weight:600;
   outline: none;
-  border-radius: 5px;
-  padding: 0 6px;
+  padding:0;
   height:1.8em;
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
   line-height: 1em;
-  justify-content: center;
   text-align: center;
+  border-radius: 5px;
+}
+.buttonText{
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  padding: 0 6px;
+  font-weight: 500;
+  white-space: nowrap;
 }
 .round{
   height:2.6em;
   width:2.6em;
   padding:0;
   border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+}
+.thick{
+  height:2.5em;
+  padding:0 5px;
+  border-radius: 8px;
 }
 .button:active{
   opacity:.7
 }
 .spacer {
-  margin: 0 2px;
+  padding: 0 2px;
 }
 
 .text-primary {
   color: var(--text-primary)
 }
 .text-grey {
-  color: var(--border);
+  color: var(--input-focused-background);
 }
 .text-accent {
   color: var(--accent)
@@ -42,7 +55,7 @@
   color: var(--text-red)
 }
 .text-white{
-  color:#fff;
+  color:var(--text-white);
 }
 .solid {
   border-radius: 10px;
@@ -50,15 +63,16 @@
 .fill-accent{
   background-color: var(--accent);
   color:#fff;
+  padding:0 5px;
 }
 .fill-accent:hover{
-  opacity:.9;
+  opacity:.8;
 }
 .fill-accent:active{
   opacity:.7
 }
 .text-primary:hover,.text-grey:hover {
-  background-color: var(--background-secondary);
+  background-color: var(--primary-shade);
 }
 
 .text-accent:hover {
@@ -68,7 +82,7 @@
   background-color: var(--red-shade)
 }
 .text-white:hover{
-  background-color: rgba(0,0,0,0.08);
+  background-color: rgba(255,255,255,0.1);
 }
 .medium {
   font-size: var(--font-medium);
