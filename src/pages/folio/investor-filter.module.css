@@ -19,11 +19,11 @@
   background-color: transparent;
   border: 0;
   outline: none;
-  color: var(--accent);
+  color: var(--text-primary);
   padding: 2px 5px;
   line-height: 1;
   border-radius: 3px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .rangeInputWrap input:hover, .rangeInputWrap input:focus {
@@ -35,10 +35,14 @@
   padding: 0 5px;
   vertical-align: middle;
   color: var(--text-primary);
-  opacity: .8;
   font-weight: normal;
 }
-
+.rangeIconprice{
+  color:#00aaa4;
+}
+.rangeIconquantity{
+  color:#c99300;
+}
 .noStepper::-webkit-outer-spin-button, .noStepper::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
@@ -54,7 +58,7 @@
 
 .rangeSlider {
   position: absolute;
-  bottom: -18px;
+  bottom: -20px;
   left: 0;
   right: 0;
   z-index: 2;
@@ -84,10 +88,10 @@
 .rangeFrom::before, .rangeTo::before {
   content: '';
   width: 2px;
-  height: 7px;
-  background-color: var(--text-primary);
+  height: 6px;
+  background-color: var(--text-secondary);
   position: absolute;
-  top: -5px;
+  top: -3px;
 }
 
 .rangeTo::before {

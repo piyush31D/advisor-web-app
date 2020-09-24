@@ -16,6 +16,7 @@ import styles from './investor-filter.module.css';
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
+      color:'var(--text-primary)',
       border: 0,
       padding: '14px 10px',
       '&:first-child': {
@@ -28,7 +29,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
       }
     },
     head: {
-      backgroundColor: '#E8EEF2',
+      backgroundColor: 'var(--table-head-background)',
       color: 'var(--text-primary)',
       padding: '10px',
       fontSize: 'var(--font-regular)'
@@ -43,7 +44,7 @@ const StyledTableRow = withStyles((theme: Theme) =>
   createStyles({
     root: {
       '&:nth-of-type(even)': {
-        backgroundColor: '#FAFAFB',
+        backgroundColor:'var(--table-cell-background)',
       },
     },
   }),
@@ -86,7 +87,7 @@ const useStyles = makeStyles({
     width: '1%',
   },
   semiBold: {
-    fontWeight: 600
+    fontWeight: 500
   },
   positionRelative:{
     position: 'relative',
@@ -135,7 +136,7 @@ const RangeSlider: React.FC<{ varient: string }> = ({ varient }) => {
       <div className={styles.rangeSliderWrap}>
         <div className={styles.rangeInputWrap}>
           <input type="number" onChange={handleLeftInputChange} value={value[0]} className={cx(styles.textRight, styles.noStepper)} />
-          <span className={cx(styles.rangeIcon, 'pficon-range-' + varient)} />
+          <span className={cx(styles.rangeIcon, 'pficon-range-' + varient,styles['rangeIcon'+varient])} />
           <input type="number" onChange={handleRightInputChange} value={value[1]} className={styles.noStepper} />
         </div>
         <div className={styles.rangeSlider}>
@@ -204,7 +205,7 @@ const InvestorFilter: React.FC = () => {
                   />
                 </StyledTableCell>
                 <StyledTableCell className={classes.avatarCell}>
-                  <InvestorAvatar style={{ backgroundColor: false ? "#" + ((1 << 24) * Math.random() | 0).toString(16) : '#e2e2e2' }} alt={row.name} />
+                  <InvestorAvatar style={{ backgroundColor: false ? "#" + ((1 << 24) * Math.random() | 0).toString(16) : 'var(--border)' }} alt={row.name} />
                 </StyledTableCell>
                 <StyledTableCell className={classes.semiBold} scope="row">
                   {row.name}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import TextButton from 'src/components/button/text.button';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -19,9 +18,9 @@ function createData(name: string, active: boolean) {
 }
 
 const scrips = [
-  createData('IDEA', false),
+  createData('IDEA', true),
   createData('MANAPPURAM AUG 117.5 CE', false),
-  createData('GOLDBEES', true),
+  createData('GOLDBEES', false),
   createData('TCS', false),
   createData('RCOM', false),
   createData('IDEA', false),
@@ -29,7 +28,7 @@ const scrips = [
 
 const useStyles = makeStyles({
   semiBold: {
-    fontWeight: 600
+    fontWeight: 500
   },
   bold: {
     fontWeight: 700
@@ -59,7 +58,7 @@ const StyledInput = withStyles(() =>
     input: {
       borderRadius: 8,
       position: 'relative',
-      backgroundColor: 'rgba(255,255,255,0.2)',
+      backgroundColor: 'var(--input-background)',
       border: 0,
       fontSize: 'var(--font-regular)',
       padding: '15px',
@@ -67,8 +66,10 @@ const StyledInput = withStyles(() =>
       color: 'inherit',
       transition: '0.2s',
       '&:focus': {
-        backgroundColor: '#fff',
-        color: 'var(--text-primary)'
+        backgroundColor: 'var(--input-focused-background)',
+      },
+      '&:hover': {
+        backgroundColor: 'var(--input-focused-background)',
       },
     },
   }),
@@ -113,7 +114,7 @@ const CreateTrades: React.FC = () => {
                 <span className="flex space-between">
                   <span>
                     <span className="text-red">-4.2%</span>
-                    <span style={{opacity:.5}} className={cx('pficon-range',styles.rangeIcon)} />
+                    <span style={{ opacity: .5 }} className={cx('pficon-range', styles.rangeIcon)} />
                     <span className="text-green">+7%</span>
                   </span>
                   <span className="text-red">-0.75</span>
@@ -135,7 +136,7 @@ const CreateTrades: React.FC = () => {
                   12 orders on 4 stocks
                 </span>
               </div>
-              <Button variant="contained" color="primary">Send Trades</Button>
+              <TextButton thick size="regular" type="fill-accent" title="Send trades" icon="send"></TextButton>
             </div>
           </div>
           <div className={cx(styles.orderWrap, transactionType === 'BUY' ? styles.buyOrder : styles.sellOrder)}>
@@ -154,18 +155,36 @@ const CreateTrades: React.FC = () => {
               </div>
             </div>
             <div className={styles.orderSummary}>
-              <span className="flex fill space-between">
+              <span className="flex fill space-between padding-bottom">
                 <span>
-                  <span>₹8.50</span>
-                  <span className={cx(styles.rangeIcon, 'pficon-range-price')} />
-                  <span>₹10.20</span>
+                  <span className="margin-right">To Qty:</span>
+                  <span>10%</span>
+                  <span className={cx(styles.rangeIcon, 'pficon-range-quantity')} />
+                  <span>10.5%</span>
                 </span>
-                <span className="semi-bold">
-                  <span className="margin-right">Price:</span>
-                  <span>Market</span>
+                <span>
+                  <span>Price:</span>
+                  <span className="semi-bold margin-left">Market</span>
                 </span>
               </span>
-              <span style={{ paddingTop: 15 }} className="flex fill space-between">
+              <div className="flex space-between cross-center margin-top">
+                <div onClick={() => setTransactionType(transactionType === 'BUY' ? 'SELL' : 'BUY')} className={styles.transactionSwitch}>
+                  <div style={{ transform: transactionType === 'BUY' ? 'translateX(0)' : 'translateX(22px)', backgroundColor: transactionType === 'BUY' ? 'var(--accent)' : 'var(--text-red)' }} />
+                  <p role="button" className={transactionType === 'SELL' ? styles.sellActive : ''}>B</p>
+                  <p role="button" className={transactionType === 'BUY' ? styles.buyActive : ''}>S</p>
+                </div>
+                <span className="flex fill cross-center main-end">
+                  <span>Margin</span>
+                  <span className="semi-bold margin-left">₹8.75</span>
+                  <TextButton type="text-white" size="regular" icon="reload" />
+                </span>
+                <span className="spacer"/>
+                <span className="margin-left">
+                  <span>LTP</span>
+                  <span className="semi-bold margin-left">₹8.75</span>
+                </span>
+              </div>
+              {/* <span style={{ paddingTop: 15 }} className="flex fill space-between">
                 <span>
                   <span>12%</span>
                   <span className={cx(styles.rangeIcon, 'pficon-range-quantity')} />
@@ -175,24 +194,10 @@ const CreateTrades: React.FC = () => {
                   <span className={cx(styles.rangeIcon, 'pficon-range-quantity')} />
                   <span>10.5%</span>
                 </span>
-              </span>
+              </span> */}
+
             </div>
-            <div className="flex space-between cross-center margin-bottom">
-              <div onClick={() => setTransactionType(transactionType === 'BUY' ? 'SELL' : 'BUY')} className={styles.transactionSwitch}>
-                <div style={{ transform: transactionType === 'BUY' ? 'translateX(0)' : 'translateX(22px)', backgroundColor: transactionType === 'BUY' ? 'var(--accent)' : 'var(--text-red)' }} />
-                <p role="button" className={transactionType === 'SELL' ? styles.sellActive : ''}>B</p>
-                <p role="button" className={transactionType === 'BUY' ? styles.buyActive : ''}>S</p>
-              </div>
-              <span className="semi-bold">
-                <span className="margin-right">LTP</span>
-                ₹8.75
-              </span>
-              <span className="semi-bold">
-                <span className="margin-right">Margin</span>
-                <span>₹8.75</span>
-                <TextButton type="text-white" size="regular" icon="reload" />
-              </span>
-            </div>
+
             <div className={styles.radioWrap}>
               <div>
                 <FormControl component="fieldset">

@@ -18,11 +18,12 @@
 .modal {
   width: 1250px;
   background-color: var(--background-primary);
-  border-radius: 16px;
+  border-radius: 10px;
   z-index: 1;
   margin: 20px auto;
   padding: 10px;
   display: flex;
+  border: 1px solid var(--border);
 }
 
 .columnLeft, .columnRight {
@@ -53,7 +54,7 @@
 
 .scripWrap {
   display: flex;
-  flex:1;
+  flex: 1;
   flex-direction: column;
   border-top: 1px solid var(--border);
   overflow-y: auto;
@@ -69,7 +70,7 @@
 }
 
 .scrip:hover {
-  background-color: #FBFBFC;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .scrip * {
@@ -77,17 +78,17 @@
 }
 
 .activeScrip, .activeScrip:hover {
-  background-color: var(--accent);
+  background-color: var(--accent-background);
 }
 
 .divider {
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 1px solid var(--border);
   padding-top: 15px;
   display: flex;
 }
 
 .activeScrip * {
-  color: #fff !important;
+  color: var(--text-white) !important;
 }
 
 .activeScrip .divider {
@@ -109,21 +110,24 @@
   flex-direction: column;
   border-radius: 10px;
   border-top-left-radius: 5px;
-  border-top-right-radius:5px ;
+  border-top-right-radius: 5px;
   padding: 10px 15px;
   overflow-y: auto;
   transition: 0.2s;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
 }
-.buyOrder{
-  background-color: var(--accent);
+
+.buyOrder {
+  background-color: var(--accent-background);
 }
-.sellOrder{
+
+.sellOrder {
   background-color: var(--text-red);
 }
+
 .orderWrap * {
-  color: #fff;
+  color: var(--text-white) !important;
   line-height: 1em;
 }
 
@@ -141,27 +145,27 @@
 .orderSummary {
   margin: 10px -15px;
   padding: 20px 15px;
-  background: rgba(0,0,0,0.05);
-  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
 }
 
 .transactionSwitch {
-  height: 30px;
-  width: 52px;
-  padding: 4px;
-  background-color: #fff;
-  border-radius: 15px;
+  height: 24px;
+  width: 48px;
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 12px;
   position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: #fff;
+  color: var(--text-white);
 }
 
 .transactionSwitch div {
-  height: 22px;
+  height: 20px;
   width: 22px;
-  border-radius: 11px;
+  border-radius: 10px;
   position: absolute;
   transition: .2s ease-in;
   -webkit-transition: .2s ease-in;
@@ -170,7 +174,7 @@
 }
 
 .transactionSwitch p {
-  font-size: var(--font-regular);
+  font-size: var(--font-medium);
   display: flex;
   flex: 1;
   justify-content: center;
@@ -180,16 +184,19 @@
   -webkit-transition: .2s;
   user-select: none;
   -webkit-user-select: none;
+  font-weight: 500;
 }
 
-.buyActive {
-  color: var(--text-red);
-  font-weight: bold;
+.textBlack {
+  color: #000 !important;
 }
 
 .sellActive {
-  color: var(--accent);
-  font-weight: bold;
+  color: var(--accent) !important;
+}
+
+.buyActive {
+  color: var(--text-red) !important;
 }
 
 .radioWrap {
@@ -199,41 +206,55 @@
 }
 
 .inputsWrap {
-  margin-top: 25px;
+  margin-top: 40px;
 }
-.imputCol{
+
+.imputCol {
   display: flex;
   flex-direction: column;
-  flex:1;
+  flex: 1;
 }
+
 .disabledInput {
   border-radius: 8px;
   position: relative;
   background-color: transparent;
   border: 0;
   font-size: var(--font-regular);
-  padding:16px 15px;
-  color:inherit;
-  overflow:hidden;
+  padding: 16px 15px;
+  color: inherit;
+  overflow: hidden;
   max-width: 400px;
 }
-.shadedBck{
+
+.shadedBck {
   font-size: 60px;
-  color:#fff;
-  opacity: .3;
+  color: var(--input-background) !important;
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: 0;
 }
 
-.orderCount{
+.orderCount {
   display: flex;
-  flex:1;
-  padding:0 10px 0 15px;
+  flex: 1;
+  padding: 0 10px 0 15px;
   align-items: center;
   border-radius: 8px;
   background-color: var(--background-primary);
   position: relative;
-  margin-right:10px
+  margin-right: 10px
+}
+
+.indicator {
+  position: absolute;
+  top: 50%;
+  margin-top: -6px;
+  left: -0px;
+  height: 12px;
+  width: 7px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: var(--accent);
 }
