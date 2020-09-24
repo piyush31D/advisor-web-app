@@ -17,10 +17,11 @@ import styles from './folio.module.css';
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
-      width:'25%',
-      whiteSpace:'nowrap',
+      width: '25%',
+      whiteSpace: 'nowrap',
       border: 0,
-      padding: '10px 0',
+      color:'var(--text-primary)',
+      padding: '15px 0',
       '&:first-child': {
         paddingLeft: 5,
         borderTopLeftRadius: 5,
@@ -32,7 +33,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
       }
     },
     head: {
-      backgroundColor: '#E8EEF2',
+      backgroundColor: 'var(--background-primary)',
       color: 'var(--text-primary)',
       padding: '10px',
       fontSize: 'var(--font-regular)',
@@ -75,8 +76,8 @@ const rows = [
   createData('GOLDBEES', 2, 'High', 4, 6.0),
   createData('IDEA', 1, 'Low', 2, 4.0),
   createData('MANAPPURAM AUG 117.5 CE', 2, 'Mod. Low', 7, 4.3),
-  
-  
+
+
 ];
 
 const useStyles = makeStyles({
@@ -92,16 +93,16 @@ const useStyles = makeStyles({
     width: '1%'
   },
   semiBold: {
-    fontWeight: 600
+    fontWeight: 500
   },
   bold: {
     fontWeight: 700
   },
   rowDivider: {
-    padding: '7px 0'
+    padding: '3px 0'
   },
   line2: {
-    paddingTop: 3
+    paddingTop: 0
   },
   noWhiteSpace: {
     width: '1%',
@@ -114,19 +115,30 @@ const Folio: React.FC = () => {
   return (
     <>
       <div className={styles.header}>
-        <div className="flex row-flex cross-center" style={{ marginBottom: 15 }}>
-          <span className="font-large flex fill text-primary bold">Folio Name</span>
-          <Button variant="contained" color="primary">Send Trades</Button>
-        </div>
-        <div className="flex row-flex cross-center" style={{ marginBottom: 5 }}>
-          <div className="flex fill row-flex cross-center">
-            <Tag color="blue" size="regular" title="NSE" />
-            <Tag color="blue" size="regular" title="CNC" />
-            <Tag color="grey" size="regular" title="EQUITY" />
-            <TextButton size="regular" type="text-accent" icon="settings"></TextButton>
+        <div className="flex row-flex cross-center margin-bottom--small">
+          <div style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: 'var(--red-shade)' }} className="flex cross-center main-center margin-right--small">
+            <span className="pficon-folio" />
           </div>
-          <span style={{lineHeight:1}} className="margin-right font-regular text-primary semi-bold">17 Stocks</span>
-          <TextButton size="regular" type="text-accent" icon="users" title="5 Groups"></TextButton>
+          <span className="font-largest flex fill text-primary bold">Intraday mid cap</span>
+
+        </div>
+        <div className="flex row-flex cross-end" style={{ marginBottom: 5 }}>
+          <div className="flex fill row-flex cross-baseline">
+            <Tag color="blue" size="regular" title="NSE" />
+            <Tag color="orange" size="regular" title="CNC" />
+            <Tag color="teal" size="regular" title="EQUITY" />
+            <Tag color="brown" size="regular" title="3 Groups" icon="users" />
+            <span className="margin-right font-regular text-primary">17 Stocks</span>
+            <TextButton size="regular" type="text-primary" icon="menu-overflow"></TextButton>
+          </div>
+          <div className={styles.orderCount}>
+            {!false && <div className={styles.indicator} />}
+            <TextButton thick size="regular" type="text-primary" title="12 Orders on 10 Scrips" ></TextButton>
+          </div>
+          {!false && <>
+            <span className="spacer" />
+            <TextButton thick size="regular" type="fill-accent" title="Send trades" icon="send"></TextButton>
+          </>}
         </div>
       </div>
       <div className={styles.scripsWrap}>
@@ -140,20 +152,21 @@ const Folio: React.FC = () => {
                   </div>
                 </StyledTableCell>
                 <StyledTableCell>P&L Range</StyledTableCell>
-                <StyledTableCell colSpan={2}>Avg Price and Qty Range</StyledTableCell>
+                <StyledTableCell className={cx(classes.noWhiteSpace)}>Avg Price Range</StyledTableCell>
+                <StyledTableCell className={cx(classes.noWhiteSpace)}>Qty Range</StyledTableCell>
                 <StyledTableCell>Orders</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <StyledTableRow>
-                <StyledTableCell className={classes.rowDivider} colSpan={4} />
+                <StyledTableCell className={classes.rowDivider} colSpan={5} />
               </StyledTableRow>
               {rows.map((row) => (
                 <>
                   <StyledTableRow key={row.name}>
                     <StyledTableCell className={classes.semiBold} scope="row">
                       <div className={styles.tableCell}>
-                        <div className={styles.indicator}/>
+                        <div className={styles.indicator} />
                         <Typography className={classes.semiBold} variant="subtitle1">{row.name}</Typography>
                         <Typography className={cx(classes.semiBold, classes.line2)} variant="body2">
                           <span>12</span>
@@ -166,10 +179,10 @@ const Folio: React.FC = () => {
                       <div className={styles.tableCell}>
                         <Typography className={classes.semiBold} variant="subtitle1">
                           <span className="text-red">-4.2%</span>
-                          <span className={cx(styles.rangeIcon, 'pficon-range')} />
+                          <span className={cx(styles.rangeIcon, 'pficon-range font-medium')} />
                           <span className="text-green">+7%</span>
                         </Typography>
-                        <Typography className={cx(classes.line2)} variant="subtitle1">
+                        <Typography className={cx(classes.line2)} variant="body2">
                           <span>LTP</span>
                           <span className="spacer" />
                           <span className="text-red">₹8.75</span>
@@ -178,20 +191,18 @@ const Folio: React.FC = () => {
                     </StyledTableCell>
                     <StyledTableCell className={cx(classes.noWhiteSpace)}>
                       <div className={cx(styles.tableCell, styles.noBorder, 'margin-right')}>
-                        <span style={{color:'#00C9C3'}} className="pficon-range-price font-large text-accent" />
-                        <Typography className={cx(classes.line2)} variant="subtitle1">
+                        <Typography variant="subtitle1">
                           <span className="text-primary">₹8.50</span>
-                          <span className={cx(styles.rangeIcon, 'pficon-range')} />
+                          <span style={{ color: '#00C9C3' }} className={cx(styles.rangeIcon, 'pficon-range-price')} />
                           <span className="text-primary">₹10.20</span>
                         </Typography>
                       </div>
                     </StyledTableCell>
                     <StyledTableCell className={classes.noWhiteSpace}>
                       <div className={styles.tableCell}>
-                        <span style={{color:'#E1A500'}} className="pficon-range-quantity font-large text-accent" />
-                        <Typography className={cx(classes.line2)} variant="subtitle1">
+                        <Typography variant="subtitle1">
                           <span className="text-primary">8.5%</span>
-                          <span className={cx(styles.rangeIcon, 'pficon-range')} />
+                          <span style={{ color: '#E1A500' }} className={cx(styles.rangeIcon, 'pficon-range-quantity')} />
                           <span className="text-primary">10.2%</span>
                         </Typography>
                       </div>

@@ -18,6 +18,7 @@ import styles from './all-investors.module.css';
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
+      color:'var(--text-primary)',
       border: 0,
       padding: '14px 10px',
       '&:first-child': {
@@ -30,7 +31,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
       }
     },
     head: {
-      backgroundColor: '#E8EEF2',
+      backgroundColor: 'var(--table-head-background)',
       color: 'var(--text-primary)',
       padding: '10px',
       fontSize: 'var(--font-regular)'
@@ -45,7 +46,7 @@ const StyledTableRow = withStyles((theme: Theme) =>
   createStyles({
     root: {
       '&:nth-of-type(even)': {
-        backgroundColor: '#FAFAFB',
+        backgroundColor: 'var(--table-cell-background)',
       },
     },
   }),
@@ -91,7 +92,7 @@ const useStyles = makeStyles({
     width: '1%'
   },
   semiBold: {
-    fontWeight: 600
+    fontWeight: 500
   }
 });
 
@@ -101,23 +102,22 @@ const Group: React.FC = () => {
   return (
     <>
       <div className={styles.header}>
-        <div className="flex row-flex margin-bottom">
-          <span className="font-large flex fill text-primary bold">Intraday low risk, mid budget</span>
-          <Button
-            variant="contained"
-            color="primary"
-            endIcon={<span style={{fontSize:13}} className="pficon-plus"/>}
-          >Add</Button>
-        </div>
-        <div className="flex row-flex cross-center margin-bottom">
-          <div className="flex fill row-flex cross-center">
-            <Tag color="yellow" icon="meter" size="regular" title="Conservative" />
-            <Tag color="green" icon="rupee" size="regular" title="0 - 1L" />
-            <TextButton size="regular" type="text-accent" icon="settings"></TextButton>
+        <div className="flex cross-start margin-bottom">
+          <div style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: 'var(--accent-shade)' }} className="flex cross-center main-center margin-right--small">
+            <span className="pficon-users" />
           </div>
-          <TextButton size="regular" type="text-accent" icon="folio" title="5 folios"></TextButton>
+          <span className="font-largest flex fill text-primary bold">Intraday low risk, mid budget</span>
         </div>
-        {true && <span className="semi-bold text-primary">4 Selected</span>}
+        <div className="flex row-flex cross-end margin-bottom">
+          <div className="flex fill row-flex cross-center">
+            <Tag color="orange" icon="settings" size="regular" title="Conservative" />
+            <Tag color="yellow" icon="rupee" size="regular" title="0 - 1L" />
+            <Tag color="brown" icon="folio" size="regular" title="5 folios" />
+            <TextButton size="regular" type="text-primary" icon="menu-overflow"></TextButton>
+          </div>
+          <TextButton size="regular" type="text-accent" icon="plus" title="Add investors"></TextButton>
+        </div>
+        {!true && <span className="semi-bold text-primary">4 Selected</span>}
       </div>
       <TableContainer className={styles.tableWrap}>
         <Table stickyHeader className={classes.table} aria-label="customized table">
@@ -147,7 +147,7 @@ const Group: React.FC = () => {
                   />
                 </StyledTableCell>
                 <StyledTableCell className={classes.avatarCell}>
-                  <InvestorAvatar style={{ backgroundColor: false ? "#" + ((1 << 24) * Math.random() | 0).toString(16) : '#e2e2e2' }} alt={row.name} />
+                  <InvestorAvatar style={{ backgroundColor: false ? "#" + ((1 << 24) * Math.random() | 0).toString(16) : 'var(--border)' }} alt={row.name} />
                 </StyledTableCell>
                 <StyledTableCell className={classes.semiBold} scope="row">
                   {row.name}

@@ -16,7 +16,7 @@
 
 .tableCell {
   padding: 0 10px;
-  border-right: 1px solid #e2e2e2;
+  border-right: 1px solid var(--border);
   position: relative;
 }
 
@@ -25,12 +25,21 @@
 }
 
 .rangeIcon {
-  font-size: var(--font-regular);
+  font-size: var(--font-medium);
   padding: 0 5px;
   vertical-align: middle;
   color: #848484
 }
-
+.orderCount{
+  display: flex;
+  flex:0;
+  padding:0 5px;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--background-secondary);
+  position: relative;
+  white-space: nowrap;
+}
 .indicator {
   position: absolute;
   top: 6px;
@@ -40,4 +49,9 @@
   background-color: var(--accent);
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
+}
+.orderCount .indicator{
+  top:50%;
+  left:0;
+  margin-top:-6px;
 }

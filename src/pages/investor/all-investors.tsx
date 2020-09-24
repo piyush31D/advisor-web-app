@@ -14,6 +14,7 @@ import styles from './all-investors.module.css';
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
+      color:'var(--text-primary)',
       border: 0,
       padding: '14px 10px',
       '&:first-child': {
@@ -26,7 +27,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
       }
     },
     head: {
-      backgroundColor: '#E8EEF2',
+      backgroundColor: 'var(--table-head-background)',
       color: 'var(--text-primary)',
       padding: '10px',
       fontSize: 'var(--font-regular)'
@@ -41,7 +42,7 @@ const StyledTableRow = withStyles((theme: Theme) =>
   createStyles({
     root: {
       '&:nth-of-type(even)': {
-        backgroundColor: '#FAFAFB',
+        backgroundColor: 'var(--table-cell-background)',
       },
     },
   }),
@@ -103,7 +104,7 @@ const useStyles = makeStyles({
     width: '1%'
   },
   semiBold:{
-    fontWeight:600
+    fontWeight: 500
   }
 });
 
@@ -149,7 +150,7 @@ const AllInvestors: React.FC = () => {
                   />
                 </StyledTableCell>
                 <StyledTableCell className={classes.avatarCell}>
-                  <InvestorAvatar style={{ backgroundColor:false? "#" + ((1 << 24) * Math.random() | 0).toString(16) :'#e2e2e2'}} alt={row.name} />
+                  <InvestorAvatar style={{ backgroundColor:false? "#" + ((1 << 24) * Math.random() | 0).toString(16) :'var(--border)'}} alt={row.name} />
                 </StyledTableCell>
                 <StyledTableCell className={classes.semiBold} scope="row">
                   {row.name}
