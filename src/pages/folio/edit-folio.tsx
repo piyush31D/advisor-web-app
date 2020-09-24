@@ -21,7 +21,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
       width: '25%',
       whiteSpace: 'nowrap',
       border: 0,
-      padding: '10px',
+      padding: '12px 10px',
       '&:first-child': {
         paddingLeft: 5,
         borderTopLeftRadius: 5,
@@ -33,7 +33,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
       }
     },
     head: {
-      backgroundColor: '#E8EEF2',
+      backgroundColor: 'var(--background-primary)',
       color: 'var(--text-primary)',
       padding: '10px',
       fontSize: 'var(--font-regular)',
@@ -72,7 +72,7 @@ function createData(name: string, price: number, currentQuantity: number[], newQ
 
 const scrips = [
   createData('IDEA', 8.20, [20, 12.3], [2, 12.3], false, 'NEW'),
-  createData('MANAPPURAM AUG 117.5 CE', 12348.5, [1, 20.67], [1, 20.67], true, 'NEW'),
+  createData('MANAPPURAM AUG 117.5 CE', 1248.5, [1, 20.67], [1, 20.67], true, 'NEW'),
   createData('GOLDBEES', 110.30, [2, 12.3], [2, 12.3], false, 'MODIFIED'),
   createData('TCS', 1207.50, [1, 20.2], [1, 20.2], true, 'UNCHANGED'),
 ];
@@ -90,13 +90,13 @@ const useStyles = makeStyles({
     width: '1%'
   },
   semiBold: {
-    fontWeight: 600
+    fontWeight: 500
   },
   bold: {
     fontWeight: 700
   },
   rowDivider: {
-    padding: '7px 0'
+    padding: '3px 0'
   },
   line2: {
     paddingTop: 3
@@ -109,18 +109,17 @@ const useStyles = makeStyles({
 const EditFolio: React.FC = () => {
   const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = useState<HTMLInputElement | null>(null);
-  
-  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget);
-    e.currentTarget.blur()
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const open= Boolean(anchorEl);
+  const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
   return (
@@ -131,15 +130,18 @@ const EditFolio: React.FC = () => {
         </div>
         <div className="flex row-flex cross-center" style={{ marginBottom: 5 }}>
           <div className="flex fill row-flex cross-center">
-            <span className="pficon-search" style={{ marginRight: -20, marginLeft: 5, zIndex: 2 }} />
-            <input aria-describedby={id} placeholder="Search and add Stocks" type="text" className={styles.scripSearchInput} onFocus={handleClick}/>
+            <span aria-describedby={id} className={styles.scripSearch} onClick={handleClick}>
+              <span className="pficon-search margin-right"/>
+              <span>Search and add Stocks</span>
+            </span>
             <Popover
               id={id}
               open={open}
               anchorEl={anchorEl}
               onClose={handleClose}
+              elevation={8}
               anchorOrigin={{
-                vertical: 'bottom',
+                vertical: 'top',
                 horizontal: 'left',
               }}
               transformOrigin={{
@@ -149,18 +151,31 @@ const EditFolio: React.FC = () => {
             >
 
               <div className={styles.scripSearchPopover}>
-
+                <input autoFocus aria-describedby={id} placeholder="Search and add Stocks" type="text" className={styles.scripSearchInput} />
+                <span className={styles.divider}></span>
+                <div className={styles.scripSearched}>
+                  <span className="text-primary">IDEA</span>
+                  <span className="text-accent">NSE</span>
+                </div>
+                <div className={styles.scripSearched}>
+                  <span className="text-primary">IDEA</span>
+                  <span className="text-accent">NSE</span>
+                </div>
+                <div className={styles.scripSearched}>
+                  <span className="text-primary">IDEA</span>
+                  <span className="text-accent">NSE</span>
+                </div>
               </div>
             </Popover>
-            <span className="semi-bold font-regular text-primary">20 Scripts</span>
+            <span className="semi-bold font-regular text-primary">20 Stocks</span>
             <div className={cx(styles.scriptState, styles.stateNew)} />
             <span className="font-regular semi-bold text-secondary">5 New</span>
             <div className={cx(styles.scriptState, styles.stateModified)} />
             <span className="font-regular semi-bold text-secondary">2 Modified</span>
           </div>
-          <TextButton size="regular" type="text-red" icon="reset" title="reset changes"></TextButton>
+          <TextButton thick size="regular" type="text-red" icon="reset" title="Reset changes"></TextButton>
           <span className="spacer"></span>
-          <TextButton size="regular" type="fill-accent" title="Save changes"></TextButton>
+          <TextButton thick size="regular" type="fill-accent" title="Save changes"></TextButton>
         </div>
       </div>
       <div className={folioStyles.scripsWrap}>
@@ -207,10 +222,10 @@ const EditFolio: React.FC = () => {
                     </StyledTableCell>
                     <StyledTableCell className={cx(classes.noWhiteSpace)}>
                       <div className={styles.qtyInputWrap}>
-                        <input type="number" className={styles.qtyInputLeft} />
+                        <input name={`${scrip.name}-quantity`} type="number" className={cx(styles.qtyInputLeft,'no-number-stepper')} />
                         <span className={cx(styles.rangeIcon, 'pficon-dot')} />
-                        <input type="number" className={styles.qtyInputRight} />
-                        <span style={{ marginLeft: -20, marginRight: 10 }}>%</span>
+                        <input name={`${scrip.name}-weight`} type="number" className={cx(styles.qtyInputRight,'no-number-stepper')} />
+                        <span style={{ marginLeft: -18, marginRight: 8 }}>%</span>
                         <div className={styles.actionButtonWrap}>
                           <TextButton size="regular" type={scrip.locked ? 'text-accent' : 'text-grey'} icon={scrip.locked ? 'locked' : 'unlocked'} />
                           <span className="spacer margin-right" />
