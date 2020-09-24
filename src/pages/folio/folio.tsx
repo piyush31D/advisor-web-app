@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
+import { NavLink } from 'react-router-dom';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import Popover from '@material-ui/core/Popover';
 import TextButton from 'src/components/button/text.button';
 import Tag from 'src/components/tag/tag';
 import styles from './folio.module.css';
@@ -20,7 +21,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
       width: '25%',
       whiteSpace: 'nowrap',
       border: 0,
-      color:'var(--text-primary)',
+      color: 'var(--text-primary)',
       padding: '15px 0',
       '&:first-child': {
         paddingLeft: 5,
@@ -111,6 +112,18 @@ const useStyles = makeStyles({
 
 const Folio: React.FC = () => {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -129,13 +142,39 @@ const Folio: React.FC = () => {
             <Tag color="teal" size="regular" title="EQUITY" />
             <Tag color="brown" size="regular" title="3 Groups" icon="users" />
             <span className="margin-right font-regular text-primary">17 Stocks</span>
-            <TextButton size="regular" type="text-primary" icon="menu-overflow"></TextButton>
+            <TextButton onClick={handleClick} size="regular" type="text-primary" icon="menu-overflow"></TextButton>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              elevation={8}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+            >
+              <div className={styles.menuPopover}>
+                <NavLink to="/folio/1/edit" className={styles.menuItem}>
+                  <span className="pficon-edit margin-right" />
+                  <span>Edit folio</span>
+                </NavLink>
+                <NavLink to="/folio/1/create" className={styles.menuItem}>
+                  <span className="pficon-plus-circle margin-right" />
+                  <span>Create trades</span>
+                </NavLink>
+              </div>
+            </Popover>
           </div>
-          <div className={styles.orderCount}>
-            {!false && <div className={styles.indicator} />}
-            <TextButton thick size="regular" type="text-primary" title="12 Orders on 10 Scrips" ></TextButton>
-          </div>
-          {!false && <>
+          <NavLink to="/folio/1/create" className={styles.orderCount}>
+            {false && <div className={styles.indicator} />}
+            <TextButton thick size="regular" type="text-primary" title="Create trades" icon="plus"></TextButton>
+          </NavLink>
+          {false && <>
             <span className="spacer" />
             <TextButton thick size="regular" type="fill-accent" title="Send trades" icon="send"></TextButton>
           </>}

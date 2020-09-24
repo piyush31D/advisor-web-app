@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
+import { useHistory } from 'react-router-dom'
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextButton from 'src/components/button/text.button';
@@ -76,6 +77,7 @@ const StyledInput = withStyles(() =>
 )(InputBase);
 
 const CreateTrades: React.FC = () => {
+  let history = useHistory();
   const classes = useStyles();
   const [transactionType, setTransactionType] = useState('BUY');
 
@@ -86,7 +88,7 @@ const CreateTrades: React.FC = () => {
 
   return (
     <div className={styles.modalContainer}>
-      <div className={styles.modalBackground}></div>
+      <div role="button" onClick={() => history.goBack()} className={styles.modalBackground}></div>
       <div className={styles.modal}>
         <div className={styles.columnLeft}>
           <div className={styles.columnHeader}>

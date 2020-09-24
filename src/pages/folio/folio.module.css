@@ -55,3 +55,26 @@
   left:0;
   margin-top:-6px;
 }
+
+.menuPopover{
+  width:200px;
+  padding:10px 0px;
+  border-radius: 10px;
+  background-color: var(--background-paper);
+}
+.menuItem{
+  padding:5px 20px;
+  margin:0 -10px;
+  font-size: var(--font-medium);
+  display: flex;
+  transition: .2s;
+  cursor: pointer;
+  color: var(--text-primary);
+  align-items: baseline;
+  color:var(--text-primary);
+  font-weight: 500;
+}
+.menuItem:hover{
+  background-color: var(--background-secondary);
+  color:var(--text-primary);
+}
