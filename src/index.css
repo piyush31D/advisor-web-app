@@ -3,11 +3,12 @@ html{
 }
 body {
   margin: 0;
-  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  font-family:-apple-system, BlinkMacSystemFont, "roboto", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color:var(--text-primary) !important;
   font-size:14px;
+  background-color: var(--background-primary) !important;
 }
 
 code {
