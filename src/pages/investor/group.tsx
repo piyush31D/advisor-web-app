@@ -18,7 +18,7 @@ import styles from './all-investors.module.css';
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
-      color:'var(--text-primary)',
+      color: 'var(--text-primary)',
       border: 0,
       padding: '14px 10px',
       '&:first-child': {
@@ -103,21 +103,25 @@ const Group: React.FC = () => {
     <>
       <div className={styles.header}>
         <div className="flex cross-start margin-bottom">
-          <div style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: 'var(--accent-shade)' }} className="flex cross-center main-center margin-right--small">
+          {/* <div style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: 'var(--accent-shade)' }} className="flex cross-center main-center margin-right--small">
             <span className="pficon-users" />
-          </div>
+          </div> */}
           <span className="font-largest flex fill text-primary bold">Intraday low risk, mid budget</span>
         </div>
-        <div className="flex row-flex cross-end margin-bottom">
+        <div className="flex row-flex cross-center margin-bottom">
           <div className="flex fill row-flex cross-center">
-            <Tag color="orange" icon="settings" size="regular" title="Conservative" />
-            <Tag color="yellow" icon="rupee" size="regular" title="0 - 1L" />
-            <Tag color="brown" icon="folio" size="regular" title="5 folios" />
+            <Tag color="yellow" icon="meter" size="regular" title="Low + Con. + Mod." />
+            <Tag color="teal" icon="rupee" size="regular" title="99k - 20L" />
+            <TextButton size="regular" type="fill-primary" title="+2"></TextButton>
+            <span className="margin-right margin-left" />
+            <TextButton size="regular" type="fill-primary" icon="folio" title="5 folios"></TextButton>
+            <span className="margin-right--small" />
             <TextButton size="regular" type="text-primary" icon="menu-overflow"></TextButton>
           </div>
-          <TextButton size="regular" type="text-accent" icon="plus" title="Add investors"></TextButton>
+          <span className="pficon-users" style={{marginRight:2}}/>
+          <span className="margin-right semi-bold">14</span>
+          <TextButton size="regular" type="text-accent" icon="plus" title="Add"></TextButton>
         </div>
-        {!true && <span className="semi-bold text-primary">4 Selected</span>}
       </div>
       <TableContainer className={styles.tableWrap}>
         <Table stickyHeader className={classes.table} aria-label="customized table">

@@ -5,7 +5,7 @@
   cursor: pointer;
   outline: none;
   padding:0;
-  height:1.8em;
+  height:1.8rem;
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
@@ -22,15 +22,15 @@
   white-space: nowrap;
 }
 .round{
-  height:2.6em;
-  width:2.6em;
+  height:2.5rem;
+  width:2.5rem;
   padding:0;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
 }
 .thick{
-  height:2.5em;
+  height:2.5rem;
   padding:0 5px;
   border-radius: 8px;
 }
@@ -59,6 +59,11 @@
 }
 .solid {
   border-radius: 10px;
+}
+.fill-primary {
+  color: var(--text-primary);
+  background-color: var(--primary-shade);
+  padding:0 2px;
 }
 .fill-accent{
   background-color: var(--accent);

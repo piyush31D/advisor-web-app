@@ -1,65 +1,20 @@
-.dark-theme {
-  --accent: rgb(0, 95, 235);
-  --accent-background: rgb(19, 34, 64);
-  --background-primary: rgb(39, 39, 41);
-  --background-secondary: rgba(0, 0, 0, 0.2);
-  --accent-shade: rgba(0, 95, 235, 0.2);
-  --slider-color:rgb(80, 150, 255);
-  --font-regular: 14px;
-  --font-medium: 13px;
-  --font-semilarge: 16px;
-  --font-large: 18px;
-  --text-primary: rgb(219, 219, 219);
-  --primary-shade:rgba(255,255,255,0.1);
-  --text-white:var(--text-primary);
-  --text-secondary: #848484;
-  --text-green: rgb(51, 218, 118);
-  --green-shade: rgba(25, 174, 85, 0.1);
-  --text-red: rgb(255, 112, 93);
-  --red-shade: rgba(255, 95, 74, 0.2);
-  --border: rgba(255, 255, 255, 0.1);
-  --input-background:rgba(255,255,255,0.1);
-  --input-focused-background:rgba(255,255,255,0.15);
-  --background-paper:rgba(255, 255, 255, 0.05);
-  --table-head-background:rgba(0, 0, 0, 0.2);
-  --table-cell-background:rgba(0,0,0,0.15);
-  --nav-column-card:rgba(255, 255, 255, 0.07);
-  --nav-column-card-active:rgba(0, 0 , 0, 0.05);
-  --yellow: rgb(197, 161, 0);
-  --yellow-shade:rgba(255, 208, 0, 0.15);
-  --orange: rgb(242, 142, 28);
-  --orange-shade: rgba(242, 142, 28, 0.15);
-  --olive: rgb(159, 180, 21);
-  --olive-shade: rgba(159, 180, 21, 0.15);
-  --teal: rgb(0, 173, 165);
-  --teal-shade: rgba(0, 173, 165, 0.15);
-  --pink: rgb(206, 52, 139);
-  --pink-shade: rgba(206, 52, 139, 0.15);
-  --purple: rgb(147, 48, 180);
-  --purple-shade: rgba(147, 48, 180, 0.15);
-  --brown: rgb(196, 146, 113);
-  --brown-shade: rgba(177, 121, 84, 0.2);
-  --checkbox-unchecked:#747474;
-}
-
 
 .light-theme {
   --accent: rgb(0, 95, 235);
   --accent-background: rgb(0, 95, 235);
   --background-primary: #fff;
   --background-secondary: rgba(0,0,0,0.05);
-  --accent-shade:rgba(0, 95, 235,0.05);
+  --accent-shade:rgba(0, 95, 235,0.07);
   --slider-color: rgb(0, 95, 235);
   --font-regular: 14px;
   --font-medium: 13px;
   --font-semilarge: 16px;
   --font-large:18px;
   --text-primary: #000;
-  --primary-shade:rgba(0,0,0,0.1);
+  --primary-shade:rgba(0,0,0,0.07);
   --text-white:rgb(255, 255, 255);
   --text-secondary: #848484;
   --text-green:#19AF55;
-  --green-shade:#19AF55;
   --text-red:rgb(219, 80, 61);
   --red-shade:rgba(219, 80, 61,0.05);
   --border:#e2e2e2;
@@ -70,8 +25,10 @@
   --table-cell-background:rgba(245, 246, 248,0.7);
   --nav-column-card:rgba(255, 255, 255, 0.2);
   --nav-column-card-active:rgba(0, 0 , 0, 0.05);
+  --green: rgb(40, 196, 102);
+  --green-shade:rgb(25, 175, 85,0.15);
   --yellow: rgb(197, 161, 0);
-  --yellow-shade:rgba(255, 208, 0, 0.15);
+  --yellow-shade:rgba(255, 218, 52, 0.20);
   --orange: rgb(242, 142, 28);
   --orange-shade: rgba(242, 142, 28, 0.15);
   --olive: rgb(159, 180, 21);
@@ -87,6 +44,51 @@
   --brown: rgb(148, 93, 56);
   --brown-shade: rgba(148, 93, 56, 0.15);
   --checkbox-unchecked:#bbb;
+}
+
+.dark-theme {
+  --accent: rgb(0, 95, 235);
+  --accent-background: rgb(0, 95, 235,0.4);
+  --background-primary: rgb(39, 39, 41);
+  --background-secondary: rgba(0, 0, 0, 0.2);
+  --accent-shade: rgba(0, 95, 235, 0.2);
+  --slider-color:rgb(80, 150, 255);
+  --font-regular: 14px;
+  --font-medium: 13px;
+  --font-semilarge: 16px;
+  --font-large: 18px;
+  --text-primary: rgb(219, 219, 219);
+  --primary-shade:rgba(255,255,255,0.1);
+  --text-white:var(--text-primary);
+  --text-secondary: #848484;
+  --text-green: rgb(51, 218, 118);
+  --text-red: rgb(255, 112, 93);
+  --red-shade: rgba(255, 95, 74, 0.2);
+  --border: rgba(255, 255, 255, 0.1);
+  --input-background:rgba(255,255,255,0.1);
+  --input-focused-background:rgba(255,255,255,0.15);
+  --background-paper:rgba(255, 255, 255, 0.05);
+  --table-head-background:rgba(0, 0, 0, 0.2);
+  --table-cell-background:rgba(0,0,0,0.15);
+  --nav-column-card:rgba(255, 255, 255, 0.07);
+  --nav-column-card-active:rgba(0, 0 , 0, 0.05);
+  --green: rgb(51, 218, 118);
+  --green-shade:rgb(25, 175, 85,0.15);
+  --yellow: rgb(197, 161, 0);
+  --yellow-shade:rgba(255, 218, 52, 0.20);
+  --orange: rgb(242, 142, 28);
+  --orange-shade: rgba(242, 142, 28, 0.15);
+  --olive: rgb(159, 180, 21);
+  --olive-shade: rgba(159, 180, 21, 0.15);
+  --teal: rgb(0, 173, 165);
+  --teal-shade: rgba(0, 173, 165, 0.15);
+  --pink: rgb(206, 52, 139);
+  --pink-shade: rgba(206, 52, 139, 0.15);
+  --purple: rgb(147, 48, 180);
+  --purple-shade: rgba(147, 48, 180, 0.15);
+  --brown: rgb(196, 146, 113);
+  --brown-shade: rgba(177, 121, 84, 0.2);
+  --checkbox-unchecked:#747474;
 }
 
 .text-primary {

@@ -36,7 +36,7 @@
   padding:0 5px;
   align-items: center;
   border-radius: 8px;
-  background-color: var(--background-secondary);
+  background-color: var(--accent-shade);
   position: relative;
   white-space: nowrap;
 }
@@ -58,14 +58,14 @@
 
 .menuPopover{
   width:200px;
-  padding:10px 0px;
-  border-radius: 10px;
+  padding:5px 0px;
+  border-radius: 5px;
   background-color: var(--background-paper);
 }
 .menuItem{
   padding:5px 20px;
   margin:0 -10px;
-  font-size: var(--font-medium);
+  font-size: var(--font-regular);
   display: flex;
   transition: .2s;
   cursor: pointer;

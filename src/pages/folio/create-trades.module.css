@@ -6,21 +6,23 @@
   bottom: 0;
   display: flex;
   justify-content: center;
+  overflow-x: auto;
+  z-index: 5;
 }
 
 .modalBackground {
   display: block;
   background-color: #000;
   opacity: 0.5;
-  z-index: 0;
+  z-index: 10;
 }
 
 .modal {
   width: 1250px;
   background-color: var(--background-primary);
   border-radius: 10px;
-  z-index: 1;
-  margin: 20px auto;
+  z-index: 15;
+  margin: 20px 0;
   padding: 10px;
   display: flex;
   border: 1px solid var(--border);
@@ -229,7 +231,7 @@
 
 .shadedBck {
   font-size: 60px;
-  color: var(--input-background) !important;
+  color: var(--input-focused-background) !important;
   position: absolute;
   top: 0;
   left: 0;

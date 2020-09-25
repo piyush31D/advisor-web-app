@@ -136,12 +136,13 @@ const Folio: React.FC = () => {
 
         </div>
         <div className="flex row-flex cross-end" style={{ marginBottom: 5 }}>
-          <div className="flex fill row-flex cross-baseline">
+          <div className="flex fill row-flex cross-center">
             <Tag color="blue" size="regular" title="NSE" />
             <Tag color="orange" size="regular" title="CNC" />
             <Tag color="teal" size="regular" title="EQUITY" />
-            <Tag color="brown" size="regular" title="3 Groups" icon="users" />
-            <span className="margin-right font-regular text-primary">17 Stocks</span>
+            <span className="margin-right"/>
+            <TextButton size="regular" type="fill-primary" icon="users" title="3 Groups"/>
+            <span className="margin-right margin-left font-regular text-primary">17 Stocks</span>
             <TextButton onClick={handleClick} size="regular" type="text-primary" icon="menu-overflow"></TextButton>
             <Popover
               id={id}
@@ -150,8 +151,8 @@ const Folio: React.FC = () => {
               onClose={handleClose}
               elevation={8}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: 'bottom',
+                horizontal: 'left',
               }}
               transformOrigin={{
                 vertical: 'top',
@@ -170,9 +171,9 @@ const Folio: React.FC = () => {
               </div>
             </Popover>
           </div>
-          <NavLink to="/folio/1/create" className={styles.orderCount}>
+          <NavLink to="/folio/1/create" className={cx(styles.orderCount)}>
             {false && <div className={styles.indicator} />}
-            <TextButton thick size="regular" type="text-primary" title="Create trades" icon="plus"></TextButton>
+            <TextButton thick size="regular" type="text-accent" title="Create trades" icon="plus"></TextButton>
           </NavLink>
           {false && <>
             <span className="spacer" />

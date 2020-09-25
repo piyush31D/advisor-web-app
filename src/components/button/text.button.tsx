@@ -4,7 +4,7 @@ import styles from './text-button.module.css';
 
 interface Props {
   title?: string,
-  type: 'solid' | 'text-accent' | 'text-primary' | 'text-grey' | 'text-red' | 'text-white' | 'fill-accent',
+  type: 'solid' | 'text-accent' | 'text-primary' | 'text-grey' | 'text-red' | 'text-white' | 'fill-accent'|'fill-primary',
   round?: boolean,
   thick?: boolean,
   size: 'regular' | 'medium' | 'large',
