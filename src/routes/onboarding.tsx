@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 import { Redirect, RouteProps } from "react-router-dom";
 import { IState } from 'src/store/config';
 
-const UserRoute: React.ComponentType<RouteProps> = ({ children }) => {
+const OnboardingRoute: React.ComponentType<RouteProps> = ({ children }) => {
   const authenticated = useSelector((state: IState) => state.authReducer.authenticated);
   const profileExists = useSelector((state: IState) => state.profileReducer.profileExists);
   return (
     <>
-      {authenticated && profileExists ? children : <Redirect to="/onboarding" />}
+      {authenticated && !profileExists ? children : <Redirect to="/" />}
     </>
   )
 };
 
-export default UserRoute;
+export default OnboardingRoute;

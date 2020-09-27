@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { IState } from 'src/store/config';
 import PinSetup from './pin-setup';
 import PinValidation from './pin-valdiate';
+import { Redirect } from 'react-router-dom';
 
 const AuthPage: React.FC = () => {
   const auth = useSelector((state: IState) => state.authReducer);
@@ -18,10 +19,13 @@ const AuthPage: React.FC = () => {
       return <OtpValidate mobile={auth.mobile} />
     }
     if (auth.mobile && auth.pinToken && !auth.pinExists) {
-      return <PinSetup mobile={auth.mobile} pinToken={auth.pinToken}/>
+      return <PinSetup mobile={auth.mobile} pinToken={auth.pinToken} />
     }
     if (auth.mobile && auth.pinToken && auth.pinExists) {
-      return <PinValidation mobile={auth.mobile} pinToken={auth.pinToken}/>
+      return <PinValidation mobile={auth.mobile} pinToken={auth.pinToken} />
+    }
+    if (auth.user && auth.token) {
+      return <Redirect to="/onboarding" />
     }
   }
 

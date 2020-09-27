@@ -9,12 +9,18 @@ import InvestorPage from 'src/pages/investor';
 import FoliosPage from 'src/pages/folio';
 import PlanPage from 'src/pages/plan'
 import AuthPage from "src/pages/auth";
+import AdvisorOnboarding from 'src/pages/onboarding';
+import OnboardingRoute from './onboarding';
 
 const IndexRoute: React.FC = () => (
   <div className="app-root">
     <Switch>
       <AuthRoute path="/" component={AuthPage} exact />
+      <OnboardingRoute path="/onboarding" exact >
+        <AdvisorOnboarding />
+      </OnboardingRoute>
       <UserRoute>
+        //TODO: Look into why this doesn't refresh but putting in children rerenders
         <div className="flex row-flex fill cross-stretch">
           <Sidebar />
           <div className="flex fill col-flex cross-stretch">

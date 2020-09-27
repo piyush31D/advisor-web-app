@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import IndexRoute from 'src/routes';
 import { setAuthorizationHeader } from 'src/utils/axios';
@@ -7,6 +7,7 @@ import { IState } from 'src/store/config';
 
 const AppWithTheme: React.FC = () => {
   const authReducer = useSelector((state: IState) => state.authReducer);
+  const [initialSetup, setInitialSetup] = useState<boolean>(false);
   const theme = createMuiTheme({
     typography: {
       fontFamily: '-apple-system, BlinkMacSystemFont, "roboto", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"',
@@ -15,17 +16,16 @@ const AppWithTheme: React.FC = () => {
       primary: {
         main: '#005FEB'
       },
-
     },
     overrides: {
-      MuiAvatar:{
-        colorDefault:{
-          color:'#747474'
+      MuiAvatar: {
+        colorDefault: {
+          color: '#747474'
         }
       },
-      MuiSlider:{
-        root:{
-          color:'var(--slider-color)'
+      MuiSlider: {
+        root: {
+          color: 'var(--slider-color)'
         }
       },
       MuiRadio: {
@@ -107,22 +107,22 @@ const AppWithTheme: React.FC = () => {
         }
       },
       MuiTypography: {
-        root:{
-          color:'var(--text-primary)'
+        root: {
+          color: 'var(--text-primary)'
         },
         body2: {
           fontSize: 13
         }
       },
-      MuiPaper:{
-        root:{
-          backgroundColor:'var(--background-primary)'
+      MuiPaper: {
+        root: {
+          backgroundColor: 'var(--background-primary)'
         },
-        rounded:{
-          borderRadius:5,
+        rounded: {
+          borderRadius: 5,
         },
-        elevation8:{
-          boxShadow:'0px 5px 5px -3px rgba(0,0,0,0.1), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)'
+        elevation8: {
+          boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.1), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)'
         }
       }
     },
@@ -140,14 +140,21 @@ const AppWithTheme: React.FC = () => {
   });
 
   useEffect(() => {
-    if (authReducer && authReducer.token) {
-      setAuthorizationHeader(authReducer.token);
+    if (authReducer) {
+      if (authReducer.token) {
+        setAuthorizationHeader(authReducer.token);
+      } else {
+        setAuthorizationHeader();
+      }
+      //TODO: Why child is rendering before this
+      //This was done to stop making api call before axios header setup
+      setInitialSetup(true);
     }
   }, [authReducer]);
 
   return (
     <ThemeProvider theme={theme}>
-      <IndexRoute />
+      {initialSetup && <IndexRoute />}
     </ThemeProvider>
   );
 }

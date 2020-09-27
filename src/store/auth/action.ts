@@ -3,7 +3,9 @@ import {
   AUTH_OTP_VALIDATE,
   AUTH_SIGNOUT,
   AuthActionTypes,
-  IAuthState, IUser, AUTH_SIGNIN, AUTH_FREEZE
+  IAuthState,
+  AUTH_SIGNIN,
+  AUTH_FREEZE
 } from './type';
 
 export function authOtpGenerateAction(payload: { mobile: string }): AuthActionTypes {

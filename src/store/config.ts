@@ -1,20 +1,24 @@
 import { combineReducers, createStore, compose, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer, Persistor } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import * as authReducer from './auth/reducer';
+import storage from 'redux-persist/lib/storage';
+import authReducer from './auth/reducer';
+import profileReducer from './profile/reducer';
 import { IAuthState } from './auth/type';
+import { IProfileState } from './profile/type';
 
 /*
  * combines all the existing reducers
  */
 export interface IState {
   authReducer: IAuthState;
+  profileReducer: IProfileState;
 }
 
-const rootReducers = combineReducers<IState>(
-  authReducer
-);
+const rootReducers = combineReducers<IState>({
+  authReducer,
+  profileReducer,
+});
 
 const persistConfig = {
   key: 'protofolio',
