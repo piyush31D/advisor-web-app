@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import cx from 'classnames';
 import NavColumn from './navcolumn'
 import styles from './index.module.css';
 

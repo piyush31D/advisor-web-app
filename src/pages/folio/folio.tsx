@@ -8,7 +8,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Popover from '@material-ui/core/Popover';
 import TextButton from 'src/components/button/text.button';
@@ -55,17 +54,6 @@ const StyledTableRow = withStyles((theme: Theme) =>
     },
   }),
 )(TableRow);
-
-const InvestorAvatar = withStyles(() =>
-  createStyles({
-    root: {
-      height: 24,
-      width: 24,
-      fontSize: '1rem',
-      lineHeight: 2
-    },
-  }),
-)(Avatar);
 
 function createData(name: string, plans: number, risk: string, groups: number, budget: number) {
   return { name, plans, risk, groups, budget };
@@ -140,8 +128,8 @@ const Folio: React.FC = () => {
             <Tag color="blue" size="regular" title="NSE" />
             <Tag color="orange" size="regular" title="CNC" />
             <Tag color="teal" size="regular" title="EQUITY" />
-            <span className="margin-right"/>
-            <TextButton size="regular" type="fill-primary" icon="users" title="3 Groups"/>
+            <span className="margin-right" />
+            <TextButton size="regular" type="fill-primary" icon="users" title="3 Groups" />
             <span className="margin-right margin-left font-regular text-primary">17 Stocks</span>
             <TextButton onClick={handleClick} size="regular" type="text-primary" icon="menu-overflow"></TextButton>
             <Popover

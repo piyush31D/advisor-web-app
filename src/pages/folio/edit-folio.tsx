@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -7,11 +7,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import TextButton from 'src/components/button/text.button';
 import Popover from '@material-ui/core/Popover';
-import Tag from 'src/components/tag/tag';
 import styles from './edit-folio.module.css';
 import folioStyles from './folio.module.css';
 
@@ -54,17 +52,6 @@ const StyledTableRow = withStyles((theme: Theme) =>
     },
   }),
 )(TableRow);
-
-const InvestorAvatar = withStyles(() =>
-  createStyles({
-    root: {
-      height: 24,
-      width: 24,
-      fontSize: '1rem',
-      lineHeight: 2
-    },
-  }),
-)(Avatar);
 
 function createData(name: string, price: number, currentQuantity: number[], newQuantity: number[], locked: boolean, state: string) {
   return { name, price, currentQuantity, newQuantity, locked, state };
@@ -131,7 +118,7 @@ const EditFolio: React.FC = () => {
         <div className="flex row-flex cross-center" style={{ marginBottom: 5 }}>
           <div className="flex fill row-flex cross-center">
             <span aria-describedby={id} className={styles.scripSearch} onClick={handleClick}>
-              <span className="pficon-search margin-right"/>
+              <span className="pficon-search margin-right" />
               <span>Search and add Stocks</span>
             </span>
             <Popover
@@ -222,9 +209,9 @@ const EditFolio: React.FC = () => {
                     </StyledTableCell>
                     <StyledTableCell className={cx(classes.noWhiteSpace)}>
                       <div className={styles.qtyInputWrap}>
-                        <input name={`${scrip.name}-quantity`} type="number" className={cx(styles.qtyInputLeft,'no-number-stepper')} />
+                        <input name={`${scrip.name}-quantity`} type="number" className={cx(styles.qtyInputLeft, 'no-number-stepper')} />
                         <span className={cx(styles.rangeIcon, 'pficon-dot')} />
-                        <input name={`${scrip.name}-weight`} type="number" className={cx(styles.qtyInputRight,'no-number-stepper')} />
+                        <input name={`${scrip.name}-weight`} type="number" className={cx(styles.qtyInputRight, 'no-number-stepper')} />
                         <span style={{ marginLeft: -18, marginRight: 8 }}>%</span>
                         <div className={styles.actionButtonWrap}>
                           <TextButton size="regular" type={scrip.locked ? 'text-accent' : 'text-grey'} icon={scrip.locked ? 'locked' : 'unlocked'} />

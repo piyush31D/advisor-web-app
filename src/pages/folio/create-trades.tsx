@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 import { useHistory } from 'react-router-dom'
-import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles, createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextButton from 'src/components/button/text.button';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
 import styles from './create-trades.module.css';
 import InvestorFilter from './investor-filter';
 
@@ -180,7 +178,7 @@ const CreateTrades: React.FC = () => {
                   <span className="semi-bold margin-left">₹8.75</span>
                   <TextButton type="text-white" size="regular" icon="reload" />
                 </span>
-                <span className="spacer"/>
+                <span className="spacer" />
                 <span className="margin-left">
                   <span>LTP</span>
                   <span className="semi-bold margin-left">₹8.75</span>

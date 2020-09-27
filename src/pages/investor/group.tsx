@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import cx from 'classnames';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,7 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Avatar from '@material-ui/core/Avatar';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 import TextButton from 'src/components/button/text.button';
 import Tag from 'src/components/tag/tag';
 import styles from './all-investors.module.css';
@@ -118,7 +115,7 @@ const Group: React.FC = () => {
             <span className="margin-right--small" />
             <TextButton size="regular" type="text-primary" icon="menu-overflow"></TextButton>
           </div>
-          <span className="pficon-users" style={{marginRight:2}}/>
+          <span className="pficon-users" style={{ marginRight: 2 }} />
           <span className="margin-right semi-bold">14</span>
           <TextButton size="regular" type="text-accent" icon="plus" title="Add"></TextButton>
         </div>

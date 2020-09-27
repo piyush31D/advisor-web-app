@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
 import cx from 'classnames';
 import TextButton from 'src/components/button/text.button';
 import styles from './index.module.css';
