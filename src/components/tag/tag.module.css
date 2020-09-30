@@ -34,7 +34,10 @@
   color: (--text-primary);
   background-color: var(--background-secondary);
 }
-
+.white{
+  color:rgb(255,255,255);
+  background-color: rgba(255,255,255,0.15);
+}
 .red {
   color: rgb(235, 0, 0);
   background-color: rgba(235, 0, 0, 0.1);
