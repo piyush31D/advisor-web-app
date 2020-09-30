@@ -1,0 +1,118 @@
+.planPreviewHeader{
+  font-size: var(--font-regular);
+  color:var(--text-primary);
+  text-align: center;
+  padding:15px 0 35px 0;
+  width:100%;
+  border-radius: 16px;
+  background-color: var(--input-background);
+  font-weight: 600;
+}
+.planCard{
+  width:270px;
+  background-color: var(--accent);
+  border-radius: 16px;
+  padding:10px;
+  margin-top:-20px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.planHeader,.planCardPricing{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:15px 0;
+  background:rgba(255,255,255,0.15);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.planCard *{
+  color:#fff !important;
+}
+.planCardPricing{
+  flex-direction: row;
+  padding:8px 10px;
+  justify-content: space-between;
+  font-size: var(--font-medium);
+  margin:10px 0 0 0;
+}
+.propertyHeadline{
+  font-size: var(--font-regular);
+  font-weight: 600;
+  color:var(--text-primary);
+  padding:30px 10px 2px 10px;
+  margin:0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.propertyHeadline:first-of-type{
+  padding-bottom: 6px;
+}
+.propertySubHeadline{
+  font-size: var(--font-small);
+  color:var(--text-secondary);
+  padding:0 10px 5px 10px;
+  margin:0;
+}
+.inlineInput,.propertyValueContainer{
+  padding:10px;
+  background-color: var(--input-background);
+  border-radius: 10px;
+  color:var(--text-primary);
+  width:100%;
+  border:0;
+  outline:none;
+  transition: 0.2s;
+}
+.propertyValueContainer{
+  background-color: var(--background-secondary);
+  display: inline-flex;
+  align-items: center;
+}
+.inlineInput:hover,.inlineInput:focus{
+  background-color: var(--input-focused-background);
+}
+.withDeleteButton{
+  padding-right: 40px;
+}
+.colorBox{
+  height: 30px;
+  width:30px;
+  background-color: var(--accent);
+  border-radius: 6px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+  border:0;
+  outline:none;
+}
+.colorBox:active{
+  opacity: 0.8;
+}
+.benefitBox,.pricingBox{
+  margin-bottom: 5px;
+  background-color: transparent;
+  position: relative;
+}
+.pricingBox{
+  background-color: var(--background-secondary);
+  border-radius: 10px;
+  padding:10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 40px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+.deleteButton{
+  position: absolute;
+  right:10px;
+  top:50%;
+  margin-top:-12px;
+}

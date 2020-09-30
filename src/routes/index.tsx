@@ -20,7 +20,7 @@ const IndexRoute: React.FC = () => (
         <AdvisorOnboarding />
       </OnboardingRoute>
       <UserRoute>
-        //TODO: Look into why this doesn't refresh but putting in children rerenders
+        {/*TODO: Look into why this doesn't refresh but putting in children rerenders*/}
         <div className="flex row-flex fill cross-stretch">
           <Sidebar />
           <div className="flex fill col-flex cross-stretch">
@@ -30,7 +30,7 @@ const IndexRoute: React.FC = () => (
                 <Route path="/trades" component={Dashboard} exact />
                 <Route path="/folio" component={FoliosPage} />
                 <Route path="/investor" component={InvestorPage} />
-                <Route path="/plans" component={PlanPage} exact />
+                <Route path="/plan" component={PlanPage} />
               </Switch>
             </div>
           </div>

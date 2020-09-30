@@ -1,9 +1,11 @@
 .container {
-  padding: 10px;
-  padding-top: 25px;
+  padding: 10px 20px;
+  padding-top: 15px;
   display: flex;
   flex: 1;
   flex-direction: column;
+  min-width: 800px;
+  overflow-y: auto;
 }
 
 /* -------- */
