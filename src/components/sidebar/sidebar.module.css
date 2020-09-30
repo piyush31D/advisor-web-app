@@ -54,8 +54,8 @@
 .themeSwitcher{
   padding:5px;
   border-radius: 5px;
-  height:30px;
-  width:30px;
+  height:26px;
+  width:26px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,8 +72,8 @@
 }
 .themeSwitcherIcon{
   position: relative;
-  width:20px;
-  height:14px;
+  width:16px;
+  height:12px;
   transition: 0.2s ease-in;
   -webkit-transition: 0.2s ease-in;
 }
@@ -81,15 +81,15 @@
   position: absolute;
   top:0;
   left:0;
-  font-size: 14px;
+  font-size: 12px;
   color:rgb(143 147 158);
   z-index: 2;
 }
 .themeSwitcherIcon .back{
   position: absolute;
   top:0;
-  left:8px;
-  font-size: 14px;
+  left:6px;
+  font-size: 12px;
   color:rgb(75, 81, 100);
   text-shadow:0 0 1px rgb(143 147 158);
   z-index: 1;

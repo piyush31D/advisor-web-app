@@ -103,7 +103,30 @@ const AppWithTheme: React.FC = () => {
       },
       MuiChip: {
         root: {
-          fontSize: '1rem'
+          fontSize: '1rem',
+          borderRadius: 5,
+          backgroundColor: 'var(--accent-shade)'
+        },
+        deletable: {
+          fontWeight: 600,
+          color: 'var(--accent)',
+          marginRight: 10,
+          '&:active': {
+            backgroundColor: 'var(--accent-shade)',
+            opacity: 0.8
+          },
+          '&:focus': {
+            backgroundColor:'var(--accent-shade)',
+          }
+        },
+        deleteIcon:{
+          color:'var(--accent)',
+          height:18,
+          width:18,
+          '&:hover':{
+            color:'var(--accent)',
+            opacity:0.8
+          }
         }
       },
       MuiTypography: {
@@ -112,6 +135,14 @@ const AppWithTheme: React.FC = () => {
         },
         body2: {
           fontSize: 13
+        },
+        h5: {
+          fontWeight: 600,
+          fontSize: 'var(--font-large)'
+        },
+        h6: {
+          fontWeight: 600,
+          fontSize: 'var(--font-semilarge)'
         }
       },
       MuiPaper: {
@@ -123,6 +154,19 @@ const AppWithTheme: React.FC = () => {
         },
         elevation8: {
           boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.1), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)'
+        }
+      },
+      MuiMenuItem:{
+        root:{
+          color:'var(--text-primary)',
+          '&:hover':{
+            backgroundColor:'var(--background-secondary)'
+          }
+        }
+      },
+      MuiBreadcrumbs:{
+        root:{
+          color:'var(--text-secondary)'
         }
       }
     },
