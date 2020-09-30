@@ -48,7 +48,7 @@
   color: var(--input-focused-background);
 }
 .text-accent {
-  color: var(--accent)
+  color: var(--text-accent-button)
 }
 
 .text-red {
