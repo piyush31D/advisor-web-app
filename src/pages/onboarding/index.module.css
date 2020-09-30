@@ -1,33 +1,145 @@
-.columnLeft {
+.columnLeft,.columnRight {
   display: flex;
-  flex: 4;
-  justify-content: center;
+  width: 560px;
+  flex-direction: column;
+  align-items: center;
   padding: 20px 0;
-  overflow-y: scroll;
+  overflow-y: auto;
+  background-color: #F5F6F8;
+}
+.columnRight{
+  flex:1;
+  background-color: transparent;
+  padding:20px 50px;
+}
+.authForm {
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  padding:40px 0;
 }
 
-.authContainer {
-  text-align: center;
+.container {
   display: flex;
+  flex: 1;
   flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .logo {
   font-size: 36px;
   color: var(--accent);
-  margin: 30px 0 20px 0;
+  margin: 30px 0 10px 0;
+  display: inline-flex;
+  align-items: center;
 }
 
-.inputWithIcon,
-.shadedContainer {
+.stepWrap {
   width: 360px;
-  background-color: #f5f6f8;
+  margin-top: 5px;
+  position: relative;
+}
+
+.stepperLine{
+  position: absolute;
+  top:15px;
+  bottom:50px;
+  left:27px;
+  width:0;
+  border-left:2px solid #d4d4d4;
+}
+
+.step {
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.2s;
+  color:var(--text-primary);
+}
+
+.step:hover, .stepExpanded {
+  background-color: rgb(239, 239, 241);
+  color:var(--accent)
+}
+
+.stepHeader,.subStep {
+  display: flex;
+  align-items: center;
+}
+
+.stepName, .subStepName{
+  display: flex;
+  flex: 1;
+  padding: 0 15px;
+  font-size: var(--font-semilarge);
+  color: inherit;
+  font-weight: 600;
+}
+
+.subStepName{
+  font-size: var(--font-regular);
+  font-weight: 400;
+  padding:10px 15px;
+  color:var(--text-primary);
+}
+.progressIndicator, .subIndicator{
+  width: 26px;
+  height: 26px;
+  border-radius: 15px;
+  border: 2px solid var(--accent);
+  overflow: hidden;
+  position: relative;
+  background-color:#F5F6F8;
+}
+.subIndicator{
+  border:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color:#d4d4d4;
+  font-size: 8px;
+}
+.indicatorMark {
+  position: absolute;
+  top: 67%;
+  left: 0;
+  right: 0;
+  bottom:0;
+  background-color: var(--accent);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.indicatorMark span{
+  font-size: 11px;
+  color:#fff;
+}
+
+.indicatorInset {
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  top: -2px;
+  border-radius: 50%;
+  border: 4px solid #F5F6F8;
+  z-index: 2;
+}
+.inputWithIcon, .shadedContainer {
+  width: 360px;
+  background-color: #F5F6F8;
   border-radius: 10px;
   display: flex;
   align-items: center;
   padding: 0 15px;
   margin-bottom: 15px;
 }
+
 .shadedContainer {
   justify-content: center;
   background: none;
@@ -36,18 +148,21 @@
   padding: 16px 0;
   border-radius: 10px;
 }
+
 .shadedContainer span {
   z-index: 1;
   padding: 0 3px;
 }
+
 .shadedBck {
   font-size: 60px;
-  color: #edeff4;
+  color: var(--input-background);
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
 }
+
 .otpInputWrap {
   width: 360px;
   margin-bottom: 15px;
@@ -62,7 +177,7 @@
 
 .otpInputBox {
   width: 50px;
-  background-color: #f5f6f8;
+  background-color: #F5F6F8;
   border-radius: 10px;
 }
 
@@ -86,17 +201,20 @@
   display: flex;
   align-items: center;
 }
+
 .otpInputField {
   border: 0;
-  width: 100%;
+  width: 420px;
   background: none;
   letter-spacing: 54px;
   padding-left: 20px;
 }
+
 .otpInputField:focus {
   text-decoration: none;
   outline: none;
 }
+
 .inputWithIcon:first-of-type {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -109,12 +227,4 @@
 
 .inputWithIcon span {
   font-size: 18px;
-}
-
-.authForm {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin-top: 80px;
-  margin-bottom: 50px;
 }
