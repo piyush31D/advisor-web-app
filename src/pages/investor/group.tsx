@@ -1,64 +1,15 @@
-import React from 'react';
-import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Avatar from '@material-ui/core/Avatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextButton from 'src/components/button/text.button';
+import { StyledTableCell, StyledTableRow, InvestorAvatar, useTableStyles } from './styled-table';
 import Tag from 'src/components/tag/tag';
-import styles from './all-investors.module.css';
-
-const StyledTableCell = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      color: 'var(--text-primary)',
-      border: 0,
-      padding: '14px 10px',
-      '&:first-child': {
-        borderTopLeftRadius: 8,
-        borderBottomLeftRadius: 8
-      },
-      '&:last-child': {
-        borderTopRightRadius: 8,
-        borderBottomRightRadius: 8
-      }
-    },
-    head: {
-      backgroundColor: 'var(--table-head-background)',
-      color: 'var(--text-primary)',
-      padding: '10px',
-      fontSize: 'var(--font-regular)'
-    },
-    body: {
-      fontSize: 14,
-    },
-  }),
-)(TableCell);
-
-const StyledTableRow = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      '&:nth-of-type(even)': {
-        backgroundColor: 'var(--table-cell-background)',
-      },
-    },
-  }),
-)(TableRow);
-
-const InvestorAvatar = withStyles(() =>
-  createStyles({
-    root: {
-      height: 24,
-      width: 24,
-      fontSize: '1rem',
-      lineHeight: 2
-    },
-  }),
-)(Avatar);
+import styles from './group.module.css';
+import PagePopover from './popover';
 
 function createData(name: string, plans: number, risk: string, groups: number, budget: number) {
   return { name, plans, risk, groups, budget };
@@ -76,33 +27,26 @@ const rows = [
   createData('Harvey Specter', 3, 'Mod. High', 6, 4.3),
 ];
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 100,
-  },
-  avatarCell: {
-    width: '1%',
-    padding: '4px 0'
-  },
-  checkboxCell: {
-    padding: '0 4px',
-    width: '1%'
-  },
-  semiBold: {
-    fontWeight: 500
-  }
-});
-
 const Group: React.FC = () => {
-  const classes = useStyles();
+  const classes = useTableStyles();
+
+  const [popoverState, setPopoverState] = useState<{ anchorEl: HTMLButtonElement | null, name: string | null }>({ anchorEl: null, name: null });
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>,name:string) => {
+    setPopoverState({anchorEl:e.currentTarget,name});
+  };
+  const handleClose = () => {
+    setPopoverState({anchorEl:null,name:popoverState.name});
+  };
+  const open = Boolean(popoverState.anchorEl);
 
   return (
     <>
       <div className={styles.header}>
+        <PagePopover name={popoverState.name} open={open} anchorEl={popoverState.anchorEl} handleClose={handleClose} />
         <div className="flex cross-start margin-bottom">
-          {/* <div style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: 'var(--accent-shade)' }} className="flex cross-center main-center margin-right--small">
+          <div style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: 'var(--accent-shade)' }} className="flex cross-center main-center margin-right--small">
             <span className="pficon-users" />
-          </div> */}
+          </div>
           <span className="font-largest flex fill text-primary bold">Intraday low risk, mid budget</span>
         </div>
         <div className="flex row-flex cross-center margin-bottom">
@@ -117,7 +61,7 @@ const Group: React.FC = () => {
           </div>
           <span className="pficon-users" style={{ marginRight: 2 }} />
           <span className="margin-right semi-bold">14</span>
-          <TextButton size="regular" type="text-accent" icon="plus" title="Add"></TextButton>
+          <TextButton onClick={(e)=>handleClick(e,'ADD_INVESTOR')} size="regular" type="text-accent" icon="plus" title="Add"></TextButton>
         </div>
       </div>
       <TableContainer className={styles.tableWrap}>
@@ -136,6 +80,7 @@ const Group: React.FC = () => {
               <StyledTableCell>Risk profile</StyledTableCell>
               <StyledTableCell>Groups</StyledTableCell>
               <StyledTableCell align="right">Budget</StyledTableCell>
+              <StyledTableCell className={classes.noWhiteSpace} />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -157,6 +102,9 @@ const Group: React.FC = () => {
                 <StyledTableCell>{row.risk}</StyledTableCell>
                 <StyledTableCell>{row.groups}</StyledTableCell>
                 <StyledTableCell align="right">{row.budget + ' Lakh'}</StyledTableCell>
+                <StyledTableCell>
+                  <TextButton onClick={(e)=>handleClick(e,'INVESTOR_OPTION')} size="regular" type="text-primary" icon="menu-overflow" />
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

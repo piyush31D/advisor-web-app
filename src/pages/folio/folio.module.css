@@ -75,6 +75,6 @@
   font-weight: 500;
 }
 .menuItem:hover{
-  background-color: var(--background-secondary);
+  background-color: var(--popover-hover);
   color:var(--text-primary);
 }

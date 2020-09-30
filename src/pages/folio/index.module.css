@@ -5,3 +5,31 @@
   flex-direction: column;
   overflow-y: auto;
 }
+
+.navTabBar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 10px 0 10px;
+  display: flex;
+  margin: 10px 0;
+}
+
+.navTab {
+  display: flex;
+  padding-bottom: 5px;
+  flex: 1;
+  justify-content: center;
+  margin-right: 5px;
+  font-size: var(--font-medium);
+  font-weight: bold;
+  color: var(--text-white);
+  cursor: pointer;
+}
+
+.navTab:last-child {
+  margin-right: 0;
+}
+
+.activeNavTab {
+  border-bottom: 3px solid #fff;
+  color: var(--text-white);
+}

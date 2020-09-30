@@ -5,7 +5,7 @@ import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
 import cx from 'classnames';
 import styles from './index.module.css'
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import TextButton from 'src/components/button/text.button'
 
 const useInputStyles = makeStyles(() =>
   createStyles({
@@ -34,15 +34,19 @@ function StyledInput(props: TextFieldProps) {
 }
 
 const useStyles = makeStyles({
-  bold: {
+  headline: {
     fontWeight: 'bold',
+    alignSelf: 'stretch',
+    borderBottom: '1px solid var(--border)',
+    padding: '30px 80px 20px 80px',
+    textAlign: 'center'
   },
   subHeadline: {
     fontSize: 16,
     paddingTop: 10
   },
-  sandwitchText: {
-    margin: '0 0 15px 0'
+  inputlabel: {
+    margin: '10px 15px'
   },
   button: {
     borderRadius: 15,
@@ -59,23 +63,35 @@ const BasicDetails: React.FC = () => {
   const classes = useStyles();
   return (
     <>
-      <Typography className={classes.bold} variant="h4">Welcome to Protofolio</Typography>
-      <Typography className={classes.subHeadline} variant="subtitle1">Sign up</Typography>
-      <form className={cx(styles.authForm, classes.smallgutter)}>
-        <div className={styles.shadedContainer}>
-          <span className={cx(styles.shadedBck, 'pficon-shaded')} />
-          <span className="pficon-mobile" />
-          <span className="bold">7295084005</span>
-        </div>
-        <Typography className={classes.sandwitchText} variant="subtitle1">Basic Details</Typography>
-        <div className={styles.inputWithIcon}>
+      <Typography className={classes.headline} variant="h5">Basic Information</Typography>
+      <form className={styles.authForm}>
+        <Typography className={classes.inputlabel} variant="subtitle1">Enter your Email (Verification required)*</Typography>
+        <div className={styles.inputWithIcon} style={{ marginBottom: 5 }}>
           <span className="pficon-email" />
           <StyledInput type="text" id="mobile" label="Email" variant="filled" fullWidth />
         </div>
-        <div className={styles.inputWithIcon}>
-          <span className="pficon-id" />
-          <StyledInput type="text" id="pin" label="Enter PAN" variant="filled" fullWidth />
+        <div className={styles.inputWithIcon} style={{ marginBottom: 5, marginTop: 10 }}>
+          <span className="pficon-lock" />
+          <StyledInput
+            id="otp"
+            name="otp"
+            label="OTP"
+            variant="filled"
+            fullWidth
+            type="text"
+            inputProps={{ maxLength: 6, className: "no-number-stepper", style: { textTransform: 'uppercase', letterSpacing: 10, fontWeight: 500 } }}
+          />
         </div>
+        <div className='margin-bottom flex margin-left margin-right space-between'>
+          <span className="flex cross-baseline">
+            <TextButton type="text-accent" size="regular" title="Verify" />
+            <span className="margin-left">4:20</span>
+          </span>
+          <span>
+            <TextButton type="text-accent" size="regular" title="Resend OTP" />
+          </span>
+        </div>
+        <Typography className={cx(classes.inputlabel, classes.smallgutter)} variant="subtitle1">Enter Name as on PAN Card*</Typography>
         <div className={styles.inputWithIcon}>
           <span className="pficon-advisor" />
           <StyledInput type="text" id="pin" label="First Name" variant="filled" fullWidth />
@@ -84,11 +100,6 @@ const BasicDetails: React.FC = () => {
           <span className="pficon-advisor" />
           <StyledInput type="text" id="pin" label="Last Name" variant="filled" fullWidth />
         </div>
-        <div className={styles.inputWithIcon}>
-          <span className="pficon-tick-circle" />
-          <StyledInput type="text" id="pin" label="SEBI Reg. No." variant="filled" fullWidth />
-        </div>
-        <Button className={classes.button} variant="contained" color="primary" size="large" fullWidth>Complete</Button>
       </form>
     </>
   )

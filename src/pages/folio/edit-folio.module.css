@@ -110,7 +110,7 @@
   border:0
 }
 .scripSearched:hover{
-  background-color: var(--background-secondary);
+  background-color: var(--popover-hover);
 }
 .divider {
   border-bottom: 1px solid var(--border);
