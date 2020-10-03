@@ -1,85 +1,100 @@
-.planPreviewHeader{
+.planPreviewHeader {
   font-size: var(--font-regular);
-  color:var(--text-primary);
+  color: var(--text-primary);
   text-align: center;
-  padding:15px 0 35px 0;
-  width:100%;
+  padding: 15px 0 35px 0;
+  width: 100%;
   border-radius: 16px;
   background-color: var(--input-background);
   font-weight: 600;
 }
-.planCard{
-  width:270px;
+
+.planCard {
+  width: 270px;
   background-color: var(--accent);
   border-radius: 16px;
-  padding:10px;
-  margin-top:-20px;
+  padding: 10px;
+  margin-top: -20px;
   min-height: 400px;
   display: flex;
   flex-direction: column;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
 }
-.planHeader,.planCardPricing{
+
+.planHeader, .planCardPricing {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding:15px 0;
-  background:rgba(255,255,255,0.15);
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   margin-bottom: 10px;
 }
-.planCard *{
-  color:#fff !important;
+
+.planCard * {
+  color: #fff !important;
 }
-.planCardPricing{
+
+.planCardPricing {
   flex-direction: row;
-  padding:8px 10px;
+  padding: 8px 10px;
   justify-content: space-between;
   font-size: var(--font-medium);
-  margin:10px 0 0 0;
+  margin: 10px 0 0 0;
 }
-.propertyHeadline{
-  font-size: var(--font-regular);
+
+.propertyHeadline {
+  font-size: var(--font-medium);
   font-weight: 600;
-  color:var(--text-primary);
-  padding:30px 10px 2px 10px;
-  margin:0;
+  color: var(--text-primary);
+  padding: 30px 10px 2px 10px;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.propertyHeadline:first-of-type{
+
+.propertyHeadline:first-of-type {
   padding-bottom: 6px;
 }
-.propertySubHeadline{
+
+.propertySubHeadline {
   font-size: var(--font-small);
-  color:var(--text-secondary);
-  padding:0 10px 5px 10px;
-  margin:0;
+  color: var(--text-secondary);
+  padding: 0 10px 5px 10px;
+  margin: 0;
 }
-.inlineInput,.propertyValueContainer{
-  padding:10px;
+
+.inlineInput, .propertyValueContainer {
+  padding: 10px;
   background-color: var(--input-background);
   border-radius: 10px;
-  color:var(--text-primary);
-  width:100%;
-  border:0;
-  outline:none;
+  color: var(--text-primary);
+  width: 100%;
+  border: 0;
+  outline: none;
   transition: 0.2s;
 }
-.propertyValueContainer{
+
+.propertyValueContainer {
   background-color: var(--background-secondary);
   display: inline-flex;
   align-items: center;
+  height:50px;
 }
-.inlineInput:hover,.inlineInput:focus{
+
+.inlineInput:hover, .inlineInput:focus {
   background-color: var(--input-focused-background);
 }
-.withDeleteButton{
+
+.withDeleteButton {
   padding-right: 40px;
 }
-.colorBox{
+
+.colorBox {
   height: 30px;
-  width:30px;
+  width: 30px;
   background-color: var(--accent);
   border-radius: 6px;
   margin-right: 8px;
@@ -88,21 +103,24 @@
   justify-content: center;
   cursor: pointer;
   transition: 0.2s;
-  border:0;
-  outline:none;
+  border: 0;
+  outline: none;
 }
-.colorBox:active{
+
+.colorBox:active {
   opacity: 0.8;
 }
-.benefitBox,.pricingBox{
+
+.benefitBox, .pricingBox {
   margin-bottom: 5px;
   background-color: transparent;
   position: relative;
 }
-.pricingBox{
+
+.pricingBox {
   background-color: var(--background-secondary);
   border-radius: 10px;
-  padding:10px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -110,9 +128,38 @@
   flex-wrap: nowrap;
   white-space: nowrap;
 }
-.deleteButton{
+
+.deleteButton {
   position: absolute;
-  right:10px;
-  top:50%;
-  margin-top:-12px;
+  right: 10px;
+  top: 50%;
+  margin-top: -12px;
+}
+
+.popoverPaper {
+  padding: 5px 0px;
+  border-radius: 5px;
+  background-color: var(--background-paper);
+  display: flex;
+  flex-direction: column;
+}
+
+.menuItem {
+  padding: 5px 10px;
+  font-size: var(--font-regular);
+  display: flex;
+  align-self: stretch;
+  transition: .2s;
+  cursor: pointer;
+  color: var(--text-primary);
+  align-items: baseline;
+  color: var(--text-primary);
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
+
+.menuItem:hover {
+  background-color: var(--popover-hover);
+  color: var(--text-primary);
 }
