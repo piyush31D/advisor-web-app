@@ -1,7 +1,8 @@
 import styles from './index.module.css'
 import React, { useEffect } from 'react';
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { IState } from 'src/store/config';
 import cx from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import { getProfileThunk } from 'src/store/profile/thunk';
@@ -12,6 +13,8 @@ import Button from '@material-ui/core/Button';
 const AdvisorOnboarding: React.FC = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const { mobile } = useSelector((state: IState) => state.authReducer);
+  const { fetching } = useSelector((state: IState) => state.profileReducer)
 
   const initFetch = useCallback(() => {
     dispatch(getProfileThunk())
@@ -21,6 +24,11 @@ const AdvisorOnboarding: React.FC = () => {
     initFetch();
   }, [initFetch]);
 
+  if (fetching) {
+    return (
+      <div>loading...</div>
+    )
+  }
   return (
     <>
       <div className={styles.columnLeft}>
@@ -73,7 +81,7 @@ const AdvisorOnboarding: React.FC = () => {
               <div className={styles.stepHeader}>
                 <div className={styles.progressIndicator}>
                   <div className={styles.indicatorInset}></div>
-                  <div className={styles.indicatorMark} style={{ top:0 }}>
+                  <div className={styles.indicatorMark} style={{ top: 0 }}>
                     <span className="pficon-check" />
                   </div>
                 </div>
@@ -86,7 +94,7 @@ const AdvisorOnboarding: React.FC = () => {
               <div className={styles.stepHeader}>
                 <div className={styles.progressIndicator}>
                   <div className={styles.indicatorInset}></div>
-                  <div className={styles.indicatorMark} style={{ top:'100%' }}></div>
+                  <div className={styles.indicatorMark} style={{ top: '100%' }}></div>
                 </div>
                 <span className={styles.stepName}>Professional Info</span>
                 <span className="pficon-chevron-down font-large" />
@@ -98,7 +106,7 @@ const AdvisorOnboarding: React.FC = () => {
         </div>
       </div>
       <div className={styles.columnRight}>
-        <BasicDetails />
+        {mobile && <BasicDetails mobile={mobile} />}
       </div>
     </>
   )

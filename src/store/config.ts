@@ -6,25 +6,32 @@ import authReducer from './auth/reducer';
 import profileReducer from './profile/reducer';
 import { IAuthState } from './auth/type';
 import { IProfileState } from './profile/type';
+import { PersistPartial } from 'redux-persist/es/persistReducer';
 
 /*
  * combines all the existing reducers
  */
 export interface IState {
   authReducer: IAuthState;
-  profileReducer: IProfileState;
+  profileReducer: IProfileState & PersistPartial;
+}
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['authReducer'],
+  blacklist: ['profileReducer']
+}
+const profileReducerPersistConfig = {
+  key: 'profile',
+  storage,
+  blacklist: ['fetching']
 }
 
 const rootReducers = combineReducers<IState>({
   authReducer,
-  profileReducer,
+  profileReducer: persistReducer(profileReducerPersistConfig, profileReducer),
 });
-
-const persistConfig = {
-  key: 'protofolio',
-  storage,
-  whitelist: ['authReducer']
-}
 
 const persistedReducer = persistReducer(persistConfig, rootReducers)
 

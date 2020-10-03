@@ -1,38 +1,37 @@
-
 .light-theme {
   --accent: rgb(0, 95, 235);
   --text-accent-button: var(--accent);
   --accent-background: rgb(0, 95, 235);
   --background-primary: rgb(255, 255, 255);
-  --background-secondary: rgba(0,0,0,0.05);
-  --accent-shade:rgba(0, 95, 235,0.07);
+  --background-secondary: rgba(0, 0, 0, 0.05);
+  --accent-shade: rgba(0, 95, 235, 0.07);
   --slider-color: rgb(0, 95, 235);
-  --scrollbar-color:rgb(0, 0, 0, 0.1);
-  --scrollbar-hover-color:rgb(0, 0, 0, 0.15);
+  --scrollbar-color: rgb(0, 0, 0, 0.1);
+  --scrollbar-hover-color: rgb(0, 0, 0, 0.15);
   --font-regular: 14px;
   --font-medium: 13px;
   --font-semilarge: 16px;
-  --font-large:18px;
-  --font-small:12px;
+  --font-large: 18px;
+  --font-small: 12px;
   --text-primary: rgb(0, 0, 0);
-  --primary-shade:rgba(0,0,0,0.07);
-  --text-white:rgb(255, 255, 255);
+  --primary-shade: rgba(0, 0, 0, 0.07);
+  --text-white: rgb(255, 255, 255);
   --text-secondary: rgb(132, 132, 132);
-  --text-green:rgb(25, 175, 85);
-  --text-red:rgb(219, 80, 61);
-  --red-shade:rgba(219, 80, 61,0.1);
-  --border:#e2e2e2;
-  --input-background:rgba(0,0,0,0.05);
-  --input-focused-background:rgba(0,0,0,0.08);
-  --background-paper:rgba(255, 255, 255, 0.1);
+  --text-green: rgb(25, 175, 85);
+  --text-red: rgb(219, 80, 61);
+  --red-shade: rgba(219, 80, 61, 0.1);
+  --border: #e2e2e2;
+  --input-background: rgba(0, 0, 0, 0.05);
+  --input-focused-background: rgba(0, 0, 0, 0.08);
+  --background-paper: rgba(255, 255, 255, 0.1);
   --table-head-background: rgb(245, 246, 248);
-  --table-cell-background:rgba(245, 246, 248,0.7);
-  --nav-column-card:rgba(255, 255, 255, 0.2);
-  --nav-column-card-active:rgba(0, 0 , 0, 0.05);
+  --table-cell-background: rgba(245, 246, 248, 0.7);
+  --nav-column-card: rgba(255, 255, 255, 0.2);
+  --nav-column-card-active: rgba(0, 0, 0, 0.05);
   --green: rgb(40, 196, 102);
-  --green-shade:rgb(25, 175, 85,0.15);
+  --green-shade: rgb(25, 175, 85, 0.15);
   --yellow: rgb(197, 161, 0);
-  --yellow-shade:rgba(255, 218, 52, 0.20);
+  --yellow-shade: rgba(255, 218, 52, 0.20);
   --orange: rgb(242, 142, 28);
   --orange-shade: rgba(242, 142, 28, 0.15);
   --olive: rgb(159, 180, 21);
@@ -47,45 +46,45 @@
   --brown-shade: rgba(148, 93, 56, 0.15);
   --brown: rgb(148, 93, 56);
   --brown-shade: rgba(148, 93, 56, 0.15);
-  --checkbox-unchecked:rgb(187, 187, 187);
-  --popover-hover:var(--background-secondary);
+  --checkbox-unchecked: rgb(187, 187, 187);
+  --popover-hover: var(--background-secondary);
 }
 
 .dark-theme {
   --accent: rgb(0, 95, 235);
   --text-accent-button: rgb(57, 136, 255);
-  --accent-background: rgb(0, 95, 235,0.5);
+  --accent-background: rgb(0, 95, 235, 0.5);
   --background-primary: rgb(32, 34, 37);
-  --background-secondary: rgba(222, 231, 255,0.07);
+  --background-secondary: rgba(222, 231, 255, 0.07);
   /* --background-secondary: rgb(47, 49, 54); */
   --accent-shade: rgba(0, 95, 235, 0.15);
-  --slider-color:var(--accent);
-  --scrollbar-color:var(--input-background);
-  --scrollbar-hover-color:var(--input-focused-background);
+  --slider-color: var(--accent);
+  --scrollbar-color: var(--input-background);
+  --scrollbar-hover-color: var(--input-focused-background);
   --font-regular: 14px;
   --font-medium: 13px;
   --font-semilarge: 16px;
   --font-large: 18px;
-  --font-small:12px;
+  --font-small: 12px;
   --text-primary: rgb(219, 219, 219);
-  --primary-shade:rgba(255,255,255,0.1);
-  --text-white:var(--text-primary);
+  --primary-shade: rgba(255, 255, 255, 0.1);
+  --text-white: var(--text-primary);
   --text-secondary: #848484;
   --text-green: rgb(51, 218, 118);
   --text-red: rgb(255, 112, 93);
   --red-shade: rgba(255, 95, 74, 0.2);
   --border: rgba(255, 255, 255, 0.1);
-  --input-background:rgba(222, 231, 255,0.07);
-  --input-focused-background:rgba(222, 231, 255,0.15);
-  --background-paper:var(--background-secondary);
-  --table-head-background:#2f3136;
-  --table-cell-background:rgb(47, 49, 54,0.6);
-  --nav-column-card:rgba(255, 255, 255, 0.07);
-  --nav-column-card-active:rgba(0, 0 , 0, 0.05);
+  --input-background: rgba(222, 231, 255, 0.07);
+  --input-focused-background: rgba(222, 231, 255, 0.15);
+  --background-paper: var(--background-secondary);
+  --table-head-background: #2f3136;
+  --table-cell-background: rgb(47, 49, 54, 0.6);
+  --nav-column-card: rgba(255, 255, 255, 0.07);
+  --nav-column-card-active: rgba(0, 0, 0, 0.05);
   --green: rgb(51, 218, 118);
-  --green-shade:rgb(25, 175, 85,0.15);
+  --green-shade: rgb(25, 175, 85, 0.15);
   --yellow: rgb(197, 161, 0);
-  --yellow-shade:rgba(255, 218, 52, 0.20);
+  --yellow-shade: rgba(255, 218, 52, 0.20);
   --orange: rgb(242, 142, 28);
   --orange-shade: rgba(242, 142, 28, 0.15);
   --olive: rgb(159, 180, 21);
@@ -98,8 +97,8 @@
   --purple-shade: rgba(147, 48, 180, 0.15);
   --brown: rgb(196, 146, 113);
   --brown-shade: rgba(177, 121, 84, 0.2);
-  --checkbox-unchecked:#747474;
-  --popover-hover:var(--background-primary);
+  --checkbox-unchecked: #747474;
+  --popover-hover: var(--background-primary);
 }
 
 .text-primary {
@@ -177,6 +176,9 @@
 .margin-top {
   margin-top: 10px;
 }
+.margin-top--small {
+  margin-top: 5px;
+}
 
 .margin-bottom--small {
   margin-bottom: 5px;
@@ -209,16 +211,24 @@
 .spacer {
   padding: 0 5px
 }
-.opacity50{
+
+.opacity50 {
   opacity: 0.5;
 }
+
+.text-center {
+  text-align: center;
+}
+
 .flex {
   display: flex;
 }
-.flex-wrap{
+
+.flex-wrap {
   display: flex;
   flex-wrap: wrap;
 }
+
 .fill {
   flex: 1
 }

@@ -58,7 +58,7 @@ const OtpValidation: React.FC<Props> = (props) => {
         </div>
         <Button type="submit" className={classes.button} variant="contained" color="primary" size="large" fullWidth>Verify OTP</Button>
         <span style={{ alignSelf: 'center' }}>
-          <TextButton type="text-accent" size="regular" title="Resend OTP" />
+          <TextButton variant="text-accent" size="regular" title="Resend OTP" />
         </span>
       </form>
     </>

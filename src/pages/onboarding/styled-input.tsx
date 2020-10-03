@@ -2,6 +2,7 @@ import React from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
+
 const useInputStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -17,7 +18,7 @@ const useInputStyles = makeStyles(() =>
   }),
 );
 
-const StyledInput = (props: TextFieldProps) => {
+function StyledInput(props: TextFieldProps) {
   const classes = useInputStyles();
 
   return (
@@ -27,28 +28,32 @@ const StyledInput = (props: TextFieldProps) => {
     />
   );
 }
+
 export const useStyles = makeStyles({
-  bold: {
+  headline: {
     fontWeight: 'bold',
+    alignSelf: 'stretch',
+    borderBottom: '1px solid var(--border)',
+    padding: '30px 80px 20px 80px',
+    textAlign: 'center'
   },
   subHeadline: {
     fontSize: 16,
-    paddingTop: 10,
-    fontWeight:500,
+    paddingTop: 10
   },
-  sandwitchText: {
-    margin: '0 0 15px 0',
-    fontWeight:500
+  inputlabel: {
+    margin: '10px 15px'
   },
   button: {
     borderRadius: 15,
     fontSize: 16,
     padding: '12px 0',
-    marginTop:10
+    margin: '5px 0 20px 0'
   },
   smallgutter: {
     marginTop: 30
   }
 });
+
 
 export default StyledInput
