@@ -136,7 +136,7 @@ const CreateTrades: React.FC = () => {
                   12 orders on 4 stocks
                 </span>
               </div>
-              <TextButton thick size="regular" type="fill-accent" title="Send trades" icon="send"></TextButton>
+              <TextButton thick size="regular" variant="fill-accent" title="Send trades" icon="send"></TextButton>
             </div>
           </div>
           <div className={cx(styles.orderWrap, transactionType === 'BUY' ? styles.buyOrder : styles.sellOrder)}>
@@ -148,10 +148,10 @@ const CreateTrades: React.FC = () => {
                 4 / 5
               </span>
               <div className={styles.orderActionButtons}>
-                <TextButton round type="text-white" size="regular" icon="chevron-left" />
-                <TextButton round type="text-white" size="regular" icon="chevron-right" />
-                <TextButton round type="text-white" size="regular" icon="delete" />
-                <TextButton round type="text-white" size="regular" icon="plus" />
+                <TextButton round variant="text-white" size="regular" icon="chevron-left" />
+                <TextButton round variant="text-white" size="regular" icon="chevron-right" />
+                <TextButton round variant="text-white" size="regular" icon="delete" />
+                <TextButton round variant="text-white" size="regular" icon="plus" />
               </div>
             </div>
             <div className={styles.orderSummary}>
@@ -176,7 +176,7 @@ const CreateTrades: React.FC = () => {
                 <span className="flex fill cross-center main-end">
                   <span>Margin</span>
                   <span className="semi-bold margin-left">₹8.75</span>
-                  <TextButton type="text-white" size="regular" icon="reload" />
+                  <TextButton variant="text-white" size="regular" icon="reload" />
                 </span>
                 <span className="spacer" />
                 <span className="margin-left">

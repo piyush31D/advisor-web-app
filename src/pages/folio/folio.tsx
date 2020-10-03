@@ -13,6 +13,7 @@ import Popover from '@material-ui/core/Popover';
 import TextButton from 'src/components/button/text.button';
 import Tag from 'src/components/tag/tag';
 import styles from './folio.module.css';
+import PagePopover from './popover';
 
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
@@ -100,18 +101,15 @@ const useStyles = makeStyles({
 
 const Folio: React.FC = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(e.currentTarget);
+  const [popoverState, setPopoverState] = useState<{ anchorEl: HTMLButtonElement | null, name: string | null }>({ anchorEl: null, name: null });
+  const handlePopoverClick = (e: React.MouseEvent<HTMLButtonElement>, name: string) => {
+    setPopoverState({ anchorEl: e.currentTarget, name });
   };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handlePopoverClose = () => {
+    setPopoverState({ anchorEl: null, name: popoverState.name });
   };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const popoverOpen = Boolean(popoverState.anchorEl);
 
   return (
     <>
@@ -129,43 +127,25 @@ const Folio: React.FC = () => {
             <Tag color="orange" size="regular" title="CNC" />
             <Tag color="teal" size="regular" title="EQUITY" />
             <span className="margin-right" />
-            <TextButton size="regular" type="fill-primary" icon="users" title="3 Groups" />
+            <TextButton size="regular" variant="fill-primary" icon="users" title="3 Groups" />
             <span className="margin-right margin-left font-regular text-primary">17 Stocks</span>
-            <TextButton onClick={handleClick} size="regular" type="text-primary" icon="menu-overflow"></TextButton>
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              elevation={8}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-            >
-              <div className={styles.menuPopover}>
-                <NavLink to="/folio/1/edit" className={styles.menuItem}>
-                  <span className="pficon-edit margin-right" />
-                  <span>Edit folio</span>
-                </NavLink>
-                <NavLink to="/folio/1/create" className={styles.menuItem}>
-                  <span className="pficon-plus-circle margin-right" />
-                  <span>Create trades</span>
-                </NavLink>
-              </div>
-            </Popover>
+            <TextButton type="button" onClick={(e) => handlePopoverClick(e, 'FOLIO_OPTION')} size="regular" variant="text-primary" icon="menu-overflow"></TextButton>
+            <PagePopover
+              name={popoverState.name}
+              open={popoverOpen}
+              handleClose={handlePopoverClose}
+              anchorEl={popoverState.anchorEl}
+              anchorOrigin={{vertical:'bottom',horizontal:'left'}}
+              transformOrigin={{vertical:'top',horizontal:'left'}}
+            />
           </div>
           <NavLink to="/folio/1/create" className={cx(styles.orderCount)}>
             {false && <div className={styles.indicator} />}
-            <TextButton thick size="regular" type="text-accent" title="Create trades" icon="plus"></TextButton>
+            <TextButton thick size="regular" variant="text-accent" title="Create trades" icon="plus"></TextButton>
           </NavLink>
           {false && <>
             <span className="spacer" />
-            <TextButton thick size="regular" type="fill-accent" title="Send trades" icon="send"></TextButton>
+            <TextButton thick size="regular" variant="fill-accent" title="Send trades" icon="send"></TextButton>
           </>}
         </div>
       </div>
@@ -237,11 +217,7 @@ const Folio: React.FC = () => {
                     </StyledTableCell>
                     <StyledTableCell>
                       <div className={cx(styles.tableCell, styles.noBorder)}>
-                        <Typography className={classes.semiBold} variant="subtitle1">
-                          <span>12</span>
-                          <span className="pficon-dot" />
-                          <span>20%</span>
-                        </Typography>
+                        
                       </div>
                     </StyledTableCell>
                   </StyledTableRow>

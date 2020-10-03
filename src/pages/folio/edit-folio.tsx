@@ -160,9 +160,9 @@ const EditFolio: React.FC = () => {
             <div className={cx(styles.scriptState, styles.stateModified)} />
             <span className="font-regular semi-bold text-secondary">2 Modified</span>
           </div>
-          <TextButton thick size="regular" type="text-red" icon="reset" title="Reset changes"></TextButton>
+          <TextButton thick size="regular" variant="text-red" icon="reset" title="Reset changes"></TextButton>
           <span className="spacer"></span>
-          <TextButton thick size="regular" type="fill-accent" title="Save changes"></TextButton>
+          <TextButton thick size="regular" variant="fill-accent" title="Save changes"></TextButton>
         </div>
       </div>
       <div className={folioStyles.scripsWrap}>
@@ -214,10 +214,10 @@ const EditFolio: React.FC = () => {
                         <input name={`${scrip.name}-weight`} type="number" className={cx(styles.qtyInputRight, 'no-number-stepper')} />
                         <span style={{ marginLeft: -18, marginRight: 8 }}>%</span>
                         <div className={styles.actionButtonWrap}>
-                          <TextButton size="regular" type={scrip.locked ? 'text-accent' : 'text-grey'} icon={scrip.locked ? 'locked' : 'unlocked'} />
+                          <TextButton size="regular" variant={scrip.locked ? 'text-accent' : 'text-grey'} icon={scrip.locked ? 'locked' : 'unlocked'} />
                           <span className="spacer margin-right" />
-                          <TextButton size="regular" type="text-red" icon="reset" />
-                          <TextButton size="regular" type="text-red" icon="delete" />
+                          <TextButton size="regular" variant="text-red" icon="reset" />
+                          <TextButton size="regular" variant="text-red" icon="delete" />
                         </div>
                       </div>
                     </StyledTableCell>
