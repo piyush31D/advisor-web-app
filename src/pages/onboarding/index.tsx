@@ -40,7 +40,7 @@ const AdvisorOnboarding: React.FC = () => {
           <div className={styles.shadedContainer}>
             <span className={cx(styles.shadedBck, 'pficon-shaded')} />
             <span className="pficon-mobile" />
-            <span className="bold">7295084005</span>
+            <span className="bold">{mobile}</span>
           </div>
           <div className={styles.stepWrap}>
             <div className={styles.stepperLine}></div>
