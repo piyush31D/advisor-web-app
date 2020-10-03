@@ -1,0 +1,56 @@
+
+.container,.addStock,.folioOptions{
+  width:300px;
+  padding:5px 0px;
+  border-radius: 5px;
+  background-color: var(--background-paper);
+  display: flex;
+  flex-direction: column;
+}
+.folioOptions{
+  width:200px;
+}
+.popoverInputWrap{
+  padding: 5px 10px 10px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.popoverInput{
+  background-color: var(--input-background);
+  border: none;
+  text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  height:2.5em;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 1em;
+  color:var(--text-primary);
+  width:100%;
+}
+.popoverInput:hover,.popoverInput:focus{
+  background-color: var(--input-focused-background);
+}
+.menuItem{
+  padding:5px 10px;
+  font-size: var(--font-regular);
+  display: flex;
+  align-self: stretch;
+  transition: .2s;
+  cursor: pointer;
+  color: var(--text-primary);
+  align-items: baseline;
+  color:var(--text-primary);
+  border:0;
+  outline:none;
+  background-color: transparent;
+}
+.padding20{
+  padding:5px 20px;
+  font-weight: 400;
+}
+.menuItem:hover{
+  background-color: var(--popover-hover);
+  color:var(--text-primary);
+}
