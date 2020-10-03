@@ -28,7 +28,7 @@ const BasicDetails: React.FC<{ mobile: string }> = ({ mobile }) => {
         .max(10, 'Must be 10 characters')
         .required('Required'),
       email: Yup.string()
-        .max(20, 'Must be 20 characters or less')
+        .email()
         .required('Required'),
       pan: Yup.string()
         .max(15, 'Must be 15 characters or less')
@@ -46,7 +46,6 @@ const BasicDetails: React.FC<{ mobile: string }> = ({ mobile }) => {
       dispatch(createProfileThunk(values));
     },
   });
-
   return (
     <>
       <Typography className={classes.headline} variant="h5">Basic Information</Typography>
