@@ -9,19 +9,20 @@ import TextButton from 'src/components/button/text.button';
 import { StyledTableCell, StyledTableRow, InvestorAvatar, useTableStyles } from './styled-table';
 import styles from './all-investors.module.css';
 import PagePopover from './popover';
+import RiskProfileTag from 'src/components/risk/risk-profile';
 
 
-function createData(name: string, plans: number, risk: string, groups: number, budget: number) {
+function createData(name: string, plans: number, risk: 1 | 2 | 3 | 4 | 5, groups: number, budget: number) {
   return { name, plans, risk, groups, budget };
 }
 
 const rows = [
-  createData('James Sawyer', 1, 'Low', 2, 4.0),
-  createData('Shyam P.', 2, 'Mod. Low', 7, 4.3),
-  createData('Ram Pratap', 2, 'High', 4, 6.0),
-  createData('Harvey Specter', 3, 'Mod. High', 6, 4.3),
-  createData('Mike Ross', 6, 'Moderate', 9, 3.9),
-  createData('James Sawyer', 1, 'Low', 2, 4.0),
+  createData('James Sawyer', 1, 1, 2, 4.0),
+  createData('Shyam P.', 2, 3, 7, 4.3),
+  createData('Ram Pratap', 2, 4, 4, 6.0),
+  createData('Harvey Specter', 3, 2, 6, 4.3),
+  createData('Mike Ross', 6, 3, 9, 3.9),
+  createData('James Sawyer', 1, 5, 2, 4.0),
 
 ];
 
@@ -57,8 +58,8 @@ const AllInvestors: React.FC = () => {
               </StyledTableCell>
               <StyledTableCell></StyledTableCell>
               <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell>Plans</StyledTableCell>
               <StyledTableCell>Risk profile</StyledTableCell>
+              <StyledTableCell>Plans</StyledTableCell>
               <StyledTableCell>Groups</StyledTableCell>
               <StyledTableCell align="right">Budget</StyledTableCell>
               <StyledTableCell className={classes.noWhiteSpace} />
@@ -79,12 +80,14 @@ const AllInvestors: React.FC = () => {
                 <StyledTableCell className={classes.semiBold} scope="row">
                   {row.name}
                 </StyledTableCell>
+                <StyledTableCell>
+                  <RiskProfileTag risk={row.risk} />
+                </StyledTableCell>
                 <StyledTableCell>{row.plans}</StyledTableCell>
-                <StyledTableCell>{row.risk}</StyledTableCell>
                 <StyledTableCell>{row.groups}</StyledTableCell>
                 <StyledTableCell align="right">{row.budget + ' Lakh'}</StyledTableCell>
                 <StyledTableCell>
-                  <TextButton onClick={(e) => handleClick(e, 'INVESTOR_OPTION')} size="regular" type="text-primary" icon="menu-overflow" />
+                  <TextButton onClick={(e) => handleClick(e, 'INVESTOR_OPTION')} size="regular" variant="text-primary" icon="menu-overflow" />
                 </StyledTableCell>
               </StyledTableRow>
             ))}

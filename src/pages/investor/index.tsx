@@ -26,18 +26,25 @@ const InvestorsPage: React.FC = () => {
   const handlePopoverClose = () => {
     setPopoverState({ anchorEl: null, name: popoverState.name });
   };
-  const open = Boolean(popoverState.anchorEl);
+  const popoverOpen = Boolean(popoverState.anchorEl);
 
   return (
     <div className="flex fill row-flex cross-stretch">
-      <PagePopover name={popoverState.name} open={open} anchorEl={popoverState.anchorEl} handleClose={handlePopoverClose} />
+      <PagePopover
+        name={popoverState.name}
+        open={popoverOpen}
+        anchorEl={popoverState.anchorEl}
+        handleClose={handlePopoverClose}
+        anchorOrigin={{vertical:'center',horizontal:'left'}}
+        transformOrigin={{vertical:'center',horizontal:'left'}}
+      />
       <NavColumn>
         <NavColumnLink linkTo="/investor/all" title="All Investors" badgeText={investorCount.toString()} />
         <NavColumnLink linkTo="/investor/unattended" title="Unattended" badgeText={investorCount.toString()} />
         <div className="margin-top margin-bottom" />
         <div className="flex row-flex cross-center space-between text-white semi-bold font-medium margin-bottom--small">
           <span style={{ paddingLeft: 5 }}>Groups</span>
-          <TextButton type="text-white" size="medium" icon="plus" />
+          <TextButton onClick={(e)=>handlePopoverTrigger(e,'CREATE_GROUP')} variant="text-white" size="medium" icon="plus" />
         </div>
         <NavColumnCard linkTo="investor/group/all" name='Show all groups' />
         {groups.map((group, index) => (
@@ -56,7 +63,7 @@ const InvestorsPage: React.FC = () => {
                   e.preventDefault();
                   handlePopoverTrigger(e, 'GROUP_CARD');
                 }}
-                type="text-white"
+                variant="text-white"
                 size="regular"
                 icon="menu-overflow"
               />

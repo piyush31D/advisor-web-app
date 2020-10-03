@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 import Popover from '@material-ui/core/Popover';
-import TextButton from 'src/components/button/text.button'
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import TextButton from 'src/components/button/text.button';
 import styles from './popover.module.css';
 
 interface Props {
@@ -21,10 +22,10 @@ interface AnchorOrigin {
   horizontal: number | "center" | "left" | "right";
 }
 
-const AddInvestor: React.FC<{ id: string | undefined }> = ({ id }) => (
+const AddInvestor: React.FC = () => (
   <div className={styles.addInvestor}>
     <div className={styles.popoverInputWrap}>
-      <input autoFocus aria-describedby={id} placeholder="Search Investors" type="text" className={styles.popoverInput} />
+      <input autoFocus placeholder="Search Investors" type="text" className={styles.popoverInput} />
     </div>
     <span className={styles.divider}></span>
     <div className={cx(styles.menuItem, styles.padding20)}>
@@ -35,7 +36,7 @@ const AddInvestor: React.FC<{ id: string | undefined }> = ({ id }) => (
     </div>
   </div>
 )
-const GroupCard: React.FC<{ id: string | undefined }> = ({ id }) => (
+const GroupCard: React.FC = () => (
   <div className={styles.groupCard}>
     <div className={styles.menuItem}>
       <span className="pficon-plus-circle margin-right--small" />
@@ -43,7 +44,7 @@ const GroupCard: React.FC<{ id: string | undefined }> = ({ id }) => (
     </div>
   </div>
 )
-const InvestorOption: React.FC<{ id: string | undefined }> = ({ id }) => {
+const InvestorOption: React.FC = () => {
   const [popoverState, setPopoverState] = useState<{ anchorEl: HTMLButtonElement | null, name: string | null }>({ anchorEl: null, name: null });
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>, name: string) => {
     setPopoverState({ anchorEl: e.currentTarget, name });
@@ -63,10 +64,10 @@ const InvestorOption: React.FC<{ id: string | undefined }> = ({ id }) => {
     </div>
   )
 }
-const ChooseGroup: React.FC<{ id: string | undefined }> = ({ id }) => (
+const ChooseGroup: React.FC = () => (
   <div className={styles.addInvestor}>
     <div className={styles.popoverInputWrap}>
-      <input autoFocus aria-describedby={id} placeholder="Search Groups" type="text" className={styles.popoverInput} />
+      <input autoFocus placeholder="Search Groups" type="text" className={styles.popoverInput} />
     </div>
     <span className={styles.divider}></span>
     <div className={cx(styles.menuItem)}>
@@ -79,14 +80,16 @@ const ChooseGroup: React.FC<{ id: string | undefined }> = ({ id }) => (
     </div>
   </div>
 )
-const AddGroup: React.FC<{ id: string | undefined }> = ({ id }) => (
-  <div className={styles.addInvestor}>
+const CreateGroup: React.FC = () => (
+  <div className={styles.addGroup}>
     <div className={styles.popoverInputWrap}>
-      <span className="margin-bottom font-medium text-primary">Enter Group name to continue</span>
-      <span className="margin-bottom font-small text-secondary">You can change it later</span>
-      <input autoFocus aria-describedby={id} placeholder="Enter group name" type="text" className={styles.popoverInput} />
+      <div className="padding-bottom font-medium text-primary semi-bold">Enter a Group name to continue</div>
+      <TextareaAutosize rowsMax={3} autoFocus placeholder="Group name" className={styles.popoverInput} />
+      <div className="font-small text-secondary margin-top">You can change it anytime</div>
     </div>
-    <TextButton thick type="fill-accent" size="regular"/>
+    <div style={{ padding:'15px 10px 5px 10px' }}>
+      <TextButton type="button" thick fullWidth variant="fill-accent" size="regular" title="Create Group" icon="chevron-right" />
+    </div>
   </div>
 )
 
@@ -109,10 +112,11 @@ const PagePopover: React.FC<Props> = (props) => {
         horizontal: 'center',
       }}
     >
-      {props.name === 'ADD_INVESTOR' && <AddInvestor id={id} />}
-      {props.name === 'GROUP_CARD' && <GroupCard id={id} />}
-      {props.name === 'INVESTOR_OPTION' && <InvestorOption id={id} />}
-      {props.name === 'CHOOSE_GROUP' && <ChooseGroup id={id} />}
+      {props.name === 'ADD_INVESTOR' && <AddInvestor />}
+      {props.name === 'GROUP_CARD' && <GroupCard />}
+      {props.name === 'INVESTOR_OPTION' && <InvestorOption />}
+      {props.name === 'CHOOSE_GROUP' && <ChooseGroup />}
+      {props.name === 'CREATE_GROUP' && <CreateGroup />}
     </Popover>
   )
 }

@@ -1,5 +1,5 @@
 
-.container,.addInvestor,.groupCard{
+.container,.addInvestor,.groupCard,.addGroup{
   width:300px;
   padding:5px 0px;
   border-radius: 5px;
@@ -10,12 +10,20 @@
 .addInvestor{
   width:250px;
 }
+.addGroup{
+  width:250px;
+  padding:15px 10px;
+}
 .groupCard{
   width:200px;
 }
 .popoverInputWrap{
   padding: 5px 10px 10px 10px;
   border-bottom: 1px solid var(--border);
+}
+.popoverInputWrap *{
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .popoverInput{
   background-color: var(--input-background);
@@ -28,9 +36,10 @@
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  line-height: 1em;
+  line-height: 1.2em;
   color:var(--text-primary);
   width:100%;
+  resize: none;
 }
 .popoverInput:hover,.popoverInput:focus{
   background-color: var(--input-focused-background);

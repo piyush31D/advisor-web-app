@@ -172,8 +172,8 @@ const InvestorFilter: React.FC = () => {
         </div>
         <div className="flex row-flex cross-center">
           <div className="flex fill row-flex cross-center">
-            <TextButton size="regular" type="text-accent" title="Keep" />
-            <TextButton size="regular" type="text-accent" title="Remove" />
+            <TextButton size="regular" variant="text-accent" title="Keep" />
+            <TextButton size="regular" variant="text-accent" title="Remove" />
           </div>
         </div>
       </div>
