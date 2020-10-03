@@ -4,8 +4,8 @@
   text-decoration: none;
   cursor: pointer;
   outline: none;
-  padding:0;
-  height:1.8rem;
+  padding: 0;
+  height: 1.8rem;
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
@@ -13,7 +13,8 @@
   text-align: center;
   border-radius: 5px;
 }
-.buttonText{
+
+.buttonText {
   display: inline-flex;
   align-items: baseline;
   justify-content: center;
@@ -21,22 +22,31 @@
   font-weight: 500;
   white-space: nowrap;
 }
-.round{
-  height:2.5rem;
-  width:2.5rem;
-  padding:0;
+
+.round {
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
 }
-.thick{
-  height:2.5rem;
-  padding:0 5px;
+
+.thick {
+  height: 2.5rem;
+  padding: 0 5px;
   border-radius: 8px;
 }
-.button:active{
-  opacity:.7
+
+.fullWidth {
+  width: 100%;
+  justify-content: center;
 }
+
+.button:active {
+  opacity: .7
+}
+
 .spacer {
   padding: 0 2px;
 }
@@ -44,9 +54,11 @@
 .text-primary {
   color: var(--text-primary)
 }
+
 .text-grey {
   color: var(--input-focused-background);
 }
+
 .text-accent {
   color: var(--text-accent-button)
 }
@@ -54,41 +66,51 @@
 .text-red {
   color: var(--text-red)
 }
-.text-white{
-  color:var(--text-white);
+
+.text-white {
+  color: var(--text-white);
 }
+
 .solid {
   border-radius: 10px;
 }
+
 .fill-primary {
   color: var(--text-primary);
   background-color: var(--primary-shade);
-  padding:0 2px;
+  padding: 0 2px;
 }
-.fill-accent{
+
+.fill-accent {
   background-color: var(--accent);
-  color:#fff;
-  padding:0 5px;
+  color: #fff;
+  padding: 0 5px;
 }
-.fill-accent:hover{
-  opacity:.8;
+
+.fill-accent:hover {
+  opacity: .8;
 }
-.fill-accent:active{
-  opacity:.7
+
+.fill-accent:active {
+  opacity: .7
 }
-.text-primary:hover,.text-grey:hover {
+
+.text-primary:hover, .text-grey:hover {
   background-color: var(--primary-shade);
 }
 
 .text-accent:hover {
   background-color: var(--accent-shade)
 }
-.text-red:hover{
+
+.text-red:hover {
   background-color: var(--red-shade)
 }
-.text-white:hover{
-  background-color: rgba(255,255,255,0.1);
+
+.text-white:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
+
 .medium {
   font-size: var(--font-medium);
 }
