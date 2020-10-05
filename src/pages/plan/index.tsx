@@ -20,9 +20,10 @@ const PlanPage: React.FC = () => {
       <NavColumn>
         <NavColumnLink linkTo="/plan/all" title="All Plans" badgeText={folioCount.toString()} />
         <NavColumnLink linkTo="/plan/new" title="New Plan" icon="plus" />
-        <div className="margin-top margin-bottom"/>
+        <div className="margin-top margin-bottom" />
         {Plans.map((plan, index) => (
           <NavColumnCard
+            key={index}
             linkTo={`/plan/${plan._id}`}
             name={plan.name}
             brief={
