@@ -19,11 +19,13 @@ axios.interceptors.response.use(
   async (error: AxiosError) => {
     if (error && error.response) {
       if (error.response.status === 401) {
-        setAuthorizationHeader();
-        store.dispatch(authFreezeAction());
-      }
-      if (error.response.status === 403) {
-        store.dispatch(authSignOutAction());
+        const { authReducer } = store.getState();
+        if (authReducer.token) {
+          setAuthorizationHeader();
+          store.dispatch(authFreezeAction());
+        } else {
+          store.dispatch(authSignOutAction());
+        }
       }
     };
     return Promise.reject(error);
