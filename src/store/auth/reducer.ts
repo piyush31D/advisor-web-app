@@ -33,6 +33,7 @@ export const authReducer = (
       return {
         ...state,
         ...action.payload,
+        pinExists:true,
         authenticated: true
       }
     case AUTH_FREEZE:
