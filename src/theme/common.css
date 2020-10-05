@@ -1,3 +1,11 @@
+:root{
+  --font-regular: 14px;
+  --font-medium: 13px;
+  --font-semilarge: 16px;
+  --font-large: 18px;
+  --font-small: 12px;
+}
+
 .light-theme {
   --accent: rgb(0, 95, 235);
   --text-accent-button: var(--accent);
@@ -8,11 +16,6 @@
   --slider-color: rgb(0, 95, 235);
   --scrollbar-color: rgb(0, 0, 0, 0.1);
   --scrollbar-hover-color: rgb(0, 0, 0, 0.15);
-  --font-regular: 14px;
-  --font-medium: 13px;
-  --font-semilarge: 16px;
-  --font-large: 18px;
-  --font-small: 12px;
   --text-primary: rgb(0, 0, 0);
   --primary-shade: rgba(0, 0, 0, 0.07);
   --text-white: rgb(255, 255, 255);
@@ -21,6 +24,7 @@
   --text-red: rgb(219, 80, 61);
   --red-shade: rgba(219, 80, 61, 0.1);
   --border: #e2e2e2;
+  --border-darker: rgba(0, 0, 0, 0.15);
   --input-background: rgba(0, 0, 0, 0.05);
   --input-focused-background: rgba(0, 0, 0, 0.08);
   --background-paper: rgba(255, 255, 255, 0.1);
@@ -61,11 +65,6 @@
   --slider-color: var(--accent);
   --scrollbar-color: var(--input-background);
   --scrollbar-hover-color: var(--input-focused-background);
-  --font-regular: 14px;
-  --font-medium: 13px;
-  --font-semilarge: 16px;
-  --font-large: 18px;
-  --font-small: 12px;
   --text-primary: rgb(219, 219, 219);
   --primary-shade: rgba(255, 255, 255, 0.1);
   --text-white: var(--text-primary);
@@ -74,6 +73,7 @@
   --text-red: rgb(255, 112, 93);
   --red-shade: rgba(255, 95, 74, 0.2);
   --border: rgba(255, 255, 255, 0.1);
+  --border-darker: rgba(255, 255, 255, 0.2);
   --input-background: rgba(222, 231, 255, 0.07);
   --input-focused-background: rgba(222, 231, 255, 0.15);
   --background-paper: var(--background-secondary);
@@ -138,23 +138,23 @@
 }
 
 .font-regular {
-  font-size: 14px;
+  font-size: var(--font-regular);
 }
 
 .font-medium {
-  font-size: 13px;
+  font-size: var(--font-medium);
 }
 
 .font-small {
-  font-size: 12px;
+  font-size: var(--font-small);
 }
 
 .font-semilarge {
-  font-size: 16px;
+  font-size: var(--font-semilarge);
 }
 
 .font-large {
-  font-size: 18px;
+  font-size: var(--font-large);
 }
 
 .font-largest {
