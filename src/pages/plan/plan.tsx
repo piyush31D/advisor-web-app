@@ -6,13 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import Tag from 'src/components/tag/tag';
-import TextButton from 'src/components/button/text.button'
 import InputBase from '@material-ui/core/InputBase';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { NavLink } from 'react-router-dom';
-import { FieldArray, Formik, FastField, FieldProps } from 'formik';
+import { FieldArray, Formik, Form, FastField, FieldProps } from 'formik';
 import Popover from '@material-ui/core/Popover';
+import { createPlanThunk } from 'src/store/plan/thunk'
+import { useDispatch, useSelector } from 'react-redux';
+import Tag from 'src/components/tag/tag';
+import TextButton from 'src/components/button/text.button'
+import { IState } from 'src/store/config';
 
 const StyledInput = withStyles(() =>
   createStyles({
@@ -40,52 +43,44 @@ const StyledInput = withStyles(() =>
 
 interface PlanPriviewProps {
   backgroundColor: string;
+  planName: string;
+  supportedProducts: string[];
+  features: string[];
+  pricings: {
+    amount: number;
+    percentage: number;
+    planInterval: string
+  }[];
 }
-const PlanPreview: React.FC<PlanPriviewProps> = ({ backgroundColor }) => {
+const PlanPreview: React.FC<PlanPriviewProps> = (props) => {
   return (
     <div>
       <div className={styles.planPreviewHeader}>Plan Preview</div>
-      <div className={styles.planCard} style={{ backgroundColor }}>
+      <div className={styles.planCard} style={{ backgroundColor: props.backgroundColor }}>
         <div className={styles.planHeader}>
-          <Typography variant="h5">Intraday equity</Typography>
+          <Typography variant="h6">{props.planName}</Typography>
           <div className="margin-top flex-wrap  main-center">
-            <Tag color="white" size="medium" title="Equity" />
+            {props.supportedProducts.map((product, i) =>
+              <Tag key={i} color="white" size="medium" title={product} />
+            )}
           </div>
         </div>
         <div className="flex fill col-flex padding-top padding-bottom">
-          <div className="flex padding-top padding-bottom cross-baseline">
-            <span className="pficon-tick-circle margin-right--small opacity50" />
-            <span className="flex fill font-medium semi-bold">
-              Personalised intraday trading based on risk appetite
-            </span>
-          </div>
-          <div className="flex padding-top padding-bottom cross-baseline">
-            <span className="pficon-tick-circle margin-right--small opacity50" />
-            <span className="flex fill font-medium semi-bold">
-              Lorem ipsum dolor sit amet
-            </span>
-          </div>
-          <div className="flex padding-top padding-bottom cross-baseline">
-            <span className="pficon-tick-circle margin-right--small opacity50" />
-            <span className="flex fill font-medium semi-bold">
-              Lorem ipsum dolor sit amet
-            </span>
-          </div>
+          {props.features.map((feature, i) =>
+            <div key={i} className="flex padding-top padding-bottom cross-baseline">
+              <span className="pficon-tick-circle margin-right--small opacity50" />
+              <span className="flex fill font-medium semi-bold">
+                {feature}
+              </span>
+            </div>
+          )}
         </div>
-        <div className={styles.planCardPricing}>
-          <span>Weekly</span>
-          <span>
-            <span className="bold margin-right--small font-regular">₹1200</span>
-              / Month
-            </span>
-        </div>
-        <div className={styles.planCardPricing}>
-          <span>Monthly</span>
-          <span>
-            <span className="bold margin-right--small font-regular">₹1000</span>
-              / Month
-            </span>
-        </div>
+        {props.pricings.map((pricing, i) =>
+          <div key={i} className={styles.planCardPricing}>
+            <span className="bold margin-right--small font-regular">{`₹${pricing.amount}`}</span>
+            <span className="font-medium">{`/ ${pricing.planInterval[0]}${pricing.planInterval.slice(1).toLowerCase()}`}</span>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -93,21 +88,10 @@ const PlanPreview: React.FC<PlanPriviewProps> = ({ backgroundColor }) => {
 
 const PlanBackgroundColors = ['var(--accent)', '#b51659', '#99485a', '#302514', '#1d3d59', '#fe6f42', '#1769a4', '#1e2963', '#c7601a', '#4f0572', '#688b69']
 
-const products = {
-  items: [{
-    name: 'Equity',
-    selected: false
-  }, {
-    name: 'Futures',
-    selected: false
-  }, {
-    name: 'Options',
-    selected: false
-  }],
-  selectedCount: 0
-}
-
 const Plan: React.FC = () => {
+  const dispatch = useDispatch();
+  const { profile } = useSelector((state: IState) => state.profileReducer);
+  const advisorId = profile ? profile._id : 'test';
 
   const [popoverState, setPopoverState] = useState<{ anchorEl: HTMLButtonElement | null, name: string | null }>({ anchorEl: null, name: null });
   const handlePopoverClick = (e: MouseEvent<HTMLButtonElement>, name: string) => {
@@ -119,20 +103,27 @@ const Plan: React.FC = () => {
   const popoverOpen = Boolean(popoverState.anchorEl);
 
   const [planBackground, setPlanBackground] = useState<string>('var(--accent)');
+  const [productState, setProductState] = useState<{ selected: string[], notSelected: string[], selectedCount: number }>({ selected: ['', '', ''], notSelected: ['Equity', 'Futures', 'Options'], selectedCount: 0 });
 
-  const [productState, setProductState] = useState<{ items: { name: string, selected: boolean }[], selectedCount: number }>(products);
-  const handleProductAdd = (i: number) => {
-    let newArray = [...productState.items];
-    newArray[i] = { name: productState.items[i].name, selected: true }
-    setProductState({ items: newArray, selectedCount: productState.selectedCount + 1 });
-    if (productState.selectedCount === productState.items.length - 1)
-      return handlePopoverClose();
+  const handleProductAdd = (productName: string, i: number) => {
+    let newSelectedArray = [...productState.selected];
+    newSelectedArray.splice(i, 1, productName);
+    let newNotSelectedArray = [...productState.notSelected]
+    newNotSelectedArray.splice(i, 1, '');
+    if (productState.selectedCount >= productState.selected.length - 1)
+      handlePopoverClose();
+    setProductState({ selected: newSelectedArray, notSelected: newNotSelectedArray, selectedCount: productState.selectedCount + 1 });
   }
-  const handleProductRemove = (i: number) => {
-    let newArray = [...productState.items];
-    newArray[i] = { name: productState.items[i].name, selected: false }
-    setProductState({ items: newArray, selectedCount: productState.selectedCount - 1 });
+  const handleProductRemove = (productName: string, i: number) => {
+    let newSelectedArray = [...productState.selected];
+    newSelectedArray.splice(i, 1, '');
+    let newNotSelectedArray = [...productState.notSelected]
+    newNotSelectedArray.splice(i, 1, productName);
+    setProductState({ selected: newSelectedArray, notSelected: newNotSelectedArray, selectedCount: productState.selectedCount - 1 })
   }
+
+  const getSupportedProducts = productState.selected.filter(product => product.length > 0);
+
   return (
     <>
       <Popover
@@ -150,67 +141,81 @@ const Plan: React.FC = () => {
         }}
       >
         <div className={styles.popoverPaper}>
-          {productState.items.map((item, i) => <>
-            {!item.selected &&
+          {productState.notSelected.map((product, i) => <>
+            {product.length > 0 &&
               <button
                 key={i}
                 type="button"
                 className={styles.menuItem}
-                onClick={() => handleProductAdd(i)}
+                onClick={() => handleProductAdd(product, i)}
               >
-                <span className="text-primary">{item.name}</span>
+                <span className="text-primary">{product}</span>
               </button>}
           </>
           )}
         </div>
       </Popover>
-      <div className="flex cross-start">
-        <div className="flex fill col-flex margin-right padding-right">
-          <div className="flex cross-center padding-right padding-left">
-            <Breadcrumbs className="flex fill bolod" aria-label="breadcrumb">
-              <NavLink className="text-secondary" color="inherit" to="/plan/121">
-                Intraday Equity
-              </NavLink>
-              <Typography variant="h6">Edit</Typography>
-            </Breadcrumbs>
-            <TextButton variant="text-primary" size="regular" title="Cancel" />
-            <span className="spacer" />
-            <TextButton variant="fill-accent" size="regular" title="Save" />
-          </div>
-          <div className={styles.editPlanWrap}>
-            <Formik
-              initialValues={{
-                planName: '',
-                features: [''],
-                pricings: [{
-                  price: '',
-                  interval: 'week',
-                  billing: 'weekly'
-                }]
-              }}
-              onSubmit={values => alert(values)}
-            >
-              {({ values }) => (
-                <form>
-                  <p className={styles.propertyHeadline}>Plan Title</p>
+      <>
+        <Formik
+          initialValues={{
+            name: '',
+            planType: 'fixed',
+            minimumInvestment: 0,
+            pricings: [{
+              amount: 0,
+              percentage: 0,
+              planInterval: 'WEEK',
+            }],
+            features: ['test', 'testttt'],
+          }}
+          onSubmit={values => {
+            console.log('submit clicked');
+
+            dispatch(createPlanThunk({
+              name: values.name,
+              planType: 'fixed',
+              minimumInvestment: 0,
+              supportedProducts: getSupportedProducts,
+              pricings: values.pricings,
+              features: values.features,
+              backgroundColor: planBackground
+            }, advisorId))
+          }}
+        >
+          {({ values }) => (
+            <Form className="flex cross-start">
+              <div className="flex fill col-flex margin-right padding-right">
+                <div className="flex cross-center padding-right padding-left">
+                  <Breadcrumbs className="flex fill bolod" aria-label="breadcrumb">
+                    <NavLink className="text-secondary" color="inherit" to="/plan/121">
+                      Intraday Equity
+                    </NavLink>
+                    <Typography variant="h6">Edit</Typography>
+                  </Breadcrumbs>
+                  <TextButton type="button" variant="text-primary" size="regular" title="Cancel" />
+                  <span className="spacer" />
+                  <TextButton type="submit" variant="fill-accent" size="regular" title="Save" />
+                </div>
+                <div className={styles.editPlanWrap}>
+                  <p className={styles.propertyHeadline}>Plan Name</p>
                   <FastField
-                    name="planName"
+                    name="name"
                     type="text"
-                    className={cx(styles.inlineInput, 'font-semilarge bold')}
+                    className={cx(styles.inlineInput, 'font-semilarge semi-bold')}
                   />
                   <p className={styles.propertyHeadline}>Offerings</p>
                   <p className={styles.propertySubHeadline}>Investment productState to be used on this plan</p>
                   <div className={styles.propertyValueContainer}>
-                    {productState.items.map((item, i) =>
+                    {productState.selected.map((product, i) =>
                       <>
-                        {item.selected && <Chip
+                        {product.length > 0 && <Chip
                           key={i}
-                          label={item.name}
-                          onDelete={() => handleProductRemove(i)}
+                          label={product}
+                          onDelete={() => handleProductRemove(product, i)}
                         />}
                       </>
                     )}
-                    {productState.selectedCount < 3 && <TextButton type="button" onClick={(e) => handlePopoverClick(e, 'ADD_INSTRUMENT')} variant="text-accent" size="regular" icon="plus" />}
+                    {productState.selectedCount < productState.selected.length && <TextButton type="button" onClick={(e) => handlePopoverClick(e, 'ADD_INSTRUMENT')} variant="text-accent" size="regular" icon="plus" />}
                   </div>
                   <p className={styles.propertyHeadline}>Background</p>
                   <p className={styles.propertySubHeadline}>Choose a colour as background for the plan card. </p>
@@ -252,27 +257,27 @@ const Plan: React.FC = () => {
                       <>
                         <div className={styles.propertyHeadline}>
                           <span>Price</span>
-                          <TextButton type="button" onClick={() => push({price:'',interval:'week',billing:'weekly'})} variant="text-accent" size="medium" title="Add" icon="plus" />
+                          <TextButton type="button" onClick={() => push({ amount: 0, percentage: 0, planInterval: 'WEEK' })} variant="text-accent" size="medium" title="Add" icon="plus" />
                         </div>
                         {values.pricings.length > 0 &&
                           values.pricings.map((pricing, index) => (
                             <div key={index} className={styles.pricingBox}>
                               <div>
                                 <span className="margin-right semi-bold">Price</span>
-                                <FastField name={`pricings[${index}].price`} as={StyledInput} />
+                                <FastField type="number" name={`pricings[${index}].amount`} as={StyledInput} />
                                 <span className="spacer">/</span>
-                                <FastField name={`pricings[${index}].interval`}>
+                                <FastField name={`pricings[${index}].planInterval`}>
                                   {({ field }: FieldProps) => (
                                     <Select
                                       {...field}
                                       variant="filled"
                                       input={<StyledInput />}
                                     >
-                                      <MenuItem value="week">Week</MenuItem>
-                                      <MenuItem value="fortnight">Fortnight</MenuItem>
-                                      <MenuItem value="month">Month</MenuItem>
-                                      <MenuItem value="quarter">Quarter</MenuItem>
-                                      <MenuItem value="year">Year</MenuItem>
+                                      <MenuItem value="WEEK">Week</MenuItem>
+                                      <MenuItem value="FORTNIGHT">Fortnight</MenuItem>
+                                      <MenuItem value="MONTH">Month</MenuItem>
+                                      <MenuItem value="QUARTER">Quarter</MenuItem>
+                                      <MenuItem value="YEAR">Year</MenuItem>
                                     </Select>
                                   )}
                                 </FastField>
@@ -286,13 +291,13 @@ const Plan: React.FC = () => {
                       </>
                     )}
                   </FieldArray>
-                </form>
-              )}
-            </Formik>
-          </div>
-        </div>
-        <PlanPreview backgroundColor={planBackground} />
-      </div>
+                </div>
+              </div>
+              <PlanPreview planName={values.name} backgroundColor={planBackground} supportedProducts={getSupportedProducts} pricings={values.pricings} features={values.features} />
+            </Form>
+          )}
+        </Formik>
+      </>
     </>
   );
 };
