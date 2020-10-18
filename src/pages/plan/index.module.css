@@ -1,11 +1,8 @@
 .container {
-  padding: 10px 20px;
-  padding-top: 15px;
   display: flex;
   flex: 1;
   flex-direction: column;
   min-width: 800px;
-  overflow-y: auto;
 }
 
 /* -------- */
@@ -15,7 +12,7 @@
   padding: 10px;
   padding-top: 25px;
   background-color: var(--accent);
-  overflow-y:auto;
+  overflow-y: auto;
 }
 
 .navbar::-webkit-scrollbar {
@@ -31,7 +28,7 @@
 .navlink {
   font-size: var(--font-regular);
   font-weight: bold;
-  color:var(--text-white);
+  color: var(--text-white);
   padding: 3px 5px;
   text-decoration: none;
   border-radius: 5px;
@@ -42,7 +39,7 @@
   background-color: #2772E3;
   text-decoration: none;
   opacity: 1;
-  color:var(--text-white)
+  color: var(--text-white)
 }
 
 .activeNavlink {
@@ -63,47 +60,52 @@
   color: inherit;
 }
 
-.navTabBar{
+.navTabBar {
   border-bottom: 1px solid #5493F2;
-  padding:5px 10px 0 10px;
+  padding: 5px 10px 0 10px;
   display: flex;
   margin-top: 10px;
 }
-.navTab{
+
+.navTab {
   display: flex;
   padding-bottom: 5px;
-  flex:1;
+  flex: 1;
   justify-content: center;
   margin-right: 5px;
   font-size: var(--font-regular);
   font-weight: bold;
-  color:var(--text-white);
+  color: var(--text-white);
   cursor: pointer;
 }
-.navTab:last-child{
+
+.navTab:last-child {
   margin-right: 0;
 }
-.activeNavTab{
+
+.activeNavTab {
   border-bottom: 3px solid #fff;
-  color:var(--text-white);
+  color: var(--text-white);
 }
-.groupsWrap{
+
+.groupsWrap {
   margin-top: 20px;
 }
+
 .groupCard {
   background-color: #498CF2;
   border-radius: 10px;
   padding: 8px 10px;
   margin-top: 10px;
   cursor: pointer;
-  color:var(--text-white);
+  color: var(--text-white);
   transition: .2s;
 }
 
 .activeGroupCard {
   background-color: #256CD7;
   font-weight: bold;
-  border:1px solid #498CF2;
+  border: 1px solid #498CF2;
   /* color: var(--accent); */
 }
 
@@ -127,11 +129,13 @@
 .groupCard p {
   margin-bottom: 5px;
   font-size: var(--font-medium);
-  color:inherit;
+  color: inherit;
 }
-.groupCard p:last-child{
+
+.groupCard p:last-child {
   margin-bottom: 0;
 }
+
 .iconMargin {
   margin-right: 5px;
 }
@@ -139,15 +143,16 @@
 .groupCard span {
   font-weight: initial;
   line-height: 2em;
-  color:inherit
+  color: inherit
 }
 
-.folio{
+.folio {
   border-radius: 10px;
-  border:1px solid var(--border);
-  overflow:hidden;
+  border: 1px solid var(--border);
+  overflow: hidden;
 }
-.folioHeader{
+
+.folioHeader {
   background-color: var(--secondary-background);
-  padding:10px;
+  padding: 10px;
 }
