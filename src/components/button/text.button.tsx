@@ -11,7 +11,8 @@ interface Props {
   size: 'regular' | 'medium' | 'large';
   icon?: string;
   iconRight?: boolean | true;
-  fullWidth?:boolean;
+  fullWidth?: boolean;
+  styles?: object | {};
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 const Button: React.FC<Props> = (props) => {
@@ -19,7 +20,8 @@ const Button: React.FC<Props> = (props) => {
     <button
       type={props.type}
       onClick={props.onClick}
-      className={cx(styles.button, styles[props.variant], styles[props.size], props.round && styles.round, props.thick && styles.thick,props.fullWidth&&styles.fullWidth)}
+      className={cx(styles.button, styles[props.variant], styles[props.size], props.round && styles.round, props.thick && styles.thick, props.fullWidth && styles.fullWidth)}
+      style={props.styles}
     >
       <span
         className={styles.buttonText}
