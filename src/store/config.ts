@@ -4,8 +4,12 @@ import { persistStore, persistReducer, Persistor } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/reducer';
 import profileReducer from './profile/reducer';
+import groupReducer from './group/reducer';
+import investorReducer from './investor/reducer';
 import { IAuthState } from './auth/type';
 import { IProfileState } from './profile/type';
+import { IGroupState } from './group/type';
+import { IInvestorState } from './investor/type';
 import { PersistPartial } from 'redux-persist/es/persistReducer';
 
 /*
@@ -14,6 +18,8 @@ import { PersistPartial } from 'redux-persist/es/persistReducer';
 export interface IState {
   authReducer: IAuthState;
   profileReducer: IProfileState & PersistPartial;
+  groupReducer: IGroupState;
+  investorReducer: IInvestorState
 }
 
 const persistConfig = {
@@ -31,6 +37,8 @@ const profileReducerPersistConfig = {
 const rootReducers = combineReducers<IState>({
   authReducer,
   profileReducer: persistReducer(profileReducerPersistConfig, profileReducer),
+  groupReducer,
+  investorReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers)
