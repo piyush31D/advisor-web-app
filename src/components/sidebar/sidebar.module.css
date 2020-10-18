@@ -1,15 +1,12 @@
 .navbarContainer {
   width: 56px;
   height: 100%;
+  padding-top: 8px;
   background-color: #050D27;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   position: relative;
-}
-
-.navbarAvatar {
-  height: 13px;
 }
 
 .navlinksContainer {

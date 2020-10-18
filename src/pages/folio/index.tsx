@@ -28,9 +28,10 @@ const FoliosPage: React.FC = () => {
             Pinned
         </div>
         </div>
-        {Folios.map((folio, index) => (
+        {Folios.map((folio, i) => (
           <NavColumnCard
             linkTo={`/folio/${folio._id}`}
+            key={i}
             name={folio.name}
             brief={
               <span>

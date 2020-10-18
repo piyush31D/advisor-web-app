@@ -1,9 +1,13 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { ReactNode } from 'react';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import cx from 'classnames'
 import styles from './nav-column.module.css';
+import SimpleBar from 'simplebar-react';
+import { useSelector } from 'react-redux';
+import { IState } from 'src/store/config';
 
 interface NavColumnCardProps {
+  onClick?: () => void;
   linkTo: string;
   _id?: string;
   name: string;
@@ -11,8 +15,17 @@ interface NavColumnCardProps {
   overflowMenu?: ReactNode;
 }
 export const NavColumnCard: React.FC<NavColumnCardProps> = (props) => {
+  const location = useLocation();
+  const history = useHistory();
   return (
-    <NavLink to={props.linkTo} className={styles.navCard} activeClassName={styles.activeNavCard}>
+    <div
+      role="button"
+      onClick={() => {
+        if (props.onClick)
+          props.onClick();
+        history.push(props.linkTo);
+      }}
+      className={cx(styles.navCard, location.pathname === props.linkTo && styles.activeNavCard)} >
       <p>{props.name}</p>
       {props.brief && <div className="flex row-flex space-between cross-center">
         <span>{props.brief}</span>
@@ -22,7 +35,7 @@ export const NavColumnCard: React.FC<NavColumnCardProps> = (props) => {
           </div>
         }
       </div>}
-    </NavLink>
+    </div>
   )
 }
 interface NavColumnLinkProps {
@@ -47,7 +60,9 @@ interface NavColumnProps {
 const NavColumn: React.FC<NavColumnProps> = (props) => {
   return (
     <div className={cx(styles.navbar, 'flex col-flex cross-stretch')}>
-      {props.children}
+      <SimpleBar style={{ padding: '18px 10px 10px 10px', minHeight: 0 }}>
+        {props.children}
+      </SimpleBar>
     </div>
   )
 };

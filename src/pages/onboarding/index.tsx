@@ -7,7 +7,7 @@ import cx from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import { getProfileThunk } from 'src/store/profile/thunk';
 import BasicDetails from './basic-details';
-import StyledInput, { useStyles } from './styled-input'
+import { useStyles } from './styled-input'
 import Button from '@material-ui/core/Button';
 
 const AdvisorOnboarding: React.FC = () => {

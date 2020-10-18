@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Tag from 'src/components/tag/tag';
 import TextButton from 'src/components/button/text.button'
 import { IState } from 'src/store/config';
+import SimpleBar from 'simplebar-react';
 
 const StyledInput = withStyles(() =>
   createStyles({
@@ -183,118 +184,120 @@ const Plan: React.FC = () => {
           }}
         >
           {({ values }) => (
-            <Form className="flex cross-start">
-              <div className="flex fill col-flex margin-right padding-right">
-                <div className="flex cross-center padding-right padding-left">
-                  <Breadcrumbs className="flex fill bolod" aria-label="breadcrumb">
-                    <NavLink className="text-secondary" color="inherit" to="/plan/121">
-                      Intraday Equity
+            <SimpleBar style={{ height: '100%', padding: '18px 20px 10px 20px' }}>
+              <Form className="flex cross-start">
+                <div className="flex fill col-flex margin-right padding-right">
+                  <div className="flex cross-center padding-right padding-left">
+                    <Breadcrumbs className="flex fill bolod" aria-label="breadcrumb">
+                      <NavLink className="text-secondary" color="inherit" to="/plan/121">
+                        Intraday Equity
                     </NavLink>
-                    <Typography variant="h6">Edit</Typography>
-                  </Breadcrumbs>
-                  <TextButton type="button" variant="text-primary" size="regular" title="Cancel" />
-                  <span className="spacer" />
-                  <TextButton type="submit" variant="fill-accent" size="regular" title="Save" />
-                </div>
-                <div className={styles.editPlanWrap}>
-                  <p className={styles.propertyHeadline}>Plan Name</p>
-                  <FastField
-                    name="name"
-                    type="text"
-                    className={cx(styles.inlineInput, 'font-semilarge semi-bold')}
-                  />
-                  <p className={styles.propertyHeadline}>Offerings</p>
-                  <p className={styles.propertySubHeadline}>Investment productState to be used on this plan</p>
-                  <div className={styles.propertyValueContainer}>
-                    {productState.selected.map((product, i) =>
-                      <>
-                        {product.length > 0 && <Chip
-                          key={i}
-                          label={product}
-                          onDelete={() => handleProductRemove(product, i)}
-                        />}
-                      </>
-                    )}
-                    {productState.selectedCount < productState.selected.length && <TextButton type="button" onClick={(e) => handlePopoverClick(e, 'ADD_INSTRUMENT')} variant="text-accent" size="regular" icon="plus" />}
+                      <Typography variant="h6">Edit</Typography>
+                    </Breadcrumbs>
+                    <TextButton type="button" variant="text-primary" size="regular" title="Cancel" />
+                    <span className="spacer" />
+                    <TextButton type="submit" variant="fill-accent" size="regular" title="Save" />
                   </div>
-                  <p className={styles.propertyHeadline}>Background</p>
-                  <p className={styles.propertySubHeadline}>Choose a colour as background for the plan card. </p>
-                  <div className={styles.propertyValueContainer}>
-                    {PlanBackgroundColors.map((color, i) =>
-                      <button key={i} onClick={() => setPlanBackground(color)} type="button" className={styles.colorBox} style={{ backgroundColor: color }}>
-                        {color === planBackground && <span className="pficon-check font-regular text-white" />}
-                      </button>
-                    )}
-                  </div>
+                  <div className={styles.editPlanWrap}>
+                    <p className={styles.propertyHeadline}>Plan Name</p>
+                    <FastField
+                      name="name"
+                      type="text"
+                      className={cx(styles.inlineInput, 'font-semilarge semi-bold')}
+                    />
+                    <p className={styles.propertyHeadline}>Offerings</p>
+                    <p className={styles.propertySubHeadline}>Investment productState to be used on this plan</p>
+                    <div className={styles.propertyValueContainer}>
+                      {productState.selected.map((product, i) =>
+                        <>
+                          {product.length > 0 && <Chip
+                            key={i}
+                            label={product}
+                            onDelete={() => handleProductRemove(product, i)}
+                          />}
+                        </>
+                      )}
+                      {productState.selectedCount < productState.selected.length && <TextButton type="button" onClick={(e) => handlePopoverClick(e, 'ADD_INSTRUMENT')} variant="text-accent" size="regular" icon="plus" />}
+                    </div>
+                    <p className={styles.propertyHeadline}>Background</p>
+                    <p className={styles.propertySubHeadline}>Choose a colour as background for the plan card. </p>
+                    <div className={styles.propertyValueContainer}>
+                      {PlanBackgroundColors.map((color, i) =>
+                        <button key={i} onClick={() => setPlanBackground(color)} type="button" className={styles.colorBox} style={{ backgroundColor: color }}>
+                          {color === planBackground && <span className="pficon-check font-regular text-white" />}
+                        </button>
+                      )}
+                    </div>
 
-                  <FieldArray name="features">
-                    {({ remove, unshift }) => (
-                      <>
-                        <div className={styles.propertyHeadline}>
-                          <span>Plan Features</span>
-                          <TextButton type="button" onClick={() => unshift('')} variant="text-accent" size="medium" title="Add feature" icon="plus" />
-                        </div>
-                        <p className={styles.propertySubHeadline}>Specify the benefits and deliverables of the plan.</p>
-                        {values.features.length > 0 &&
-                          values.features.map((feature, index) => (
-                            <div key={index} className={styles.benefitBox}>
-                              <FastField
-                                name={`features[${index}]`}
-                                type="text"
-                                className={cx(styles.inlineInput, styles.withDeleteButton)}
-                              />
-                              <div className={styles.deleteButton}>
-                                <TextButton type="button" onClick={() => remove(index)} variant="text-primary" size="regular" icon="cross" />
+                    <FieldArray name="features">
+                      {({ remove, unshift }) => (
+                        <>
+                          <div className={styles.propertyHeadline}>
+                            <span>Plan Features</span>
+                            <TextButton type="button" onClick={() => unshift('')} variant="text-accent" size="medium" title="Add feature" icon="plus" />
+                          </div>
+                          <p className={styles.propertySubHeadline}>Specify the benefits and deliverables of the plan.</p>
+                          {values.features.length > 0 &&
+                            values.features.map((feature, index) => (
+                              <div key={index} className={styles.benefitBox}>
+                                <FastField
+                                  name={`features[${index}]`}
+                                  type="text"
+                                  className={cx(styles.inlineInput, styles.withDeleteButton)}
+                                />
+                                <div className={styles.deleteButton}>
+                                  <TextButton type="button" onClick={() => remove(index)} variant="text-primary" size="regular" icon="cross" />
+                                </div>
                               </div>
-                            </div>
-                          ))
-                        }
-                      </>
-                    )}
-                  </FieldArray>
-                  <FieldArray name="pricings">
-                    {({ remove, push }) => (
-                      <>
-                        <div className={styles.propertyHeadline}>
-                          <span>Price</span>
-                          <TextButton type="button" onClick={() => push({ amount: 0, percentage: 0, planInterval: 'WEEK' })} variant="text-accent" size="medium" title="Add" icon="plus" />
-                        </div>
-                        {values.pricings.length > 0 &&
-                          values.pricings.map((pricing, index) => (
-                            <div key={index} className={styles.pricingBox}>
-                              <div>
-                                <span className="margin-right semi-bold">Price</span>
-                                <FastField type="number" name={`pricings[${index}].amount`} as={StyledInput} />
-                                <span className="spacer">/</span>
-                                <FastField name={`pricings[${index}].planInterval`}>
-                                  {({ field }: FieldProps) => (
-                                    <Select
-                                      {...field}
-                                      variant="filled"
-                                      input={<StyledInput />}
-                                    >
-                                      <MenuItem value="WEEK">Week</MenuItem>
-                                      <MenuItem value="FORTNIGHT">Fortnight</MenuItem>
-                                      <MenuItem value="MONTH">Month</MenuItem>
-                                      <MenuItem value="QUARTER">Quarter</MenuItem>
-                                      <MenuItem value="YEAR">Year</MenuItem>
-                                    </Select>
-                                  )}
-                                </FastField>
+                            ))
+                          }
+                        </>
+                      )}
+                    </FieldArray>
+                    <FieldArray name="pricings">
+                      {({ remove, push }) => (
+                        <>
+                          <div className={styles.propertyHeadline}>
+                            <span>Price</span>
+                            <TextButton type="button" onClick={() => push({ amount: 0, percentage: 0, planInterval: 'WEEK' })} variant="text-accent" size="medium" title="Add" icon="plus" />
+                          </div>
+                          {values.pricings.length > 0 &&
+                            values.pricings.map((pricing, index) => (
+                              <div key={index} className={styles.pricingBox}>
+                                <div>
+                                  <span className="margin-right semi-bold">Price</span>
+                                  <FastField type="number" name={`pricings[${index}].amount`} as={StyledInput} />
+                                  <span className="spacer">/</span>
+                                  <FastField name={`pricings[${index}].planInterval`}>
+                                    {({ field }: FieldProps) => (
+                                      <Select
+                                        {...field}
+                                        variant="filled"
+                                        input={<StyledInput />}
+                                      >
+                                        <MenuItem value="WEEK">Week</MenuItem>
+                                        <MenuItem value="FORTNIGHT">Fortnight</MenuItem>
+                                        <MenuItem value="MONTH">Month</MenuItem>
+                                        <MenuItem value="QUARTER">Quarter</MenuItem>
+                                        <MenuItem value="YEAR">Year</MenuItem>
+                                      </Select>
+                                    )}
+                                  </FastField>
+                                </div>
+                                <div className={styles.deleteButton}>
+                                  <TextButton type="button" onClick={() => remove(index)} variant="text-primary" size="regular" icon="cross" />
+                                </div>
                               </div>
-                              <div className={styles.deleteButton}>
-                                <TextButton type="button" onClick={() => remove(index)} variant="text-primary" size="regular" icon="cross" />
-                              </div>
-                            </div>
-                          ))
-                        }
-                      </>
-                    )}
-                  </FieldArray>
+                            ))
+                          }
+                        </>
+                      )}
+                    </FieldArray>
+                  </div>
                 </div>
-              </div>
-              <PlanPreview planName={values.name} backgroundColor={planBackground} supportedProducts={getSupportedProducts} pricings={values.pricings} features={values.features} />
-            </Form>
+                <PlanPreview planName={values.name} backgroundColor={planBackground} supportedProducts={getSupportedProducts} pricings={values.pricings} features={values.features} />
+              </Form>
+            </SimpleBar>
           )}
         </Formik>
       </>
