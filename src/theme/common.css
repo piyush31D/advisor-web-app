@@ -1,4 +1,4 @@
-:root{
+:root {
   --font-regular: 14px;
   --font-medium: 13px;
   --font-semilarge: 16px;
@@ -14,8 +14,8 @@
   --background-secondary: rgba(0, 0, 0, 0.05);
   --accent-shade: rgba(0, 95, 235, 0.07);
   --slider-color: rgb(0, 95, 235);
-  --scrollbar-color: rgb(0, 0, 0, 0.1);
-  --scrollbar-hover-color: rgb(0, 0, 0, 0.15);
+  --scrollbar-color: rgba(0, 0, 0, 0.8);
+  --scrollbar-border-color: transparent;
   --text-primary: rgb(0, 0, 0);
   --primary-shade: rgba(0, 0, 0, 0.07);
   --text-white: rgb(255, 255, 255);
@@ -63,8 +63,8 @@
   /* --background-secondary: rgb(47, 49, 54); */
   --accent-shade: rgba(0, 95, 235, 0.15);
   --slider-color: var(--accent);
-  --scrollbar-color: var(--input-background);
-  --scrollbar-hover-color: var(--input-focused-background);
+  --scrollbar-color: rgba(255, 255, 255, 0);
+  --scrollbar-border-color: rgba(255, 255, 255, 0.8);
   --text-primary: rgb(219, 219, 219);
   --primary-shade: rgba(255, 255, 255, 0.1);
   --text-white: var(--text-primary);
@@ -176,6 +176,7 @@
 .margin-top {
   margin-top: 10px;
 }
+
 .margin-top--small {
   margin-top: 5px;
 }
@@ -250,7 +251,7 @@
 }
 
 .cross-center {
-  align-items: center;
+  align-items: center !important;
 }
 
 .cross-baseline {
@@ -284,7 +285,6 @@
 
 *::-webkit-scrollbar {
   width: 6px;
-  background-color: rgb(0, 0, 0, 0.1);
 }
 
 *::-webkit-scrollbar-thumb {
@@ -295,4 +295,13 @@
 *::-webkit-scrollbar-thumb:hover {
   width: 6px;
   background-color: var(--scrollbar-hover-color);
+}
+
+.simplebar-scrollbar::before {
+  background-color: var(--scrollbar-color) !important;
+  box-shadow: 0 0 1px 1px var(--scrollbar-border-color) !important;
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 8px !important;
 }
