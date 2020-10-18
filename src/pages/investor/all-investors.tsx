@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -10,24 +10,23 @@ import { StyledTableCell, StyledTableRow, InvestorAvatar, useTableStyles } from 
 import styles from './all-investors.module.css';
 import PagePopover from './popover';
 import RiskProfileTag from 'src/components/risk/risk-profile';
+import { useDispatch, useSelector } from 'react-redux';
+import { IState } from 'src/store/config';
+import { getInvestorsThunk } from 'src/store/investor/thunk';
 
-
-function createData(name: string, plans: number, risk: 1 | 2 | 3 | 4 | 5, groups: number, budget: number) {
-  return { name, plans, risk, groups, budget };
-}
-
-const rows = [
-  createData('James Sawyer', 1, 1, 2, 4.0),
-  createData('Shyam P.', 2, 3, 7, 4.3),
-  createData('Ram Pratap', 2, 4, 4, 6.0),
-  createData('Harvey Specter', 3, 2, 6, 4.3),
-  createData('Mike Ross', 6, 3, 9, 3.9),
-  createData('James Sawyer', 1, 5, 2, 4.0),
-
-];
 
 const AllInvestors: React.FC = () => {
   const classes = useTableStyles();
+
+  const dispatch = useDispatch();
+  const { profile } = useSelector((state: IState) => state.profileReducer);
+  const advisorId = profile ? profile._id : undefined;
+  const { investors } = useSelector((state: IState) => state.investorReducer);
+
+  useEffect(() => {
+    advisorId && dispatch(getInvestorsThunk(advisorId));
+  }, [advisorId, dispatch]);
+
 
   const [popoverState, setPopoverState] = useState<{ anchorEl: HTMLButtonElement | null, name: string | null }>({ anchorEl: null, name: null });
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>, name: string) => {
@@ -42,7 +41,7 @@ const AllInvestors: React.FC = () => {
     <>
       <div className={styles.header}>
         <PagePopover name={popoverState.name} open={open} anchorEl={popoverState.anchorEl} handleClose={handleClose} />
-        <div className="flex row-flex cross-center margin-bottom">
+        <div className="flex investor-flex cross-center margin-bottom">
           <span className="font-large text-primary bold">All Investors</span>
         </div>
       </div>
@@ -66,8 +65,8 @@ const AllInvestors: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
+            {investors.map((investor, i) => (
+              <StyledTableRow key={i}>
                 <StyledTableCell className={classes.checkboxCell}>
                   <Checkbox
                     name="check"
@@ -75,17 +74,17 @@ const AllInvestors: React.FC = () => {
                   />
                 </StyledTableCell>
                 <StyledTableCell className={classes.avatarCell}>
-                  <InvestorAvatar style={{ backgroundColor: false ? "#" + ((1 << 24) * Math.random() | 0).toString(16) : 'var(--border)' }} alt={row.name} />
+                  <InvestorAvatar style={{ backgroundColor: false ? "#" + ((1 << 24) * Math.random() | 0).toString(16) : 'var(--border)' }} alt={investor.firstName} />
                 </StyledTableCell>
-                <StyledTableCell className={classes.semiBold} scope="row">
-                  {row.name}
+                <StyledTableCell className={classes.semiBold} scope="investor">
+                  {investor.fullName}
                 </StyledTableCell>
                 <StyledTableCell>
-                  <RiskProfileTag risk={row.risk} />
+                  <RiskProfileTag risk={2} />
                 </StyledTableCell>
-                <StyledTableCell>{row.plans}</StyledTableCell>
-                <StyledTableCell>{row.groups}</StyledTableCell>
-                <StyledTableCell align="right">{row.budget + ' Lakh'}</StyledTableCell>
+                <StyledTableCell>4</StyledTableCell>
+                <StyledTableCell>{investor.groups.length}</StyledTableCell>
+                <StyledTableCell align="right">3 Lakh</StyledTableCell>
                 <StyledTableCell>
                   <TextButton onClick={(e) => handleClick(e, 'INVESTOR_OPTION')} size="regular" variant="text-primary" icon="menu-overflow" />
                 </StyledTableCell>
