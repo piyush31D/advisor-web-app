@@ -9,7 +9,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import Popover from '@material-ui/core/Popover';
 import TextButton from 'src/components/button/text.button';
 import Tag from 'src/components/tag/tag';
 import styles from './folio.module.css';
